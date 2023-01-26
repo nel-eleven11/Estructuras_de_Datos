@@ -7,13 +7,14 @@ import java.util.Scanner;
 
 public class Controller {
 
-
+    private IPostfixCalculator miCalculadora = new PostfixCalculator();
     private IStack<Integer> miPila = new StackUsingArrayList<Integer>();
 
-    public void importFile(){
+    public ArrayList<String> items = new ArrayList<String>();
+
+    public void importFile(String nombreDelArchivo){
         //Ruta del archivo
-        String fpath = ".\\src\\texto.txt";
-        ArrayList items = new ArrayList<String>();
+        String fpath = ".\\src\\"+nombreDelArchivo+".txt";
 
         try {
             File myObj = new File(fpath);
@@ -29,7 +30,36 @@ public class Controller {
         }
     }
 
+    public Integer calculate(String itemToCalculate){
+        ArrayList<String> sepItems = miCalculadora.getItems(itemToCalculate);
+        for (String item : sepItems) {
 
+            if (miCalculadora.isOperator(item)) {
+                int b = (miPila.pull());
+                int a = (miPila.pull());
+
+                int result = 0;
+                switch (item) {
+                    case "+":
+                        result = miCalculadora.suma(a, b);
+                        break;
+                    case "-":
+                        result = miCalculadora.resta(a, b);
+                        break;
+                    case "*":
+                        result = miCalculadora.multiplicacion(a, b);
+                        break;
+                    case "/":
+                        result = miCalculadora.division(a, b);
+                        break;
+                }
+                miPila.push((result));
+            } else {
+                miPila.push(Integer.parseInt(item));
+            }
+        }
+        return (miPila.pull());
+    }
 
 
 

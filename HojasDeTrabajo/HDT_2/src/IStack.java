@@ -1,7 +1,7 @@
 /**
  * 
  */
-package edu.uvg.structures;
+package src;
 
 /**
  * The interface Stack.

@@ -23,6 +23,6 @@ class ControllerTest {
 
         miControlador.importFile("texto");
 
-        assertEquals(5, miControlador.calculate("2 3 +"));
+        assertEquals(8, miControlador.calculate("2 6 +"));
     }
 }

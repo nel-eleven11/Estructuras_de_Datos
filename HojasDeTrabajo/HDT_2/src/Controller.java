@@ -39,40 +39,35 @@ public class Controller {
         }
     }
 
-    public ArrayList<Integer> calculate(ArrayList<String> itemsToCalculate){
-        ArrayList<Integer> respuestas = new ArrayList<>();
-        for (int i = 0; i < itemsToCalculate.size(); i++){
-            ArrayList<String> sepItems = miCalculadora.getItems(itemsToCalculate.get(i));
-            for (String item : sepItems) {
+    public Integer calculate(String itemToCalculate){
+        ArrayList<String> sepItems = miCalculadora.getItems(itemToCalculate);
+        for (String item : sepItems) {
 
-                if (miCalculadora.isOperator(item)) {
-                    int b = (miPila.pull());
-                    int a = (miPila.pull());
+            if (miCalculadora.isOperator(item)) {
+                int b = (miPila.pull());
+                int a = (miPila.pull());
 
-                    int result = 0;
-                    switch (item) {
-                        case "+":
-                            result = miCalculadora.suma(a, b);
-                            break;
-                        case "-":
-                            result = miCalculadora.resta(a, b);
-                            break;
-                        case "*":
-                            result = miCalculadora.multiplicacion(a, b);
-                            break;
-                        case "/":
-                            result = miCalculadora.division(a, b);
-                            break;
-                    }
-                    miPila.push((result));
-                } else {
-                    miPila.push(Integer.parseInt(item));
+                int result = 0;
+                switch (item) {
+                    case "+":
+                        result = miCalculadora.suma(a, b);
+                        break;
+                    case "-":
+                        result = miCalculadora.resta(a, b);
+                        break;
+                    case "*":
+                        result = miCalculadora.multiplicacion(a, b);
+                        break;
+                    case "/":
+                        result = miCalculadora.division(a, b);
+                        break;
                 }
+                miPila.push((result));
+            } else {
+                miPila.push(Integer.parseInt(item));
             }
-            respuestas.add(miPila.pull());
         }
-
-        return respuestas;
+        return (miPila.pull());
     }
 
 

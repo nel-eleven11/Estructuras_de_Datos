@@ -1,5 +1,11 @@
-/**
- *
+/*/
+HDT 2 Algoritmos y estructuras de datos
+Nelson García Bravatti 22434
+Joaquín Puente 22296
+Oscar Fuentes 22763
+
+Clase stack using array list
+
  */
 package src;
 

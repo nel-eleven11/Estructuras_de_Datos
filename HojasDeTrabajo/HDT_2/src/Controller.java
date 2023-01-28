@@ -39,35 +39,40 @@ public class Controller {
         }
     }
 
-    public Integer calculate(String itemToCalculate){
-        ArrayList<String> sepItems = miCalculadora.getItems(itemToCalculate);
-        for (String item : sepItems) {
+    public ArrayList<Integer> calculate(ArrayList<String> itemToCalculate){
+        ArrayList<Integer> respuestas = new ArrayList<Integer>();
+        for (String itemX : itemToCalculate) {
 
-            if (miCalculadora.isOperator(item)) {
-                int b = (miPila.pull());
-                int a = (miPila.pull());
+            ArrayList<String> sepItems = miCalculadora.getItems(itemX);
+            for (String item : sepItems) {
 
-                int result = 0;
-                switch (item) {
-                    case "+":
-                        result = miCalculadora.suma(a, b);
-                        break;
-                    case "-":
-                        result = miCalculadora.resta(a, b);
-                        break;
-                    case "*":
-                        result = miCalculadora.multiplicacion(a, b);
-                        break;
-                    case "/":
-                        result = miCalculadora.division(a, b);
-                        break;
+                if (miCalculadora.isOperator(item)) {
+                    int b = (miPila.pull());
+                    int a = (miPila.pull());
+
+                    int result = 0;
+                    switch (item) {
+                        case "+":
+                            result = miCalculadora.suma(a, b);
+                            break;
+                        case "-":
+                            result = miCalculadora.resta(a, b);
+                            break;
+                        case "*":
+                            result = miCalculadora.multiplicacion(a, b);
+                            break;
+                        case "/":
+                            result = miCalculadora.division(a, b);
+                            break;
+                    }
+                    miPila.push((result));
+                } else {
+                    miPila.push(Integer.parseInt(item));
                 }
-                miPila.push((result));
-            } else {
-                miPila.push(Integer.parseInt(item));
             }
+            respuestas.add(miPila.pull());
         }
-        return (miPila.pull());
+        return respuestas;
     }
 
 

@@ -56,29 +56,33 @@ public class Controller {
 
             ArrayList<String> sepItems = miCalculadora.getItems(itemX);
             for (String item : sepItems) {
+                try {
+                    if (miCalculadora.isOperator(item)) {
+                        int b = (miPila.pull());
+                        int a = (miPila.pull());
 
-                if (miCalculadora.isOperator(item)) {
-                    int b = (miPila.pull());
-                    int a = (miPila.pull());
-
-                    int result = 0;
-                    switch (item) {
-                        case "+":
-                            result = miCalculadora.suma(a, b);
-                            break;
-                        case "-":
-                            result = miCalculadora.resta(a, b);
-                            break;
-                        case "*":
-                            result = miCalculadora.multiplicacion(a, b);
-                            break;
-                        case "/":
-                            result = miCalculadora.division(a, b);
-                            break;
+                        int result = 0;
+                        switch (item) {
+                            case "+":
+                                result = miCalculadora.suma(a, b);
+                                break;
+                            case "-":
+                                result = miCalculadora.resta(a, b);
+                                break;
+                            case "*":
+                                result = miCalculadora.multiplicacion(a, b);
+                                break;
+                            case "/":
+                                result = miCalculadora.division(a, b);
+                                break;
+                        }
+                        miPila.push((result));
+                    } else {
+                        miPila.push(Integer.parseInt(item));
                     }
-                    miPila.push((result));
-                } else {
-                    miPila.push(Integer.parseInt(item));
+                } catch (Exception e){
+                    System.out.println("Error en la operación");
+                    return null;
                 }
             }
             respuestas.add(miPila.pull());

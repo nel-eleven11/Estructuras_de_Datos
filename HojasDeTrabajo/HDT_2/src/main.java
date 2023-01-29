@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /*
-
 HDT 2 Algoritmos y estructuras de datos
 Nelson García Bravatti 22434
 Joaquín Puente 22296
 Oscar Fuentes 22763
 
 Clase main
-
  */
+
 public class main {
-
-
+    /**
+     * Método main
+     */
     public static void main(String[] args) {
         Controller MiControlador = new Controller();
         Scanner teclado = new Scanner(System.in);
@@ -27,16 +27,16 @@ public class main {
         teclado.nextLine();
         while (opcion != 2) {
             switch (opcion){
-                case 1 -> {
+                case 1: {
                     System.out.println("Escriba el nombre del archivo");
                     String NombreDelArchivo = teclado.nextLine();
                     MiControlador.importFile(NombreDelArchivo);
-                    ArrayList<Integer> respuestas =  MiControlador.calculate(MiControlador.items);
+                    ArrayList<Integer> respuestas =  MiControlador.calculate(MiControlador.getItems());
                     for (int i = 0 ; i < respuestas.size(); i++) {
-                        System.out.println(MiControlador.items.get(i) + " = " + respuestas.get(i));
+                        System.out.println(MiControlador.getItems().get(i) + " = " + respuestas.get(i));
                     }
                 }
-                case 2 -> {
+                case 2: {
                     System.exit(0);
                 }
             }
@@ -47,4 +47,6 @@ public class main {
 
 
 }
+
+
 

@@ -19,7 +19,12 @@ public class Controller {
     private IPostfixCalculator miCalculadora = new PostfixCalculator();
     private IStack<Integer> miPila = new StackUsingArrayList<Integer>();
 
-    public ArrayList<String> items = new ArrayList<String>();
+    private ArrayList<String> items = new ArrayList<String>();
+
+    /**
+     * Método para importar el archivo
+     * @param nombreDelArchivo
+     */
 
     public void importFile(String nombreDelArchivo){
         //Ruta del archivo
@@ -38,6 +43,12 @@ public class Controller {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Método para calcular las operaciones
+     * @param itemToCalculate
+     * @return respuestas
+     */
 
     public ArrayList<Integer> calculate(ArrayList<String> itemToCalculate){
         ArrayList<Integer> respuestas = new ArrayList<Integer>();
@@ -73,6 +84,10 @@ public class Controller {
             respuestas.add(miPila.pull());
         }
         return respuestas;
+    }
+
+    public ArrayList<String> getItems() {
+        return items;
     }
 
 

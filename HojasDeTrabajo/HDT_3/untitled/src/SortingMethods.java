@@ -93,4 +93,26 @@ public class SortingMethods <T>{
             k++;
         }
     }
+
+    public void radixsort(int datos[]){
+
+        for (int i = 0; i < 6; i++)
+        {
+            //bucketPass(data,i);
+        }
+    }
+
+    public static int revision_digito(int numero, int digito){
+        if(digito == 0){
+            return numero % 10;
+        }else{
+            return revision_digito(numero / 10, digito - 1);
+        }
+
+    }
+
+    public static void bucketPass(int datos[], int digito){
+
+    }
+
 }

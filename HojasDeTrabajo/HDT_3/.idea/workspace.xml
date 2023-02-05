@@ -74,7 +74,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SortingMethodsTest.bubbleSort">
+  <component name="RunManager" selected="JUnit.SortingMethodsTest.mergeSortRecursive">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="HDT_3" />
@@ -92,31 +92,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SortingMethodsTest.ordenar_en_cubos" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SortingMethodsTest.gnomeSort" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HDT_3" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="SortingMethodsTest" />
-      <option name="METHOD_NAME" value="ordenar_en_cubos" />
+      <option name="METHOD_NAME" value="gnomeSort" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SortingMethodsTest.radixSort" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SortingMethodsTest.mergeSortRecursive" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HDT_3" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="SortingMethodsTest" />
-      <option name="METHOD_NAME" value="radixSort" />
+      <option name="METHOD_NAME" value="mergeSortRecursive" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SortingMethodsTest.revision_digito" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SortingMethodsTest.quickSort" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HDT_3" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="SortingMethodsTest" />
-      <option name="METHOD_NAME" value="revision_digito" />
+      <option name="METHOD_NAME" value="quickSort" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -124,11 +124,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SortingMethodsTest.mergeSortRecursive" />
+        <item itemvalue="JUnit.SortingMethodsTest.gnomeSort" />
+        <item itemvalue="JUnit.SortingMethodsTest.quickSort" />
         <item itemvalue="JUnit.SortingMethodsTest.bubbleSort" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.SortingMethodsTest.radixSort" />
-        <item itemvalue="JUnit.SortingMethodsTest.ordenar_en_cubos" />
-        <item itemvalue="JUnit.SortingMethodsTest.revision_digito" />
       </list>
     </recent_temporary>
   </component>

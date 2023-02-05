@@ -140,7 +140,7 @@ public class SortingMethods <T>{
 
         for (int i = 0; i < 6; i++)
         {
-            bucketPass(datos, i);
+            ordenar_en_cubos(datos, i);
         }
     }
 
@@ -166,7 +166,7 @@ public class SortingMethods <T>{
      * @param datos  the datos
      * @param digito the digito
      */
-    public static void bucketPass(int datos[], int digito){
+    public static void ordenar_en_cubos(int datos[], int digito){
 
         int val_actual;
         //se crean los 10 cubos

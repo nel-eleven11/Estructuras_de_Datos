@@ -16,6 +16,14 @@ class SortingMethodsTest {
 
     @Test
     void quickSort() {
+
+        Integer[] myArray = new Integer[10];
+        myArray = new Integer[]{11, 3, 74, 102, 9, 23, 6, 8, 51, 4};
+        mySort.quickSort(myArray, 0, myArray.length - 1);
+        for (int i = 0; i < myArray.length; i++) {
+            System.out.println(myArray[i]);
+        }
+
     }
 
     @Test
@@ -31,8 +39,15 @@ class SortingMethodsTest {
 
 
         Integer[] myArray = new Integer[10];
+        Integer[] compArray = new Integer[10]; //array para comparar, este está ordenado
+        compArray = new Integer[]{3,4,6,8,9,11,23,51,74,102};
         myArray = new Integer[]{11, 3, 74, 102, 9, 23, 6, 8, 51, 4};
         mySort.radixSort( myArray);
+
+        for (int i = 0; i < myArray.length; i++) {
+            assertEquals(compArray[i], myArray[i]);
+            System.out.println(myArray[i]);
+        }
     }
 
     @Test
@@ -55,6 +70,10 @@ class SortingMethodsTest {
         Integer[] myArray = new Integer[10];
         myArray = new Integer[]{11, 3, 74, 102, 9, 23, 6, 8, 51, 4};
         mySort.ordenar_en_cubos(myArray, 0);
+        for (int i = 0; i < myArray.length; i++) {
+            System.out.println(myArray[i]);
+        }
+
 
     }
 }

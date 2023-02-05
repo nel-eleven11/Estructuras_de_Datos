@@ -131,71 +131,44 @@ public class SortingMethods <T>{
         }
     }
 
-    /**
-     * Radix sort.
-     *
-     * @param datos the datos
-     */
-    public void radixSort(int datos[]){
 
-        for (int i = 0; i < 6; i++)
-        {
-            ordenar_en_cubos(datos, i);
+    //radix sort implementando icomparator
+
+    public <T extends Comparable<T>> void radixSort(T[] arr) {
+
+        for(int i = 0; i < 6; i++) {
+            ordenar_en_cubos(arr, i);
         }
     }
 
-    /**
-     * Revision digito int.
-     *
-     * @param numero the numero
-     * @param digito the digito
-     * @return the int
-     */
-    public static int revision_digito(int numero, int digito){
-        if(digito == 0){
-            return numero % 10;
-        }else{
-            return revision_digito(numero / 10, digito - 1);
+    public static <T extends Comparable<T>> int revision_digito(T numero, int digito) {
+        if(digito == 0) {
+            return Integer.parseInt(numero.toString()) % 10;
+        } else {
+            return revision_digito(Integer.parseInt(numero.toString()) / 10, digito - 1);
         }
-
     }
 
-    /**
-     * Bucket pass.
-     *
-     * @param datos  the datos
-     * @param digito the digito
-     */
-    public static void ordenar_en_cubos(int datos[], int digito){
+    public static <T extends Comparable<T>> void ordenar_en_cubos(T[] arr, int digito) {
 
         int val_actual;
-        //se crean los 10 cubos
-        ArrayList<Integer>[] cubos = new ArrayList[10];
-        for (int i = 0; i < cubos.length; i++)
-        {
-            cubos[i] = new ArrayList<Integer>();
+        ArrayList<T>[] cubos = new ArrayList[10];
+        for(int i = 0; i < cubos.length; i++) {
+            cubos[i] = new ArrayList<T>();
         }
 
-        int n = datos.length;
-        //se llenan los cubos con los datos, dependiendo del digito
-        for (int j = 0; j < n; j++)
-        {
-            val_actual = revision_digito(datos[j], digito);
-            cubos[val_actual].add(datos[j]);
+        int n = arr.length;
+        for(int j = 0; j < n; j++) {
+            val_actual = revision_digito(arr[j], digito);
+            cubos[val_actual].add(arr[j]);
         }
 
-        //se vacian los cubos, para llenar el arreglo
         int k = 0;
-        for (int i = 0; i < cubos.length; i++)
-        {
-            for (int j = 0; j < cubos[i].size(); j++)
-            {
-                datos[k] = cubos[i].get(j);
+        for(int i = 0; i < cubos.length; i++) {
+            for(int j = 0; j < cubos[i].size(); j++) {
+                arr[k] = cubos[i].get(j);
                 k++;
             }
         }
-
     }
-
-    //bubble sort
 }

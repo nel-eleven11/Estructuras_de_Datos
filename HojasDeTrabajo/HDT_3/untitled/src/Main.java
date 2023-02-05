@@ -24,7 +24,7 @@ public class Main {
 
         SortingMethods mySort = new SortingMethods();
 
-        
+        /*
         mySort.quickSort(myArray, 0, myArray.length - 1);
         for (int i = 0; i < myArray.length; i++) {
             System.out.println(myArray[i]);
@@ -46,9 +46,14 @@ public class Main {
         mySort.radixSort(myArray2);
         for (int i = 0; i < myArray2.length; i++) {
             System.out.println(myArray2[i]);
-        }
+        }*/
         
+        //evaluacion radixsort2
 
+        mySort.radixSort2(myArray);
+        for (int i = 0; i < myArray.length; i++) {
+            System.out.println(myArray[i]);
+        }
 
 
     }

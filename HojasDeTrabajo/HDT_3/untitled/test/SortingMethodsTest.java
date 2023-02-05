@@ -29,7 +29,10 @@ class SortingMethodsTest {
     @Test
     void radixSort() {
 
-        mySort.radixSort(new int[]{1, 34, 7, 10, 9, 22, 67, 8, 15, 4});
+
+        Integer[] myArray = new Integer[10];
+        myArray = new Integer[]{11, 3, 74, 102, 9, 23, 6, 8, 51, 4};
+        mySort.radixSort( myArray);
     }
 
     @Test
@@ -49,7 +52,9 @@ class SortingMethodsTest {
     @Test
     void ordenar_en_cubos() {
 
-        mySort.ordenar_en_cubos(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 0);
+        Integer[] myArray = new Integer[10];
+        myArray = new Integer[]{11, 3, 74, 102, 9, 23, 6, 8, 51, 4};
+        mySort.ordenar_en_cubos(myArray, 0);
 
     }
 }

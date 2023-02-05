@@ -1,13 +1,29 @@
 /*
- * 
+HDT 3 - Algoritmos y Estructuras de Datos
+ * Nelson García Bravatti 22434
+Joaquín Puente 22296
+Oscar Fuentes 22763
  * 
  * 
  */
 //arraylist
 import java.util.ArrayList;
 
+/**
+ * The type Sorting methods.
+ *
+ * @param <T> the type parameter
+ */
 public class SortingMethods <T>{
 
+    /**
+     * Quick sort.
+     *
+     * @param <T>     the type parameter
+     * @param myArray the my array
+     * @param inf     the inf
+     * @param sup     the sup
+     */
     public <T extends Comparable<T>> void quickSort(T[] myArray, int inf, int sup) {
         int i = inf - 1;
         int j = sup;
@@ -42,6 +58,13 @@ public class SortingMethods <T>{
         quickSort(myArray, i + 1, sup);
     }
 
+    /**
+     * Gnome sort t [ ].
+     *
+     * @param <T> the type parameter
+     * @param arr the arr
+     * @return the t [ ]
+     */
     public <T extends Comparable<T>> T[] gnomeSort(T[] arr) {
         int index = 0;
         while (index < arr.length) {
@@ -57,6 +80,14 @@ public class SortingMethods <T>{
         return arr;
     }
 
+    /**
+     * Merge sort recursive.
+     *
+     * @param <T>   the type parameter
+     * @param arr   the arr
+     * @param start the start
+     * @param end   the end
+     */
     public <T extends Comparable<T>> void mergeSortRecursive(T[] arr, int start, int end) {
         if (start < end) {
             int mid = (start + end) / 2;
@@ -100,6 +131,11 @@ public class SortingMethods <T>{
         }
     }
 
+    /**
+     * Radix sort.
+     *
+     * @param datos the datos
+     */
     public void radixSort(int datos[]){
 
         for (int i = 0; i < 6; i++)
@@ -108,6 +144,13 @@ public class SortingMethods <T>{
         }
     }
 
+    /**
+     * Revision digito int.
+     *
+     * @param numero the numero
+     * @param digito the digito
+     * @return the int
+     */
     public static int revision_digito(int numero, int digito){
         if(digito == 0){
             return numero % 10;
@@ -117,6 +160,12 @@ public class SortingMethods <T>{
 
     }
 
+    /**
+     * Bucket pass.
+     *
+     * @param datos  the datos
+     * @param digito the digito
+     */
     public static void bucketPass(int datos[], int digito){
 
         int val_actual;
@@ -147,4 +196,6 @@ public class SortingMethods <T>{
         }
 
     }
+
+    //bubble sort
 }

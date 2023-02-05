@@ -5,6 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e9c5774-a316-4e16-9530-421b5be289b8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/apiguardian-api-1.1.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-5.9.0-RC1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-api-5.9.0-RC1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-engine-5.9.0-RC1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-params-5.9.0-RC1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/junit-platform-commons-1.9.0-RC1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/junit-platform-engine-1.9.0-RC1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/opentest4j-1.2.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/src/IComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/IComparator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/untitled/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/untitled/src/SortingMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/SortingMethods.java" afterDir="false" />
     </list>
@@ -35,30 +45,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Nelson E/UVG/Algoritmos y Estrutura de datos/Repo_EstrDatos/Estructuras_de_Datos/HojasDeTrabajo/HDT_3&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.41034484&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/Nelson E/UVG/Algoritmos y Estrutura de datos/Repo_EstrDatos/Estructuras_de_Datos/HojasDeTrabajo/HDT_3",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.41034484",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -91,6 +100,7 @@
       <workItem from="1675555815707" duration="93000" />
       <workItem from="1675555963667" duration="4704000" />
       <workItem from="1675566638905" duration="27000" />
+      <workItem from="1675632325186" duration="1642000" />
     </task>
     <servers />
   </component>

@@ -24,33 +24,29 @@ public class Main {
 
         SortingMethods mySort = new SortingMethods();
 
-        /*
+        //evaluacion quicksort
         mySort.quickSort(myArray, 0, myArray.length - 1);
         for (int i = 0; i < myArray.length; i++) {
             System.out.println(myArray[i]);
         }
+
+        //evaluacion mergesort
 
         mySort.mergeSortRecursive(myArray, 0, myArray.length - 1);
         for (int i = 0; i < myArray.length; i++) {
             System.out.println(myArray[i]);
         }
 
+        //evaluacion gnomesort
+
         mySort.gnomeSort(myArray);
         for (int i = 0; i < myArray.length; i++) {
             System.out.println(myArray[i]);
         }
 
-        //evaluacion de radix sort
-        int[] myArray2 = new int[10];
-        myArray2 = new int[]{1, 34, 7, 10, 9, 22, 67, 8, 15, 4};
-        mySort.radixSort(myArray2);
-        for (int i = 0; i < myArray2.length; i++) {
-            System.out.println(myArray2[i]);
-        }*/
-        
-        //evaluacion radixsort2
+        //evaluacion radixsort
 
-        mySort.radixSort2(myArray);
+        mySort.radixSort(myArray);
         for (int i = 0; i < myArray.length; i++) {
             System.out.println(myArray[i]);
         }

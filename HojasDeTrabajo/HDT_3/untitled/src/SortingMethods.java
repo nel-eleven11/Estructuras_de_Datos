@@ -134,6 +134,12 @@ public class SortingMethods <T>{
 
     //radix sort implementando icomparator
 
+    /**
+     * Radix sort.
+     *
+     * @param <T> the type parameter
+     * @param arr the arr
+     */
     public <T extends Comparable<T>> void radixSort(T[] arr) {
 
         for(int i = 0; i < 6; i++) {
@@ -141,6 +147,14 @@ public class SortingMethods <T>{
         }
     }
 
+    /**
+     * Revision digito int.
+     *
+     * @param <T>    the type parameter
+     * @param numero the numero
+     * @param digito the digito
+     * @return the int
+     */
     public static <T extends Comparable<T>> int revision_digito(T numero, int digito) {
         if(digito == 0) {
             return Integer.parseInt(numero.toString()) % 10;
@@ -149,6 +163,13 @@ public class SortingMethods <T>{
         }
     }
 
+    /**
+     * Ordenar en cubos.
+     *
+     * @param <T>    the type parameter
+     * @param arr    the arr
+     * @param digito the digito
+     */
     public static <T extends Comparable<T>> void ordenar_en_cubos(T[] arr, int digito) {
 
         int val_actual;
@@ -172,7 +193,13 @@ public class SortingMethods <T>{
         }
     }
 
-    //bubblesort implementando icomparator
+    /**
+     * Bubble sort.
+     *
+     * @param <T> the type parameter
+     * @param arr the arr
+     */
+//bubblesort implementando icomparator
     // este es el sort que eligio el grupo
     public <T extends Comparable<T>> void bubbleSort(T[] arr) {
         int n = arr.length;

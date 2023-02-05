@@ -1,4 +1,10 @@
-
+/*
+ * 
+ * 
+ * 
+ */
+//arraylist
+import java.util.ArrayList;
 
 public class SortingMethods <T>{
 
@@ -94,11 +100,11 @@ public class SortingMethods <T>{
         }
     }
 
-    public void radixsort(int datos[]){
+    public void radixSort(int datos[]){
 
         for (int i = 0; i < 6; i++)
         {
-            //bucketPass(data,i);
+            bucketPass(datos, i);
         }
     }
 
@@ -113,6 +119,32 @@ public class SortingMethods <T>{
 
     public static void bucketPass(int datos[], int digito){
 
-    }
+        int val_actual;
+        //se crean los 10 cubos
+        ArrayList<Integer>[] cubos = new ArrayList[10];
+        for (int i = 0; i < cubos.length; i++)
+        {
+            cubos[i] = new ArrayList<Integer>();
+        }
 
+        int n = datos.length;
+        //se llenan los cubos con los datos, dependiendo del digito
+        for (int j = 0; j < n; j++)
+        {
+            val_actual = revision_digito(datos[j], digito);
+            cubos[val_actual].add(datos[j]);
+        }
+
+        //se vacian los cubos, para llenar el arreglo
+        int k = 0;
+        for (int i = 0; i < cubos.length; i++)
+        {
+            for (int j = 0; j < cubos[i].size(); j++)
+            {
+                datos[k] = cubos[i].get(j);
+                k++;
+            }
+        }
+
+    }
 }

@@ -1,3 +1,9 @@
+/*
+ * 
+ * 
+ * 
+ */
+
 public class Main {
     public static void main(String[] args) {
         //Make an array with unordered numbers from 1 to 10
@@ -6,6 +12,8 @@ public class Main {
 
 
         SortingMethods mySort = new SortingMethods();
+
+        
         mySort.quickSort(myArray, 0, myArray.length - 1);
         for (int i = 0; i < myArray.length; i++) {
             System.out.println(myArray[i]);
@@ -20,6 +28,15 @@ public class Main {
         for (int i = 0; i < myArray.length; i++) {
             System.out.println(myArray[i]);
         }
+
+        //evaluacion de radix sort
+        int[] myArray2 = new int[10];
+        myArray2 = new int[]{1, 34, 7, 10, 9, 22, 67, 8, 15, 4};
+        mySort.radixSort(myArray2);
+        for (int i = 0; i < myArray2.length; i++) {
+            System.out.println(myArray2[i]);
+        }
+        
 
 
 

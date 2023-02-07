@@ -7,6 +7,7 @@ Oscar Fuentes 22763
  *
  */
 import org.junit.jupiter.api.Test;
+import vm.SortingMethods;
 
 import static org.junit.jupiter.api.Assertions.*;
 

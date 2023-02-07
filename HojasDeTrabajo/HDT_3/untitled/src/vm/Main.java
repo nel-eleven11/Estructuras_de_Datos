@@ -1,4 +1,4 @@
-/*
+package vm;/*
  * HDT 3 - Algoritmos y Estructuras de Datos
  * Nelson García Bravatti 22434
 Joaquín Puente 22296
@@ -7,9 +7,15 @@ Oscar Fuentes 22763
  * 
  */
 
+import vm.SortingMethods;
+
+import javax.swing.*;
+
 /**
- * The type Main.
+ * The type vm.Main.
  */
+
+
 public class Main {
     /**
      * The entry point of application.
@@ -24,14 +30,23 @@ public class Main {
 
         SortingMethods mySort = new SortingMethods();
 
+        //solicitar un numero con java swing joptionpane
 
-
-        //evaluacion quicksort
-        mySort.quickSort(myArray, 0, myArray.length - 1);
-        for (int i = 0; i < myArray.length; i++) {
-            System.out.println(myArray[i]);
+        String p = JOptionPane.showInputDialog(null, "Ingrese un numero para ordenar");
+        if(p.equals("1"))
+        {
+            //evaluacion quicksort
+            mySort.quickSort(myArray, 0, myArray.length - 1);
+            for (int i = 0; i < myArray.length; i++) {
+                System.out.println(myArray[i]);
+            }
         }
 
+
+
+
+
+        /*
         //evaluacion mergesort
 
         mySort.mergeSortRecursive(myArray, 0, myArray.length - 1);
@@ -58,7 +73,7 @@ public class Main {
         mySort.bubbleSort(myArray);
         for (int i = 0; i < myArray.length; i++) {
             System.out.println(myArray[i]);
-        }
+        }*/
 
 
     }

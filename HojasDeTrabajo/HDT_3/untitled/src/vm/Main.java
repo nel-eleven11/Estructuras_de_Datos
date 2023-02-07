@@ -24,62 +24,82 @@ public class Main {
      */
     public static void main(String[] args) {
         //Make an array with unordered numbers from 1 to 10
-        Integer[] myArray = new Integer[10];
-        myArray = new Integer[]{1, 3, 7, 10, 9, 2, 6, 8, 5, 4};
+
 
 
         SortingMethods mySort = new SortingMethods();
+        Integer[] myArray = new Integer[3000];
+        while (true) {
+            String p = JOptionPane.showInputDialog(null, "Elija que sort desea utilizar: \n 1.QuickSort \n 2.MergeSort \n 3.GnomeSort \n 4.RadixSort \n 5.BubbleSort \n 6.Salir");
+            switch(p){
+                case "1":
+                    for (int i = 0; i < 3000; i++) {
+                        myArray[i] = (int) (Math.random() * 3000);
+                    }
 
+                    //evaluacion quicksort
+                    mySort.quickSort(myArray, 0, myArray.length - 1);
+                    for (int i = 0; i < myArray.length; i++) {
+                        System.out.println(myArray[i]);
+                    }
+                    break;
 
-        String p = JOptionPane.showInputDialog(null, "Elija que sort desea utilizar: \n 1.QuickSort \n 2.MergeSort \n 3.GnomeSort \n 4.RadixSort \n 5.BubbleSort");
-        switch(p){
-            case "1":
-                //evaluacion quicksort
-                mySort.quickSort(myArray, 0, myArray.length - 1);
-                for (int i = 0; i < myArray.length; i++) {
-                    System.out.println(myArray[i]);
-                }
-                break;
+                case "2":
+                    for (int i = 0; i < 3000; i++) {
+                        myArray[i] = (int) (Math.random() * 3000);
+                    }
 
-            case "2":
-                //evaluacion mergesort
+                    //evaluacion mergesort
 
-                mySort.mergeSortRecursive(myArray, 0, myArray.length - 1);
-                for (int i = 0; i < myArray.length; i++) {
-                    System.out.println(myArray[i]);
-                }
-                break;
+                    mySort.mergeSortRecursive(myArray, 0, myArray.length - 1);
+                    for (int i = 0; i < myArray.length; i++) {
+                        System.out.println(myArray[i]);
+                    }
+                    break;
 
-            case "3":
-                //evaluacion gnomesort
+                case "3":
+                    for (int i = 0; i < 3000; i++) {
+                        myArray[i] = (int) (Math.random() * 3000);
+                    }
+                    //evaluacion gnomesort
 
-                mySort.gnomeSort(myArray);
-                for (int i = 0; i < myArray.length; i++) {
-                    System.out.println(myArray[i]);
-                }
-                break;
+                    mySort.gnomeSort(myArray);
+                    for (int i = 0; i < myArray.length; i++) {
+                        System.out.println(myArray[i]);
+                    }
+                    break;
 
-            case "4":
-                //evaluacion radixsort
+                case "4":
+                    for (int i = 0; i < 3000; i++) {
+                        myArray[i] = (int) (Math.random() * 3000);
+                    }
+                    //evaluacion radixsort
 
-                mySort.radixSort(myArray);
-                for (int i = 0; i < myArray.length; i++) {
-                    System.out.println(myArray[i]);
-                }
-                break;
+                    mySort.radixSort(myArray);
+                    for (int i = 0; i < myArray.length; i++) {
+                        System.out.println(myArray[i]);
+                    }
+                    break;
 
-            case "5":
-                //evaluacion bubblesort
+                case "5":
+                    for (int i = 0; i < 3000; i++) {
+                        myArray[i] = (int) (Math.random() * 3000);
+                    }
+                    //evaluacion bubblesort
 
-                mySort.bubbleSort(myArray);
-                for (int i = 0; i < myArray.length; i++) {
-                    System.out.println(myArray[i]);
-                }
-                break;
+                    mySort.bubbleSort(myArray);
+                    for (int i = 0; i < myArray.length; i++) {
+                        System.out.println(myArray[i]);
+                    }
+                    break;
+                case "6":
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Opcion no valida");
+                    break;
+        }
 
-            default:
-                System.out.println("Opcion no valida");
-                break;
 
         }
     }

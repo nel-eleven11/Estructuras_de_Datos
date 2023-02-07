@@ -30,51 +30,57 @@ public class Main {
 
         SortingMethods mySort = new SortingMethods();
 
-        //solicitar un numero con java swing joptionpane
 
-        String p = JOptionPane.showInputDialog(null, "Ingrese un numero para ordenar");
-        if(p.equals("1"))
-        {
-            //evaluacion quicksort
-            mySort.quickSort(myArray, 0, myArray.length - 1);
-            for (int i = 0; i < myArray.length; i++) {
-                System.out.println(myArray[i]);
-            }
+        String p = JOptionPane.showInputDialog(null, "Elija que sort desea utilizar: \n 1.QuickSort \n 2.MergeSort \n 3.GnomeSort \n 4.RadixSort \n 5.BubbleSort");
+        switch(p){
+            case "1":
+                //evaluacion quicksort
+                mySort.quickSort(myArray, 0, myArray.length - 1);
+                for (int i = 0; i < myArray.length; i++) {
+                    System.out.println(myArray[i]);
+                }
+                break;
+
+            case "2":
+                //evaluacion mergesort
+
+                mySort.mergeSortRecursive(myArray, 0, myArray.length - 1);
+                for (int i = 0; i < myArray.length; i++) {
+                    System.out.println(myArray[i]);
+                }
+                break;
+
+            case "3":
+                //evaluacion gnomesort
+
+                mySort.gnomeSort(myArray);
+                for (int i = 0; i < myArray.length; i++) {
+                    System.out.println(myArray[i]);
+                }
+                break;
+
+            case "4":
+                //evaluacion radixsort
+
+                mySort.radixSort(myArray);
+                for (int i = 0; i < myArray.length; i++) {
+                    System.out.println(myArray[i]);
+                }
+                break;
+
+            case "5":
+                //evaluacion bubblesort
+
+                mySort.bubbleSort(myArray);
+                for (int i = 0; i < myArray.length; i++) {
+                    System.out.println(myArray[i]);
+                }
+                break;
+
+            default:
+                System.out.println("Opcion no valida");
+                break;
+
         }
-
-
-
-
-
-        /*
-        //evaluacion mergesort
-
-        mySort.mergeSortRecursive(myArray, 0, myArray.length - 1);
-        for (int i = 0; i < myArray.length; i++) {
-            System.out.println(myArray[i]);
-        }
-
-        //evaluacion gnomesort
-
-        mySort.gnomeSort(myArray);
-        for (int i = 0; i < myArray.length; i++) {
-            System.out.println(myArray[i]);
-        }
-
-        //evaluacion radixsort
-
-        mySort.radixSort(myArray);
-        for (int i = 0; i < myArray.length; i++) {
-            System.out.println(myArray[i]);
-        }
-
-        //evaluacion bubblesort
-
-        mySort.bubbleSort(myArray);
-        for (int i = 0; i < myArray.length; i++) {
-            System.out.println(myArray[i]);
-        }*/
-
-
     }
 }

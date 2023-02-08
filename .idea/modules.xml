@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Estructuras_de_Datos.iml" filepath="$PROJECT_DIR$/.idea/Estructuras_de_Datos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HojasDeTrabajo/HDT_2/HDT_2.iml" filepath="$PROJECT_DIR$/HojasDeTrabajo/HDT_2/HDT_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HojasDeTrabajo/HojasDeTrabajo.iml" filepath="$PROJECT_DIR$/HojasDeTrabajo/HojasDeTrabajo.iml" />
+    </modules>
+  </component>
+</project>

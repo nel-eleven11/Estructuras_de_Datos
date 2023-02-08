@@ -1,5 +1,11 @@
 package vm;
-
+/* HDT 3 - Algoritmos y Estructuras de Datos
+        * Nelson García Bravatti 22434
+        Joaquín Puente 22296
+        Oscar Fuentes 22763
+        *
+        *
+        */
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;

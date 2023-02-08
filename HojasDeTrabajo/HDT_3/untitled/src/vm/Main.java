@@ -10,6 +10,12 @@ Oscar Fuentes 22763
 import vm.SortingMethods;
 
 import javax.swing.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.FileWriter;
 
 /**
  * The type vm.Main.
@@ -24,133 +30,136 @@ public class Main {
      */
     public static void main(String[] args) {
         //Make an array with unordered numbers from 1 to 10
+        Archivo myFile = new Archivo("data.csv");
+        Archivo myFileOrdenado = new Archivo("data2.csv");
+        Integer[] myArray = new Integer[3000];
+        Integer[] myArray2 = new Integer[3000];
 
+        String cadena = "";
+        for (int i = 0; i < 3000; i++) {
+            myArray[i] = (int) (Math.random() * 3000);
 
+            cadena = cadena + myArray[i].toString()+",";
+
+        }
+        String cadena2 = "";
+        myFile.escribirArchivo(cadena);
+        myArray= myFile.leerArchivo();
 
         SortingMethods mySort = new SortingMethods();
-        Integer[] myArray = new Integer[3000];
+
         while (true) {
             String p = JOptionPane.showInputDialog(null, "Elija que sort desea utilizar: \n 1.QuickSort \n 1.5 QuickSort Ordenado \n 2.MergeSort \n 2.5 MergeSort Ordenado\n 3.GnomeSort \n 3.5 GnomeSort Ordenado\n 4.RadixSort \n 4.5 RadixSort Ordenado \n 5.BubbleSort \n 5.5 BubbleSort Ordenado \n 6.Salir");
             switch(p){
                 case "1":
-                    for (int i = 0; i < 3000; i++) {
-                        myArray[i] = (int) (Math.random() * 3000);
-                    }
 
                     //evaluacion quicksort
                     mySort.quickSort(myArray, 0, myArray.length - 1);
                     for (int i = 0; i < myArray.length; i++) {
                         System.out.println(myArray[i]);
+                        cadena2 = cadena2 + myArray[i].toString()+",";
+
                     }
+                    myFileOrdenado.escribirArchivo(cadena2);
                     break;
 
                 case "1.5":
-                    for (int i = 0; i < 3000; i++) {
-                        myArray[i] = i;
-                    }
 
                     //evaluacion quicksort
-                    mySort.quickSort(myArray, 0, myArray.length - 1);
-                    for (int i = 0; i < myArray.length; i++) {
-                        System.out.println(myArray[i]);
+                    myArray2 = myFileOrdenado.leerArchivo();
+                    mySort.quickSort(myArray2, 0, myArray2.length - 1);
+                    for (int i = 0; i < myArray2.length; i++) {
+                        System.out.println(myArray2[i]);
                     }
                     break;
 
                 case "2":
-                    for (int i = 0; i < 3000; i++) {
-                        myArray[i] = (int) (Math.random() * 3000);
-                    }
+
 
                     //evaluacion mergesort
 
                     mySort.mergeSortRecursive(myArray, 0, myArray.length - 1);
                     for (int i = 0; i < myArray.length; i++) {
                         System.out.println(myArray[i]);
+                        cadena2 = cadena2 + myArray[i].toString()+",";
                     }
+                    myFileOrdenado.escribirArchivo(cadena2);
                     break;
 
                 case "2.5":
-                    for (int i = 0; i < 3000; i++) {
-                        myArray[i] = i;
-                    }
+
 
                     //evaluacion mergesort
-
-                    mySort.mergeSortRecursive(myArray, 0, myArray.length - 1);
-                    for (int i = 0; i < myArray.length; i++) {
-                        System.out.println(myArray[i]);
+                    myArray2 = myFileOrdenado.leerArchivo();
+                    mySort.mergeSortRecursive(myArray2, 0, myArray2.length - 1);
+                    for (int i = 0; i < myArray2.length; i++) {
+                        System.out.println(myArray2[i]);
                     }
                     break;
 
                 case "3":
-                    for (int i = 0; i < 3000; i++) {
-                        myArray[i] = (int) (Math.random() * 3000);
-                    }
+
                     //evaluacion gnomesort
 
                     mySort.gnomeSort(myArray);
                     for (int i = 0; i < myArray.length; i++) {
                         System.out.println(myArray[i]);
+                        cadena2 = cadena2 + myArray[i].toString()+",";
                     }
+                    myFileOrdenado.escribirArchivo(cadena2);
                     break;
 
                 case "3.5":
-                    for (int i = 0; i < 3000; i++) {
-                        myArray[i] = i;
-                    }
-                    //evaluacion gnomesort
 
-                    mySort.gnomeSort(myArray);
-                    for (int i = 0; i < myArray.length; i++) {
-                        System.out.println(myArray[i]);
+                    //evaluacion gnomesort
+                    myArray2 = myFileOrdenado.leerArchivo();
+                    mySort.gnomeSort(myArray2);
+                    for (int i = 0; i < myArray2.length; i++) {
+                        System.out.println(myArray2[i]);
                     }
                     break;
 
                 case "4":
-                    for (int i = 0; i < 3000; i++) {
-                        myArray[i] = (int) (Math.random() * 3000);
-                    }
+
                     //evaluacion radixsort
 
                     mySort.radixSort(myArray);
                     for (int i = 0; i < myArray.length; i++) {
                         System.out.println(myArray[i]);
+                        cadena2 = cadena2 + myArray[i].toString()+",";
                     }
+                    myFileOrdenado.escribirArchivo(cadena2);
                     break;
 
                 case "4.5":
-                    for (int i = 0; i < 3000; i++) {
-                        myArray[i] = i;
-                    }
-                    //evaluacion radixsort
 
-                    mySort.radixSort(myArray);
-                    for (int i = 0; i < myArray.length; i++) {
-                        System.out.println(myArray[i]);
+                    //evaluacion radixsort
+                    myArray2 = myFileOrdenado.leerArchivo();
+                    mySort.radixSort(myArray2);
+                    for (int i = 0; i < myArray2.length; i++) {
+                        System.out.println(myArray2[i]);
                     }
                     break;
 
                 case "5":
-                    for (int i = 0; i < 3000; i++) {
-                        myArray[i] = (int) (Math.random() * 3000);
-                    }
+
                     //evaluacion bubblesort
 
                     mySort.bubbleSort(myArray);
                     for (int i = 0; i < myArray.length; i++) {
                         System.out.println(myArray[i]);
+                        cadena2 = cadena2 + myArray[i].toString()+",";
                     }
+                    myFileOrdenado.escribirArchivo(cadena2);
                     break;
 
                 case "5.5":
-                    for (int i = 0; i < 3000; i++) {
-                        myArray[i] = i;
-                    }
-                    //evaluacion bubblesort
 
-                    mySort.bubbleSort(myArray);
-                    for (int i = 0; i < myArray.length; i++) {
-                        System.out.println(myArray[i]);
+                    //evaluacion bubblesort
+                    myArray2 = myFileOrdenado.leerArchivo();
+                    mySort.bubbleSort(myArray2);
+                    for (int i = 0; i < myArray2.length; i++) {
+                        System.out.println(myArray2[i]);
                     }
                     break;
                 case "6":
@@ -160,7 +169,6 @@ public class Main {
                     System.out.println("Opcion no valida");
                     break;
         }
-
 
         }
     }

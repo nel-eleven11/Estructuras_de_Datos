@@ -54,7 +54,7 @@ public class Main {
             String p = JOptionPane.showInputDialog(null, "Elija que sort desea utilizar: \n 1.QuickSort \n 1.5 QuickSort Ordenado \n 2.MergeSort \n 2.5 MergeSort Ordenado\n 3.GnomeSort \n 3.5 GnomeSort Ordenado\n 4.RadixSort \n 4.5 RadixSort Ordenado \n 5.BubbleSort \n 5.5 BubbleSort Ordenado \n 6.Salir");
             switch(p){
                 case "1":
-
+                    myArray = myFile.leerArchivo(numSize);
                     //evaluacion quicksort
                     mySort.quickSort(myArray, 0, myArray.length - 1);
                     for (int i = 0; i < myArray.length; i++) {
@@ -77,7 +77,7 @@ public class Main {
 
                 case "2":
 
-
+                    myArray = myFile.leerArchivo(numSize);
                     //evaluacion mergesort
 
                     mySort.mergeSortRecursive(myArray, 0, myArray.length - 1);
@@ -100,7 +100,7 @@ public class Main {
                     break;
 
                 case "3":
-
+                    myArray = myFile.leerArchivo(numSize);
                     //evaluacion gnomesort
 
                     mySort.gnomeSort(myArray);
@@ -122,7 +122,7 @@ public class Main {
                     break;
 
                 case "4":
-
+                    myArray = myFile.leerArchivo(numSize);
                     //evaluacion radixsort
 
                     mySort.radixSort(myArray);
@@ -144,7 +144,7 @@ public class Main {
                     break;
 
                 case "5":
-
+                    myArray = myFile.leerArchivo(numSize);
                     //evaluacion bubblesort
 
                     mySort.bubbleSort(myArray);

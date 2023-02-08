@@ -30,7 +30,7 @@ public class Main {
      */
     public static void main(String[] args) {
         //Make an array with unordered numbers from 1 to 10
-        int numSize = 10;
+        int numSize = 750;
         Archivo myFile = new Archivo("data.csv");
         Archivo myFileOrdenado = new Archivo("data2.csv");
         Integer[] myArray = new Integer[numSize];
@@ -45,9 +45,10 @@ public class Main {
         }
         String cadena2 = "";
         myFile.escribirArchivo(cadena);
-        myArray= myFile.leerArchivo();
+        myArray = myFile.leerArchivo(numSize);
 
         SortingMethods mySort = new SortingMethods();
+
 
         while (true) {
             String p = JOptionPane.showInputDialog(null, "Elija que sort desea utilizar: \n 1.QuickSort \n 1.5 QuickSort Ordenado \n 2.MergeSort \n 2.5 MergeSort Ordenado\n 3.GnomeSort \n 3.5 GnomeSort Ordenado\n 4.RadixSort \n 4.5 RadixSort Ordenado \n 5.BubbleSort \n 5.5 BubbleSort Ordenado \n 6.Salir");
@@ -67,7 +68,7 @@ public class Main {
                 case "1.5":
 
                     //evaluacion quicksort
-                    myArray2 = myFileOrdenado.leerArchivo();
+                    myArray2 = myFileOrdenado.leerArchivo(numSize);
                     mySort.quickSort(myArray2, 0, myArray2.length - 1);
                     for (int i = 0; i < myArray2.length; i++) {
                         System.out.println(myArray2[i]);
@@ -91,7 +92,7 @@ public class Main {
 
 
                     //evaluacion mergesort
-                    myArray2 = myFileOrdenado.leerArchivo();
+                    myArray2 = myFileOrdenado.leerArchivo(numSize);
                     mySort.mergeSortRecursive(myArray2, 0, myArray2.length - 1);
                     for (int i = 0; i < myArray2.length; i++) {
                         System.out.println(myArray2[i]);
@@ -113,7 +114,7 @@ public class Main {
                 case "3.5":
 
                     //evaluacion gnomesort
-                    myArray2 = myFileOrdenado.leerArchivo();
+                    myArray2 = myFileOrdenado.leerArchivo(numSize);
                     mySort.gnomeSort(myArray2);
                     for (int i = 0; i < myArray2.length; i++) {
                         System.out.println(myArray2[i]);
@@ -135,7 +136,7 @@ public class Main {
                 case "4.5":
 
                     //evaluacion radixsort
-                    myArray2 = myFileOrdenado.leerArchivo();
+                    myArray2 = myFileOrdenado.leerArchivo(numSize);
                     mySort.radixSort(myArray2);
                     for (int i = 0; i < myArray2.length; i++) {
                         System.out.println(myArray2[i]);
@@ -157,7 +158,7 @@ public class Main {
                 case "5.5":
 
                     //evaluacion bubblesort
-                    myArray2 = myFileOrdenado.leerArchivo();
+                    myArray2 = myFileOrdenado.leerArchivo(numSize);
                     mySort.bubbleSort(myArray2);
                     for (int i = 0; i < myArray2.length; i++) {
                         System.out.println(myArray2[i]);

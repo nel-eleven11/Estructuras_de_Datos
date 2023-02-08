@@ -37,16 +37,18 @@ public class Archivo {
             e.printStackTrace();
         }
     }
-    public Integer[] leerArchivo(){
+    public Integer[] leerArchivo(Integer numSize){
         Scanner miLector;
-        Integer[] myArray = new Integer[3000];
+        Integer[] myLoadArray = new Integer[numSize];
         try {
             miLector = new Scanner(archivo);
             while (miLector.hasNextLine()){
                 String linea = miLector.nextLine();
                 String[] numeros = linea.split(",");
-                for (int i = 0; i < numeros.length; i++) {
-                    myArray[i] = Integer.parseInt(numeros[i]);
+                for (int i = 0; i < numSize; i++) {
+
+                    myLoadArray[i] = Integer.parseInt(numeros[i]);
+                    System.out.println(myLoadArray[i]);
                 }
             }
         } catch (FileNotFoundException e) {
@@ -54,7 +56,7 @@ public class Archivo {
             e.printStackTrace();
         }
 
-        return myArray;
+        return myLoadArray;
     }
 
     public void eliminarArchivo(){

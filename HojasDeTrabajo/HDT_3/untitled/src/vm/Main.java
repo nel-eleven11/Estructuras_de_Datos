@@ -30,14 +30,15 @@ public class Main {
      */
     public static void main(String[] args) {
         //Make an array with unordered numbers from 1 to 10
+        int numSize = 10;
         Archivo myFile = new Archivo("data.csv");
         Archivo myFileOrdenado = new Archivo("data2.csv");
-        Integer[] myArray = new Integer[3000];
-        Integer[] myArray2 = new Integer[3000];
+        Integer[] myArray = new Integer[numSize];
+        Integer[] myArray2 = new Integer[numSize];
 
         String cadena = "";
-        for (int i = 0; i < 3000; i++) {
-            myArray[i] = (int) (Math.random() * 3000);
+        for (int i = 0; i < numSize; i++) {
+            myArray[i] = (int) (Math.random() * numSize);
 
             cadena = cadena + myArray[i].toString()+",";
 

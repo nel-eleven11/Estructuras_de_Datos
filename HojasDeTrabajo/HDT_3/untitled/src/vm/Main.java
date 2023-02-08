@@ -30,11 +30,23 @@ public class Main {
         SortingMethods mySort = new SortingMethods();
         Integer[] myArray = new Integer[3000];
         while (true) {
-            String p = JOptionPane.showInputDialog(null, "Elija que sort desea utilizar: \n 1.QuickSort \n 2.MergeSort \n 3.GnomeSort \n 4.RadixSort \n 5.BubbleSort \n 6.Salir");
+            String p = JOptionPane.showInputDialog(null, "Elija que sort desea utilizar: \n 1.QuickSort \n 2.MergeSort \n 2.5 MergeSort Ordenado\n 3.GnomeSort \n 4.RadixSort \n 5.BubbleSort \n 6.Salir");
             switch(p){
                 case "1":
                     for (int i = 0; i < 3000; i++) {
                         myArray[i] = (int) (Math.random() * 3000);
+                    }
+
+                    //evaluacion quicksort
+                    mySort.quickSort(myArray, 0, myArray.length - 1);
+                    for (int i = 0; i < myArray.length; i++) {
+                        System.out.println(myArray[i]);
+                    }
+                    break;
+
+                case "1.5":
+                    for (int i = 0; i < 3000; i++) {
+                        myArray[i] = i;
                     }
 
                     //evaluacion quicksort
@@ -57,9 +69,34 @@ public class Main {
                     }
                     break;
 
+                case "2.5":
+                    for (int i = 0; i < 3000; i++) {
+                        myArray[i] = i;
+                    }
+
+                    //evaluacion mergesort
+
+                    mySort.mergeSortRecursive(myArray, 0, myArray.length - 1);
+                    for (int i = 0; i < myArray.length; i++) {
+                        System.out.println(myArray[i]);
+                    }
+                    break;
+
                 case "3":
                     for (int i = 0; i < 3000; i++) {
                         myArray[i] = (int) (Math.random() * 3000);
+                    }
+                    //evaluacion gnomesort
+
+                    mySort.gnomeSort(myArray);
+                    for (int i = 0; i < myArray.length; i++) {
+                        System.out.println(myArray[i]);
+                    }
+                    break;
+
+                case "3.5":
+                    for (int i = 0; i < 3000; i++) {
+                        myArray[i] = i;
                     }
                     //evaluacion gnomesort
 
@@ -81,9 +118,33 @@ public class Main {
                     }
                     break;
 
+                case "4.5":
+                    for (int i = 0; i < 3000; i++) {
+                        myArray[i] = i;
+                    }
+                    //evaluacion radixsort
+
+                    mySort.radixSort(myArray);
+                    for (int i = 0; i < myArray.length; i++) {
+                        System.out.println(myArray[i]);
+                    }
+                    break;
+
                 case "5":
                     for (int i = 0; i < 3000; i++) {
                         myArray[i] = (int) (Math.random() * 3000);
+                    }
+                    //evaluacion bubblesort
+
+                    mySort.bubbleSort(myArray);
+                    for (int i = 0; i < myArray.length; i++) {
+                        System.out.println(myArray[i]);
+                    }
+                    break;
+
+                case "5.5":
+                    for (int i = 0; i < 3000; i++) {
+                        myArray[i] = i;
                     }
                     //evaluacion bubblesort
 

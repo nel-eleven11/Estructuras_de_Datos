@@ -9,6 +9,7 @@ public class Main {
 
         Scanner miScanner = new Scanner(System.in);
 
+        System.out.println("Bienvenido a la plataforma de musica");
         System.out.println("Ingrese su nombre de usuario");
         String username = miScanner.nextLine();
         System.out.println("Ingrese su contraseña");

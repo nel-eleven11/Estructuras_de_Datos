@@ -16,9 +16,11 @@ public class Main {
         String password = miScanner.nextLine();
 
         if(username.equals("listener") && password.equals("listener")) {
-            //user = creador.createUser("listener");
+            user = creador.getInstance("listener");
         } else if(username.equals("producer") && password.equals("producer")) {
-            //user = creador.createUser("producer");
+            user = creador.getInstance("producer");
+        } else if(username.equals("dj") && password.equals("dj")) {
+            user = creador.getInstance("dj");
         } else {
             System.out.println("Usuario o contraseña incorrectos");
             return;

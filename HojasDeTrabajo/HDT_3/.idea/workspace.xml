@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e9c5774-a316-4e16-9530-421b5be289b8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/data.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/untitled/src/vm/Archivo.java" afterDir="false" />
+    <list default="true" id="2e9c5774-a316-4e16-9530-421b5be289b8" name="Changes" comment="javadoc hecho">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/untitled/src/vm/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/vm/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/HDT_3/vm/Archivo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/HDT_3/vm/Archivo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/HDT_3/vm/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/HDT_3/vm/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +33,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2LHugUljcdVADERI3IdKwJJ9Nbe" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -161,8 +168,16 @@
       <workItem from="1675786520088" duration="170000" />
       <workItem from="1675786710556" duration="278000" />
       <workItem from="1675789270457" duration="2333000" />
-      <workItem from="1675826631350" duration="3695000" />
+      <workItem from="1675826631350" duration="7188000" />
     </task>
+    <task id="LOCAL-00001" summary="javadoc hecho">
+      <created>1675830850899</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1675830850899</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,6 +199,8 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
+    <MESSAGE value="javadoc hecho" />
+    <option name="LAST_COMMIT_MESSAGE" value="javadoc hecho" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

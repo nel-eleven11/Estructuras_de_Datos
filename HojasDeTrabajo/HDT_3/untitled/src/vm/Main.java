@@ -30,7 +30,7 @@ public class Main {
      */
     public static void main(String[] args) {
         //Make an array with unordered numbers from 1 to 10
-        int numSize = 750;
+        int numSize = 3000;
         Archivo myFile = new Archivo("data.csv");
         Archivo myFileOrdenado = new Archivo("data2.csv");
         Integer[] myArray = new Integer[numSize];

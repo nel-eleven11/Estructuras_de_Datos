@@ -1,3 +1,11 @@
+/*
+Nelson García Bravatti
+Joaquín Pueete
+Oscar Fuentes
+
+ejercicio 1 en clase
+ */
+
 import java.util.Scanner;
 
 public class Main {

@@ -28,11 +28,11 @@ public class UserInstanceCreator {
     }
 
     private int getType(String username) {
-        if (evaluate("^dj([a-z]|[A-Z])+[0-9]*", username)) //This is a student
+        if (evaluate("^dj([a-z]|[A-Z]|[0-9])+", username)) //This is a student
             return 1;
-        else if (evaluate("^[a-z]+@uvg.edu.gt$",username)) //This is a professor
+        else if (evaluate("^prod([a-z]|[A-Z]|[0-9])+$",username)) //This is a professor
             return 2;
-        else if (evaluate("^[a-z]+_adm@uvg.edu.gt$",username)) //This is an employee
+        else if (evaluate("^([a-z]|[A-Z]|[0-9])+$",username)) //This is an employee
             return 3;
         else
             return -1; //if no match found then the expression is incorrect

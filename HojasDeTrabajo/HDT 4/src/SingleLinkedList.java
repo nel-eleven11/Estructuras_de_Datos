@@ -1,13 +1,13 @@
 /**
  * 
  */
-package edu.uvg.structures.src;
+
 
 /**
  * @author MAAG
  *
  */
-public class SingleLinkedList<T> implements IList<T> {
+public class SingleLinkedList<T> extends List<T> {
 
 	private int count;
     private Node<T> start;
@@ -45,7 +45,7 @@ public class SingleLinkedList<T> implements IList<T> {
         }
 
         count++;
-		
+
 	}
 
 	@Override

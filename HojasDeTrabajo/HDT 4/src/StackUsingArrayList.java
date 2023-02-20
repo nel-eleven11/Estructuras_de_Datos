@@ -1,7 +1,7 @@
 /**
  * 
  */
-package edu.uvg.structures.src;
+
 
 import java.util.ArrayList;
 
@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @author MAAG
  *
  */
-public class StackUsingArrayList<T> implements IStack<T> {
+public class StackUsingArrayList<T> extends Stack<T> {
 
 	private ArrayList<T> miListaInterna;
 	

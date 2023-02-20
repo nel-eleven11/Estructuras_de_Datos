@@ -2,7 +2,7 @@
 Nelson García Bravatti
 22434
 HDT 4
-
+Clase abstracta Stack
  */
 
 abstract class Stack <T> implements IStack<T> {
@@ -18,7 +18,7 @@ abstract class Stack <T> implements IStack<T> {
     }
 
     public boolean isEmpty(){
-        return count == 0;
+        return false;
     }
 
     public abstract void push(T value);

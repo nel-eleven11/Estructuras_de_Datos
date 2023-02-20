@@ -13,6 +13,12 @@ public class SingleLinkedList<T> extends List<T> {
     private Node<T> start;
     private Node<T> end;
 
+    public SingleLinkedList() {
+    	start = null;
+    	end = null;
+    	count = 0;
+    }
+
 	@Override
 	public void InsertAtStart(T value) {
 		Node<T> newNode = new Node<T>(value);

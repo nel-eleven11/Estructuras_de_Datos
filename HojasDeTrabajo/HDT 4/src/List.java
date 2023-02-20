@@ -2,7 +2,7 @@
 Nelson García Bravatti
 22434
 HDT 4
-
+Clase abstracta List
  */
 
 abstract class List <T> implements IList<T>{

@@ -12,7 +12,7 @@ public class Calculadora implements IPostfixCalculator{
     //metodo para hacer que solo se puede crear una instancia de la calculadora
     private static Calculadora instance = null;
 
-    private Calculadora() {
+    public Calculadora() {
     }
 
     public static Calculadora getInstance() {

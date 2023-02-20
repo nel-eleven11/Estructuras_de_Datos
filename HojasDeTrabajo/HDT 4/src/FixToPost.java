@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class FixToPost {
 
-    public void convertidor(String infix){
+    public String convertidor(String infix, int tipo) {
 
         ArrayList<String> items = new ArrayList<String>();
         String[] itemsArray = infix.split(" ");
@@ -17,9 +17,9 @@ public class FixToPost {
         }
 
         Factory<String> factory = new Factory<String>();
-        IStack<String> operandos = factory.getStack(1);
-        IStack<String> operadores = factory.getStack(1);
-        IStack<String> resultado = factory.getStack(1);
+        IStack<String> operandos = factory.getStack(tipo);
+        IStack<String> operadores = factory.getStack(tipo);
+        IStack<String> resultado = factory.getStack(tipo);
 
         for (String item : items) {
             if (item.equals("(")) {
@@ -54,7 +54,8 @@ public class FixToPost {
             operandos.push(expresion);
         }
         resultado.push(operandos.pull());
-        System.out.println(resultado.pull());
+        return resultado.pull();
+        //System.out.println(resultado.pull());
 
     }
 

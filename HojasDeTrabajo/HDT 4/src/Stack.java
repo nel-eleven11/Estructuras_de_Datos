@@ -13,10 +13,18 @@ abstract class Stack <T> implements IStack<T> {
         count = 0;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int count(){
         return count;
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public boolean isEmpty(){
         return false;
     }

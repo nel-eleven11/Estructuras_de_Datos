@@ -19,7 +19,11 @@ public class SingleLinkedList<T> extends List<T> {
     	count = 0;
     }
 
-	@Override
+	
+    /** 
+     * @param value
+     */
+    @Override
 	public void InsertAtStart(T value) {
 		Node<T> newNode = new Node<T>(value);
 
@@ -36,7 +40,11 @@ public class SingleLinkedList<T> extends List<T> {
         count++;
 	}
 
-	@Override
+	
+    /** 
+     * @param value
+     */
+    @Override
 	public void InsertAtEnd(T value) {
 		Node<T> newNode = new Node<T>(value);
 
@@ -54,7 +62,12 @@ public class SingleLinkedList<T> extends List<T> {
 
 	}
 
-	@Override
+	
+    /** 
+     * @param value
+     * @param index
+     */
+    @Override
 	public void Insert(T value, int index){
 		
 		if (IsEmpty()) //if the list is empty then insert at start
@@ -93,7 +106,12 @@ public class SingleLinkedList<T> extends List<T> {
         }
 	}
 
-	@Override
+	
+    /** 
+     * @param index
+     * @return T
+     */
+    @Override
 	public T Delete(int index) {
 		
 		if (index == 0)
@@ -129,7 +147,11 @@ public class SingleLinkedList<T> extends List<T> {
         }
 	}
 
-	@Override
+	
+    /** 
+     * @return T
+     */
+    @Override
 	public T DeleteAtStart() {
 		
 		if (!IsEmpty()) 
@@ -143,7 +165,11 @@ public class SingleLinkedList<T> extends List<T> {
         return null;
 	}
 
-	@Override
+	
+    /** 
+     * @return T
+     */
+    @Override
 	public T DeleteAtEnd() {
 		if (!IsEmpty()) 
         {
@@ -180,7 +206,12 @@ public class SingleLinkedList<T> extends List<T> {
         return null;
 	}
 
-	@Override
+	
+    /** 
+     * @param index
+     * @return T
+     */
+    @Override
 	public T Get(int index) {
 		
 	    if (!IsEmpty())
@@ -221,12 +252,20 @@ public class SingleLinkedList<T> extends List<T> {
         return null;
 	}
 
-	@Override
+	
+    /** 
+     * @return boolean
+     */
+    @Override
 	public boolean IsEmpty() {
 		return count == 0;
 	}
 
-	@Override
+	
+    /** 
+     * @return int
+     */
+    @Override
 	public int Count() {
 		// TODO Auto-generated method stub
 		return count;

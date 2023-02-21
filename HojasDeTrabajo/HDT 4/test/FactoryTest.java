@@ -10,11 +10,11 @@ class FactoryTest {
         IStack<Integer> stack = factory.getStack(1);
         assertEquals(stack.getClass(), StackUsingArrayList.class);
         stack = factory.getStack(2);
-        assertEquals(stack.getClass(), StackUsingArrayList.class);
+        assertEquals(stack.getClass(), StackUsingVector.class);
         stack = factory.getStack(3);
-        assertEquals(stack.getClass(), StackUsingArrayList.class);
+        assertEquals(stack.getClass(), StackUsingLinkedList.class);
         stack = factory.getStack(4);
-        assertEquals(stack.getClass(), StackUsingArrayList.class);
+        assertEquals(stack.getClass(), StackUsingDoubleLinkedList.class);
 
 
     }

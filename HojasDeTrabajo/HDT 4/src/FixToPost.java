@@ -8,10 +8,26 @@ import java.util.ArrayList;
 
 public class FixToPost {
 
+    
+    /**
+     * el método convertidor se encarga de convertir la expresión infix a postfix, devuelve un string con la expresión en postfix.
+     * el parámetro 'tipo' es para indicar el tipo de pila que se va a utilizar, 1 para ArrayList, 2 para Vector, 3 para SinglyLinkedList y 4 para DoublyLinkedList.
+     * @param infix
+     * @param tipo
+     * @return String
+     */
     public String convertidor(String infix, int tipo) {
 
         ArrayList<String> items = new ArrayList<String>();
-        String[] itemsArray = infix.split(" ");
+
+        String[] itemsArray;
+        if(infix.contains(" ")){
+            itemsArray = infix.split((" "));
+        }
+        else{
+            itemsArray = infix.split((""));
+        }
+
         for (String item : itemsArray) {
             items.add(item);
         }

@@ -15,12 +15,13 @@ class CalculadoraTest {
 
     @Test
     void isOneItem() {
+
         Calculadora calculadora = Calculadora.getInstance();
-        IStack<Integer> stack = new StackUsingArrayList<>();
-        stack.push(1);
-        assertTrue(calculadora.isOneItem(stack));
-        stack.push(2);
-        assertFalse(calculadora.isOneItem(stack));
+        IStack operandos = new StackUsingArrayList();
+        operandos.push(1);
+        assertTrue(calculadora.isOneItem(operandos));
+        operandos.push(1);
+        assertFalse(calculadora.isOneItem(operandos));
 
     }
 

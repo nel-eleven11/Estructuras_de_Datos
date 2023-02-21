@@ -13,10 +13,18 @@ abstract class List <T> implements IList<T>{
         count = 0;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int count(){
         return count;
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public boolean isEmpty(){
         return count == 0;
     }

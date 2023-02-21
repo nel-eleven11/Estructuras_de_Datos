@@ -12,7 +12,13 @@ import java.util.ArrayList;
 
 
 public class Main {
+    
+    /** 
+     * @param args
+     */
     public static void main (String [] args){
+
+ 
 
         Scanner teclado = new Scanner(System.in);
         Controlador miControlador = new Controlador();
@@ -20,9 +26,10 @@ public class Main {
         ArrayList<Integer> respuestas = new ArrayList<Integer>();
         int opcion = 0;
 
-
+        JOptionPane.showMessageDialog(null, "Bienvenido al programa de calculadora de postfix");
+        JOptionPane.showMessageDialog(null, "Este programa lee un archivo de texto y calcula las operaciones que se encuentran en el archivo");
         while (opcion != 5){
-            opcion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tipo de calculadora que desea utilizar: \n 1. ArrayList \n 2. Vector \n 3. Lista simplemente encadenada \n 4. Lista doblemente encadenada \n 5. Salir"));
+            opcion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tipo de calculadora que desea utilizar, se basará en el tipo de stack que elija: \n 1. ArrayList \n 2. Vector \n 3. Lista simplemente encadenada \n 4. Lista doblemente encadenada \n 5. Salir"));
 
             switch (opcion){
                 case 1:

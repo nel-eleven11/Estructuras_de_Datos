@@ -17,6 +17,11 @@ public class Controlador {
     private IStack<Integer> miPila;
 
 
+    
+    /**
+     * este método importa el archivo de texto que se le indique, y lo guarda en un ArrayList. En este caso es 'Datos'
+     * @param nombreDelArchivo
+     */
     public void importFile(String nombreDelArchivo){
     //Ruta del archivo
     String fpath = ".\\src\\"+nombreDelArchivo+".txt";
@@ -35,12 +40,26 @@ public class Controlador {
         }
     }
 
+    
+    /**
+     * convertir utiliza el método convertidor de la clase FixToPost para convertir la expresión infix a postfix, devuelve un string con la expresión en postfix.
+     * @param expresion
+     * @param tipo
+     * @return String
+     */
     public String convertir(String expresion, int tipo){
         FixToPost miConvertidor = new FixToPost();
         String postFix = miConvertidor.convertidor(expresion,tipo);
         return postFix;
     }
 
+    
+    /**
+     * calculate utiliza el método calculate de la clase Calculadora para calcular la expresión postfix, devuelve un ArrayList con las respuestas.
+     * @param itemToCalculate
+     * @param tipo
+     * @return ArrayList<Integer>
+     */
     public ArrayList<Integer> calculate(ArrayList<String> itemToCalculate, int tipo){
         Factory<Integer> factory = new Factory<Integer>();
         miPila = factory.getStack(tipo);
@@ -83,6 +102,11 @@ public class Controlador {
         return respuestas;
     }
 
+    
+    /**
+     * getItems devuelve el ArrayList con los datos del archivo de texto.
+     * @return ArrayList<String>
+     */
     public ArrayList<String> getItems() {
         return items;
     }

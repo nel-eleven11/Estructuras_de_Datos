@@ -20,6 +20,10 @@ public class DoubleLinkedList <T> extends List<T> {
 		end = null;
 		count = 0;
 	}
+	
+	/** 
+	 * @param value
+	 */
 	@Override
 	public void InsertAtStart(T value) {
 
@@ -44,6 +48,10 @@ public class DoubleLinkedList <T> extends List<T> {
 
 	}
 
+	
+	/** 
+	 * @param value
+	 */
 	@Override
 	public void InsertAtEnd(T value) {
 
@@ -68,6 +76,11 @@ public class DoubleLinkedList <T> extends List<T> {
 
 	}
 
+	
+	/** 
+	 * @param value
+	 * @param index
+	 */
 	@Override
 	public void Insert(T value, int index) {
 
@@ -105,6 +118,11 @@ public class DoubleLinkedList <T> extends List<T> {
 		}
 	}
 
+	
+	/** 
+	 * @param index
+	 * @return T
+	 */
 	@Override
 	public T Delete(int index) {
 
@@ -112,6 +130,10 @@ public class DoubleLinkedList <T> extends List<T> {
 		return null;
 	}
 
+	
+	/** 
+	 * @return T
+	 */
 	@Override
 	public T DeleteAtStart() {
 		if (!IsEmpty()) {
@@ -136,12 +158,21 @@ public class DoubleLinkedList <T> extends List<T> {
 		}
 	}
 
+	
+	/** 
+	 * @return T
+	 */
 	@Override
 	public T DeleteAtEnd() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	
+	/** 
+	 * @param index
+	 * @return T
+	 */
 	@Override
 	public T Get(int index) {
 		if (!IsEmpty())
@@ -182,11 +213,19 @@ public class DoubleLinkedList <T> extends List<T> {
 		return null;
 	}
 
+	
+	/** 
+	 * @return boolean
+	 */
 	@Override
 	public boolean IsEmpty() {
 		return count == 0;
 	}
 
+	
+	/** 
+	 * @return int
+	 */
 	@Override
 	public int Count() {
 		return count;

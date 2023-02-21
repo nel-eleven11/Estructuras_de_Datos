@@ -13,6 +13,12 @@ public class Factory<T>{
 
    private IStack<T> stack = null;
 
+    
+    /**
+     * getStack, crea la pila dependiendo del tipo, 1 = ArrayList, 2 = Vector, 3 = LinkedList, 4 = DoubleLinkedList.
+     * @param tipo
+     * @return IStack<T>
+     */
     public IStack<T> getStack(int tipo){
         switch (tipo){
             case 1:

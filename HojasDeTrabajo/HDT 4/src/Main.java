@@ -18,11 +18,10 @@ public class Main {
      */
     public static void main (String [] args){
 
- 
-
         Scanner teclado = new Scanner(System.in);
         Controlador miControlador = new Controlador();
         ArrayList<String> operaciones = new ArrayList<String>();
+        ArrayList<String> operaciones_ = new ArrayList<String>();
         ArrayList<Integer> respuestas = new ArrayList<Integer>();
         int opcion = 0;
 
@@ -34,60 +33,76 @@ public class Main {
             switch (opcion){
                 case 1:
                     //ArrayList
+                    System.out.println("");
+                    System.out.println("ArrayList");
                     operaciones.clear();
                     miControlador.importFile("datos");
+
                     operaciones = miControlador.getItems();
+
                     for(int i = 0; i < operaciones.size(); i++){
+                        operaciones_.add(miControlador.getItems().get(i));
                         String postFix = miControlador.convertir(operaciones.get(i),1);
                         operaciones.set(i,postFix);
                     }
                     respuestas = miControlador.calculate(operaciones,1);
+                    miControlador.importFile("datos");
+                    System.out.println("Resultados: ");
                     for(int i = 0; i < respuestas.size(); i++){
-                        System.out.println(respuestas.get(i));
+                        System.out.println(operaciones_.get(i)+" = "+respuestas.get(i));
                     }
 
                     break;
                 case 2:
                     //Vector
+                    System.out.println("");
+                    System.out.println("Vector");
                     operaciones.clear();
                     miControlador.importFile("datos");
                     operaciones = miControlador.getItems();
                     for(int i = 0; i < operaciones.size(); i++){
+                        operaciones_.add(miControlador.getItems().get(i));
                         String postFix = miControlador.convertir(operaciones.get(i),2);
                         operaciones.set(i,postFix);
                     }
                     respuestas = miControlador.calculate(operaciones,2);
                     for(int i = 0; i < respuestas.size(); i++){
-                        System.out.println(respuestas.get(i));
+                        System.out.println(operaciones_.get(i)+" = "+respuestas.get(i));
                     }
                     break;
                 case 3:
                     //Lista simplemente encadenada
+                    System.out.println("");
+                    System.out.println("Lista simplemente encadenada");
                     operaciones.clear();
                     miControlador.importFile("datos");
                     operaciones = miControlador.getItems();
                     for(int i = 0; i < operaciones.size(); i++){
+                        operaciones_.add(miControlador.getItems().get(i));
                         String postFix = miControlador.convertir(operaciones.get(i),3);
                         operaciones.set(i,postFix);
                     }
                     respuestas = miControlador.calculate(operaciones,3);
                     for(int i = 0; i < respuestas.size(); i++){
-                        System.out.println(respuestas.get(i));
+                        System.out.println(operaciones_.get(i)+" = "+respuestas.get(i));
                     }
 
                     break;
                 case 4:
                     //Lista doblemente encadenada
+                    System.out.println("");
+                    System.out.println("Lista doblemente encadenada");
                     operaciones.clear();
                     miControlador.importFile("datos");
                     operaciones = miControlador.getItems();
                     for(int i = 0; i < operaciones.size(); i++){
+                        operaciones_.add(miControlador.getItems().get(i));
                         String postFix = miControlador.convertir(operaciones.get(i),4);
                         operaciones.set(i,postFix);
                     }
                     respuestas = miControlador.calculate(operaciones,4);
                     for(int i = 0; i < respuestas.size(); i++){
-                        System.out.println(respuestas.get(i));
+                        System.out.println(operaciones_.get(i)+" = "+respuestas.get(i));
                     }
                     break;
                 case 5:

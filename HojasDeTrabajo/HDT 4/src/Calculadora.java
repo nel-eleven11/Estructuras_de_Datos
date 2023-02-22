@@ -11,7 +11,7 @@ public class Calculadora implements IPostfixCalculator{
 
     private static Calculadora instance = null;
 
-    public Calculadora() {
+    private Calculadora() {
     }
 
     

@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class Controlador {
 
     ArrayList<String> items = new ArrayList<String>();
-    private IPostfixCalculator miCalculadora = new Calculadora();
+    private IPostfixCalculator miCalculadora = Calculadora.getInstance();
     private IStack<Integer> miPila;
 
 

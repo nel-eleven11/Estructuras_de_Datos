@@ -1,3 +1,10 @@
+#
+#HDT 5 estructuras de datos
+#Nelson Garía 22434
+#Joaquín Puente 22296
+#Oscar Fuentes 22763
+#
+
 from simpy import Environment, Resource, Container
 from random import seed, expovariate, randint
 from matplotlib.pyplot import *

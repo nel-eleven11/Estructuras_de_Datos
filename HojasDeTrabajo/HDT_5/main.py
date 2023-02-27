@@ -1,50 +1,84 @@
-import random
-
 from simpy import Environment, Resource, Container
-from random import seed, expovariate
+from random import seed, expovariate, randint
+from matplotlib.pyplot import *
 
-#Colas con la clase container y resources 
 
-#número de nucleos
-nucleos = 1
-capacidadRAM = 100
+NUCLEOS = 1
+CAPACIDADRAM= 100
 
-noProcesos = 10
+RANDO_SEED = 42
+NOPROCESOS = 25
+INTERVALO = 10
+CICLOS = 2
+
+#Colas
+ioWait = []
+ready = []
+
+class Process:
+    def __init__(self, env, name, ramUse):
+        self.env = env
+        self.name = name
+        self.ramUse = ramUse
+        self.totalInst = randint(1,10)
+        self.leftInst = self.totalInst
+        self.cpu_time = 0
+
+    def run(self, cpu):
+        instructions = min(3, self.leftInst)
+        self.cpu_time = instructions * CICLOS
+        self.leftInst -= instructions
+        yield self.env.timeout(self.cpu_time)
+        if self.leftInst <= 0:
+            print(f'Proceso No. {self.name} terminado en t={round(self.env.now)}')
+            yield ram.put(self.ramUse)
+        else:
+            prob = randint(1,2)
+            if prob == 1:
+                print(f'Proceso No. {self.name} en espera en t={round(self.env.now)}')
+                ioWait.append(self)
+            else:
+                print(f'Proceso No. {self.name} listo en t={round(self.env.now)}')
+                ready.append(self)
+
+def genProcess(env, ram):
+    for i in range(NOPROCESOS+1):
+        ramUsage = randint(1,10)
+        process = Process(env,str(i),ramUsage)
+        yield ram.get(ramUsage)
+
+        print(f'Proceso No. {process.name} generado en t={round(env.now)}')
+        ready.append(process)
+
+        yield env.timeout(expovariate(1/INTERVALO))
+
+def ioScheduler(env):
+    while True:
+        if len(ioWait) > 0:
+            process = ioWait.pop(0)
+            print(f'Proceso No. {process.name} listo en t={round(env.now)}')
+            ready.append(process)
+
+        yield env.timeout(CICLOS)
+
+def cpuScheduler(env, cpu):
+    while True:
+        if len(ready) > 0:
+            process = ready.pop(0)
+
+            with cpu.request() as req:
+                print(f'Proceso No. {process.name} corriendo en {round(env.now)}')
+                yield env.process(process.run(cpu))
+
+        yield env.timeout(CICLOS)
 
 env = Environment()
+ram = Container(env, init=CAPACIDADRAM, capacity=CAPACIDADRAM)
+cpu = Resource(env, capacity=NUCLEOS)
 
-class computer:
-    def __init__(self, env, ramCap, nuc):
-        self.ram = Container(env, init=ramCap, capacity=ramCap)
-        self.cpu = Resource(env, capacity=nuc)
-        self.monProc = env.process(self.monitor(env))
+env.process(genProcess(env, ram))
+env.process(cpuScheduler(env,cpu))
+env.process(ioScheduler(env))
 
-    def monitor(self, env):
-        while True:
-            if self.ram.level < 10:
-                print("RAM baja")
+env.run(until=450)
 
-
-            print("RAM: ", self.ram.level, "CPU: ", self.cpu.count)
-            yield env.timeout(1)
-
-def proceso(no, env, compu):
-    ramUse = random.seed(10)
-    print(ramUse)
-
-    print(f"Proceso {no} iniciado con {ramUse} de RAM");
-    with compu.cpu.request() as req:
-        yield req
-        print(f"Proceso {no} ejecutandose en CPU")
-        yield env.timeout(10)
-    
-
-def processGenerator(env, compu):
-    for i in range(noProcesos):
-        env.process(proceso(i, env, compu))
-        yield env.timeout(random.expovariate(1.0/10))
-
-env = Environment()
-compu = computer(env, capacidadRAM, nucleos)
-env.process(processGenerator(env, compu))
-env.run(until=100)

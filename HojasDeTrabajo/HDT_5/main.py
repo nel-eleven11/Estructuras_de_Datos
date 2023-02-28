@@ -100,6 +100,8 @@ def calcTiempos():
         print(f"Tiempo promedio: {mean_time}")
         print(f"Desviación estándar: {std_dev}")
 
+        
+
 for i in [25,50,100,150,200]:
     for j in [1,2]:
         for x in [100,200]:
@@ -108,7 +110,10 @@ for i in [25,50,100,150,200]:
                 CAPACIDADRAM= x
                 NOPROCESOS = i
                 INTERVALO = n
-                    
+                print(i)
+                print(j)
+                print(x)
+                print(n)
                 seed(RANDO_SEED)
                 env = Environment()
                 ram = Container(env, init=CAPACIDADRAM, capacity=CAPACIDADRAM)
@@ -118,7 +123,7 @@ for i in [25,50,100,150,200]:
                 env.process(cpuScheduler(env,cpu))
                 env.process(ioScheduler(env))
 
-                env.run()
+                env.run(until=3000)
                 calcTiempos()
 
 

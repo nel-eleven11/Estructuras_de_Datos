@@ -115,7 +115,10 @@ def graficarRes():
     #Graficar
     bar(pruebas, tiempos)
     xticks(rotation=90)
+    savefig('ResultadosPruebas.png')
     show()
+
+    
 
 def imprimirRes():
     for i in resultados:

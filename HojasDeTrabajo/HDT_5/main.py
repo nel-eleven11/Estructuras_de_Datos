@@ -20,7 +20,7 @@ INTERVALO = 10
 CICLOS = 2
 
 tiempos_procesos = {}
-
+times = []
 
 #Colas
 ioWait = []
@@ -93,7 +93,7 @@ def cpuScheduler(env, cpu):
         yield env.timeout(CICLOS)
 
 def calcTiempos(self):
-        times = []
+        
         for name, (self.tiempo_inicio, self.tiempo_final) in tiempos_procesos.items():
             time_in_system = self.tiempo_final - self.tiempo_inicio
             times.append(time_in_system)
@@ -114,9 +114,10 @@ cpu = Resource(env, capacity=NUCLEOS)
 env.process(genProcess(env, ram))
 env.process(cpuScheduler(env,cpu))
 env.process(ioScheduler(env))
-env.process(calcTiempos(env))
+
 
 env.run(until=450)
+calcTiempos()
 
 
 #print(tiempos_procesos)

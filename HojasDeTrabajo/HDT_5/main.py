@@ -18,8 +18,7 @@ RANDO_SEED = 42
 CICLOS = 1
 
 tiempos_procesos = {}
-
-
+resultados = {}
 #Colas
 ioWait = []
 ready = []
@@ -100,20 +99,48 @@ def calcTiempos():
         print(f"Tiempo promedio: {mean_time}")
         print(f"Desviación estándar: {std_dev}")
 
-        
+        return mean_time, std_dev
 
-for i in [25,50,100,150,200]:
-    for j in [1,2]:
-        for x in [100,200]:
-            for n in [10,5,1]:
+def graficarRes():
+    #Obtener los nombres de las pruebas
+    pruebas = []
+    for i in resultados:
+        pruebas.append(i)
+
+    #Obtener los tiempos promedios
+    tiempos = []
+    for i in resultados:
+        tiempos.append(resultados[i][0])
+
+    #Graficar
+    bar(pruebas, tiempos)
+    xticks(rotation=90)
+    show()
+
+def imprimirRes():
+    for i in resultados:
+        print(f"Prueba: {i} Tiempo promedio: {resultados[i][0]} Desviación estándar: {resultados[i][1]}")
+
+    #¿Cual es la prueba de menor tiempo?
+    menor = 100000
+    for i in resultados:
+        if resultados[i][0] < menor:
+            menor = resultados[i][0]
+            nombre = i
+
+    print(f"La prueba de menor tiempo es: {nombre} con un tiempo de {menor}")
+
+
+for j in [1,2]:
+    for x in [100,200]:
+        for n in [10,5,1]:
+            for i in [25,50,100,150,200]:
+    
                 NUCLEOS = j
                 CAPACIDADRAM= x
                 NOPROCESOS = i
                 INTERVALO = n
-                print(i)
-                print(j)
-                print(x)
-                print(n)
+                    
                 seed(RANDO_SEED)
                 env = Environment()
                 ram = Container(env, init=CAPACIDADRAM, capacity=CAPACIDADRAM)
@@ -124,18 +151,11 @@ for i in [25,50,100,150,200]:
                 env.process(ioScheduler(env))
 
                 env.run(until=3000)
-                calcTiempos()
+                
+                prm, sdv = calcTiempos()
 
+                nombrePrueba = f"N{j}-R{x}-I{n}-P{i}"
+                resultados[nombrePrueba] = [prm, sdv]
 
-
-""""
-
-#Graficas
-data = [3, 4, 5, 6, 7]
-labels = ['A', 'B', 'C', 'D', 'E']
-std_dev = np.std(data)
-mean = np.mean(data)
-
-bar(labels, data)
-show()
-"""
+imprimirRes()
+graficarRes()

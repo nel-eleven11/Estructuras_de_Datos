@@ -11,16 +11,14 @@ from matplotlib.pyplot import *
 import numpy as np
 
 
-NUCLEOS = 1
-CAPACIDADRAM= 100
+
 
 RANDO_SEED = 42
-NOPROCESOS = 25
-INTERVALO = 10
-CICLOS = 2
+
+CICLOS = 1
 
 tiempos_procesos = {}
-times = []
+
 
 #Colas
 ioWait = []
@@ -36,20 +34,18 @@ class Process:
         self.totalInst = randint(1,10)
         self.leftInst = self.totalInst
         self.cpu_time = 0
-        self.tiempo_inicio = 0
-        self.tiempo_final = 0
-        
         
     def run(self, cpu):
         instructions = min(3, self.leftInst)
         self.cpu_time = instructions * CICLOS
         self.leftInst -= instructions
-        #self.tiempo_inicio = self.env.now
+       
         yield self.env.timeout(self.cpu_time)
         
         if self.leftInst <= 0:
-            print(f'Proceso No. {self.name} terminado en t={round(self.env.now)}')
-            self.tiempo_final = self.env.now
+            ahora_ = round(self.env.now)
+            print(f'Proceso No. {self.name} terminado en t={ahora_}')
+            tiempos_procesos[self.name].append(ahora_)
             yield ram.put(self.ramUse)
         else:
             prob = randint(1,2)
@@ -63,11 +59,12 @@ class Process:
 def genProcess(env, ram):
     for i in range(NOPROCESOS+1):
         ramUsage = randint(1,10)
-        process = Process(env,str(i),ramUsage)
+        tiempos_procesos[i] = []
+        process = Process(env,i,ramUsage)
         yield ram.get(ramUsage)
-
-        print(f'Proceso No. {process.name} generado en t={round(env.now)}')
-        process.tiempo_inicio = env.now
+        ahora = round(env.now)
+        print(f'Proceso No. {process.name} generado en t={ahora}')
+        tiempos_procesos[i].append(ahora)
         ready.append(process)
 
         yield env.timeout(expovariate(1/INTERVALO))
@@ -89,38 +86,43 @@ def cpuScheduler(env, cpu):
             with cpu.request() as req:
                 print(f'Proceso No. {process.name} corriendo en {round(env.now)}')
                 yield env.process(process.run(cpu))
-                tiempos_procesos[process.name] = (process.tiempo_inicio, process.tiempo_final)
         yield env.timeout(CICLOS)
 
-def calcTiempos(self):
-        
-        for name, (self.tiempo_inicio, self.tiempo_final) in tiempos_procesos.items():
-            time_in_system = self.tiempo_final - self.tiempo_inicio
-            times.append(time_in_system)
+def calcTiempos():
+        times = []
+        for i in tiempos_procesos:
+            time_in_system = tiempos_procesos[i][1] - tiempos_procesos[i][0]
+            times.append(time_in_system)    
 
         mean_time = np.mean(times)
         std_dev = np.std(times)
 
-        print(f"Average time in system: {mean_time}")
-        print(f"Standard deviation: {std_dev}")
+        print(f"Tiempo promedio: {mean_time}")
+        print(f"Desviación estándar: {std_dev}")
+
+for i in [25,50,100,150,200]:
+    for j in [1,2]:
+        for x in [100,200]:
+            for n in [10,5,1]:
+                NUCLEOS = j
+                CAPACIDADRAM= x
+                NOPROCESOS = i
+                INTERVALO = n
+                    
+                seed(RANDO_SEED)
+                env = Environment()
+                ram = Container(env, init=CAPACIDADRAM, capacity=CAPACIDADRAM)
+                cpu = Resource(env, capacity=NUCLEOS)
+
+                env.process(genProcess(env, ram))
+                env.process(cpuScheduler(env,cpu))
+                env.process(ioScheduler(env))
+
+                env.run()
+                calcTiempos()
 
 
-       
 
-env = Environment()
-ram = Container(env, init=CAPACIDADRAM, capacity=CAPACIDADRAM)
-cpu = Resource(env, capacity=NUCLEOS)
-
-env.process(genProcess(env, ram))
-env.process(cpuScheduler(env,cpu))
-env.process(ioScheduler(env))
-
-
-env.run(until=450)
-calcTiempos()
-
-
-#print(tiempos_procesos)
 """"
 
 #Graficas

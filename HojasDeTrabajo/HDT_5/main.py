@@ -11,8 +11,6 @@ from matplotlib.pyplot import *
 import numpy as np
 
 
-
-
 RANDO_SEED = 42
 
 CICLOS = 1
@@ -26,16 +24,16 @@ ready = []
 
 class Process:
     
-    def __init__(self, env, name, ramUse):
+    def __init__(self, env, name, ramUse, mintime):
         self.env = env
         self.name = name
         self.ramUse = ramUse
         self.totalInst = randint(1,10)
         self.leftInst = self.totalInst
         self.cpu_time = 0
-        
+        self.minTime = mintime
     def run(self, cpu):
-        instructions = min(3, self.leftInst)
+        instructions = min(self.minTime, self.leftInst)
         self.cpu_time = instructions * CICLOS
         self.leftInst -= instructions
        
@@ -55,11 +53,11 @@ class Process:
                 print(f'Proceso No. {self.name} listo en t={round(self.env.now)}')
                 ready.append(self)
 
-def genProcess(env, ram):
+def genProcess(env, ram, minTime):
     for i in range(NOPROCESOS+1):
         ramUsage = randint(1,10)
         tiempos_procesos[i] = []
-        process = Process(env,i,ramUsage)
+        process = Process(env,i,ramUsage, minTime)
         yield ram.get(ramUsage)
         ahora = round(env.now)
         print(f'Proceso No. {process.name} generado en t={ahora}')
@@ -135,30 +133,33 @@ def imprimirRes():
 
 
 for j in [1,2]:
-    for x in [100,200]:
-        for n in [10,5,1]:
-            for i in [25,50,100,150,200]:
-    
-                NUCLEOS = j
-                CAPACIDADRAM= x
-                NOPROCESOS = i
-                INTERVALO = n
+    for k in [3,6]:
+        for x in [100,200]:
+            for n in [10,5,1]:
+                for i in [25,50,100,150,200]:
+        
+                    NUCLEOS = j
+                    CAPACIDADRAM= x
+                    NOPROCESOS = i
+                    INTERVALO = n
+                    MINTIME = k
+                        
+                    seed(RANDO_SEED)
+                    env = Environment()
+                    ram = Container(env, init=CAPACIDADRAM, capacity=CAPACIDADRAM)
+                    cpu = Resource(env, capacity=NUCLEOS)
+
+                    env.process(genProcess(env, ram, MINTIME))
+                    env.process(cpuScheduler(env,cpu))
+                    env.process(ioScheduler(env))
+
+                    env.run(until=3000)
                     
-                seed(RANDO_SEED)
-                env = Environment()
-                ram = Container(env, init=CAPACIDADRAM, capacity=CAPACIDADRAM)
-                cpu = Resource(env, capacity=NUCLEOS)
+                    prm, sdv = calcTiempos()
 
-                env.process(genProcess(env, ram))
-                env.process(cpuScheduler(env,cpu))
-                env.process(ioScheduler(env))
-
-                env.run(until=3000)
-                
-                prm, sdv = calcTiempos()
-
-                nombrePrueba = f"N{j}-R{x}-I{n}-P{i}"
-                resultados[nombrePrueba] = [prm, sdv]
+                    #Nucleos-RAM-Intervalo-Procesos
+                    nombrePrueba = f"N{j}-R{x}-I{n}-P{i}-Inst{k}"
+                    resultados[nombrePrueba] = [prm, sdv]
 
 imprimirRes()
 graficarRes()

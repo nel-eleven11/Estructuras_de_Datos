@@ -1,7 +1,14 @@
 public class conditionals {
 
-    public static boolean conditionalCheck(int a, int b, String symbol){
-        switch (symbol) {
+    /**
+     * Este método se encarga de verificar si la condición es verdadera o falsa
+     * @param a
+     * @param b
+     * @param operator
+     * @return boolean
+     */
+    public static boolean conditionalCheck(int a, int b, String operator){
+        switch (operator) {
             case ">":
                 if (a > b) {
                     return true;

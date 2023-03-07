@@ -90,9 +90,11 @@ public class main {
                     break;
                 case 5:
                     JOptionPane.showMessageDialog(null, "Mostrar inventario");
+                    controlador.mostrarInventario(mapa);
                     break;
                 case 6:
                     JOptionPane.showMessageDialog(null, "Inventario ordenado");
+                    controlador.mostrarInventarioOrdenado(mapa);
                     break;
                 case 7:
                     JOptionPane.showMessageDialog(null, "Salir");

@@ -40,10 +40,16 @@ public class Controlador {
     }
 
     public void writFile(String linea,String nombreDelArchivo){
-        archivo = new File(nombreDelArchivo);
+        archivo = new File(".\\src\\"+nombreDelArchivo);
         try {
             FileWriter miEscritor = new FileWriter(archivo);
+            for(int i = 0; i < categoria.size(); i++){
+                String linea2 = categoria.get(i)+" | "+producto2.get(i);
+                miEscritor.write(linea2);
+                miEscritor.append(System.getProperty("line.separator"));
+            }
             miEscritor.write(linea);
+            miEscritor.append(System.getProperty("line.separator"));
             miEscritor.close();
         } catch (IOException e) {
             // Ocurrió un error en la escritura
@@ -91,10 +97,11 @@ public class Controlador {
         String categoria2 = categoria.get(categoria_);
         String producto = producto2.get(producto_);
         map.get(categoria2).put(producto, cantidad);
-        System.out.println("Agregado: "+categoria.get(categoria_)+producto2.get(producto_)+map.get(categoria2).get(producto));
+        System.out.println("Agregado: "+categoria.get(categoria_)+producto2.get(producto_)+" "+map.get(categoria2).get(producto));
         //escribir en el archivo
         String linea = categoria.get(categoria_)+" | "+producto2.get(producto_);
-        writFile(linea, "ListadoProducto (2)");
+        writFile(linea, "ListadoProducto (2).txt");
+
     }
     public void mostrarProducto(String nomProducto, int tipoDeMapa){
         map = factory.getMap(tipoDeMapa);
@@ -112,8 +119,22 @@ public class Controlador {
                 System.out.println("Categoría: "+categoria.get(i));
             }
         }
+    }
 
+    public void mostrarInventario(int tipoDeMapa){
+        map = factory.getMap(tipoDeMapa);
+        map = cargarProductos(items, tipoDeMapa);
+        for(int i = 0; i < categoria.size(); i++){
+            System.out.println(categoria.get(i)+" "+producto2.get(i)+" "+map.get(categoria.get(i)).get(producto2.get(i)));
+        }
+    }
 
+    public void mostrarInventarioOrdenado(int tipoDeMapa){
+        map = factory.getMap(tipoDeMapa);
+        map = cargarProductos(items, tipoDeMapa);
+        for(int i = 0; i < categoria.size(); i++){
+            System.out.println(categoria.get(i)+" "+producto2.get(i)+" "+map.get(categoria.get(i)).get(producto2.get(i)));
+        }
     }
 
 

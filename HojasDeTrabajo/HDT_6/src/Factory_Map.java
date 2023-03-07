@@ -10,20 +10,21 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.LinkedHashMap;
 
-public class Factory_Map<T> {
+public class Factory_Map {
 
-    private Map<String, T> map = null;
+    private Map<String, Map<String, Integer>> map = null;
 
-    public Map<String, T> getMap(String mapType){
-        if(mapType == null){
-            return null;
+    public Map getMap(int mapType){
+
+        if(mapType == 1){
+            return new HashMap();
+        } else if(mapType == 2){
+            return new TreeMap();
+        } else if(mapType == 3){
+            return new LinkedHashMap();
         }
-        if(mapType.equalsIgnoreCase("HashMap")){
-            return new HashMap<String, T>();
-        } else if(mapType.equalsIgnoreCase("TreeMap")){
-            return new TreeMap<String, T>();
-        } else if(mapType.equalsIgnoreCase("LinkedHashMap")){
-            return new LinkedHashMap<String, T>();
+        else{
+            System.out.println("No se ha seleccionado un tipo de mapa válido");
         }
         return null;
     }

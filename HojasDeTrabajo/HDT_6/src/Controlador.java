@@ -3,10 +3,7 @@ Nelson García 22434
 HDT 6
  */
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.FileWriter;
+import java.io.*;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Map;
@@ -43,13 +40,16 @@ public class Controlador {
         archivo = new File(".\\src\\"+nombreDelArchivo);
         try {
             FileWriter miEscritor = new FileWriter(archivo);
+            BufferedWriter bw=new BufferedWriter(miEscritor);
             for(int i = 0; i < categoria.size(); i++){
                 String linea2 = categoria.get(i)+" | "+producto2.get(i);
-                miEscritor.write(linea2);
-                miEscritor.append(System.getProperty("line.separator"));
+                bw.write(linea2);
+                bw.append(System.getProperty("line.separator"));
+
             }
-            miEscritor.write(linea);
-            miEscritor.append(System.getProperty("line.separator"));
+            bw.write(linea);
+            bw.append(System.getProperty("line.separator"));
+            bw.close();
             miEscritor.close();
         } catch (IOException e) {
             // Ocurrió un error en la escritura
@@ -130,6 +130,14 @@ public class Controlador {
     }
 
     public void mostrarInventarioOrdenado(int tipoDeMapa){
+        map = factory.getMap(tipoDeMapa);
+        map = cargarProductos(items, tipoDeMapa);
+        for(int i = 0; i < categoria.size(); i++){
+            System.out.println(categoria.get(i)+" "+producto2.get(i)+" "+map.get(categoria.get(i)).get(producto2.get(i)));
+        }
+    }
+
+    public void mostrarProductosOrdenados(int tipoDeMapa){
         map = factory.getMap(tipoDeMapa);
         map = cargarProductos(items, tipoDeMapa);
         for(int i = 0; i < categoria.size(); i++){

@@ -87,6 +87,7 @@ public class main {
                     break;
                 case 4:
                     JOptionPane.showMessageDialog(null, "Mostrar productos ordenados");
+                    controlador.mostrarProductosOrdenados(mapa);
                     break;
                 case 5:
                     JOptionPane.showMessageDialog(null, "Mostrar inventario");

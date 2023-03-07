@@ -144,6 +144,6 @@ public class Controlador {
             System.out.println(categoria.get(i)+" "+producto2.get(i)+" "+map.get(categoria.get(i)).get(producto2.get(i)));
         }
     }
-
+    
 
 }

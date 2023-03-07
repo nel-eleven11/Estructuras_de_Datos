@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="graalvm.visualvm.api.caching" type="repository">
+    <properties maven-id="org.graalvm.visualvm.api:org-graalvm-visualvm-api-caching:2.1.3" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/org-graalvm-visualvm-api-caching-2.1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/org-openide-util-lookup-RELEASE124.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

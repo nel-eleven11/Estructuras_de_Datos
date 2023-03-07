@@ -106,8 +106,11 @@ public class Controlador {
     public void mostrarProducto(String nomProducto, int tipoDeMapa){
         map = factory.getMap(tipoDeMapa);
         map = cargarProductos(items, tipoDeMapa);
-        //System.out.println("Producto: "+map.get(categoria_)+" "+map.get(categoria_).get(producto2.get(categoria_)));
-
+        for(int i = 0; i < producto2.size(); i++){
+            if(producto2.get(i).equals(nomProducto)){
+                System.out.println("Producto"+map.get(categoria.get(i))+"Categoría: "+(categoria.get(i))+map.get(categoria.get(i)).get(producto2.get(i)));
+            }
+        }
 
     }
 
@@ -144,6 +147,6 @@ public class Controlador {
             System.out.println(categoria.get(i)+" "+producto2.get(i)+" "+map.get(categoria.get(i)).get(producto2.get(i)));
         }
     }
-    
+
 
 }

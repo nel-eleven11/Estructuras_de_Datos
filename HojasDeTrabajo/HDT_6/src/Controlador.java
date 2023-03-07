@@ -100,7 +100,7 @@ public class Controlador {
         System.out.println("Agregado: "+categoria.get(categoria_)+producto2.get(producto_)+" "+map.get(categoria2).get(producto));
         //escribir en el archivo
         String linea = categoria.get(categoria_)+" | "+producto2.get(producto_);
-        writFile(linea, "ListadoProducto (2).txt");
+        //writFile(linea, "ListadoProducto (2).txt");
 
     }
     public void mostrarProducto(String nomProducto, int tipoDeMapa){

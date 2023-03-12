@@ -14,25 +14,16 @@ public class arithmetic {
     * @return int
     */
 
-public static int verificarOp(int a, int b, String op){
-        switch (op){
-            case "+":
-                return a + b;
-            case "-":
-                return a - b;
-            case "*":
-                return a * b;
-            case "/":
-                return a / b;
-            case "mod":
-                return a % b;
-            case "expt":
-                return (int) Math.pow(a, b);
-            case "sqrt":
-                return (int) Math.sqrt(a);
-
-            default:
-                return 0;
-        }
+public static double verificarOp(double a, double b, String op){
+    return switch (op) {
+        case "+" -> a + b;
+        case "-" -> a - b;
+        case "*" -> a * b;
+        case "/" -> a / b;
+        case "mod" -> a % b;
+        case "expt" -> (double) Math.pow(a, b);
+        case "sqrt" -> (double) Math.sqrt(a);
+        default -> 0;
+    };
     }
 }

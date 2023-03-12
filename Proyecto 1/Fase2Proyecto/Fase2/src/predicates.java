@@ -6,7 +6,7 @@ Proyecto 1 Algoritmos y Estructuras de datos
  */
 
 
-
+import javax.swing.JOptionPane;
 import org.apache.commons.lang3.StringUtils;
 
 public class predicates {
@@ -36,7 +36,38 @@ public class predicates {
             case "eq":
                 resultado = a.equals(b);
                 break;
+            case ">":
+                if (Integer.parseInt(a) > Integer.parseInt(b)) {
+                    resultado = true;
+                }
+                break;
+            case "<":
+                if (Integer.parseInt(a) < Integer.parseInt(b)) {
+                    resultado = true;
+                }
+                break;
+            case ">=":
+                if (Integer.parseInt(a) >= Integer.parseInt(b)) {
+                    resultado = true;
+                }
+                break;
+            case "<=":
+                if (Integer.parseInt(a) <= Integer.parseInt(b)) {
+                    resultado = true;
+                }
+                break;
+            case "==":
+                if (Integer.parseInt(a) == Integer.parseInt(b)) {
+                    resultado = true;
+                }
+                break;
+            case "!=":
+                if (Integer.parseInt(a) != Integer.parseInt(b)) {
+                    resultado = true;
+                }
+                break;
             default:
+                JOptionPane.showMessageDialog(null, "Error: " + simbolo + " no es un predicado válido");
                 break;
         }
         return resultado;

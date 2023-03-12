@@ -40,30 +40,48 @@ public class predicates {
                 if (Integer.parseInt(a) > Integer.parseInt(b)) {
                     resultado = true;
                 }
+                else{
+                    resultado = false;
+                }
                 break;
             case "<":
                 if (Integer.parseInt(a) < Integer.parseInt(b)) {
                     resultado = true;
+                }
+                else{
+                    resultado = false;
                 }
                 break;
             case ">=":
                 if (Integer.parseInt(a) >= Integer.parseInt(b)) {
                     resultado = true;
                 }
+                else{
+                    resultado = false;
+                }
                 break;
             case "<=":
                 if (Integer.parseInt(a) <= Integer.parseInt(b)) {
                     resultado = true;
+                }
+                else{
+                    resultado = false;
                 }
                 break;
             case "==":
                 if (Integer.parseInt(a) == Integer.parseInt(b)) {
                     resultado = true;
                 }
+                else{
+                    resultado = false;
+                }
                 break;
             case "!=":
                 if (Integer.parseInt(a) != Integer.parseInt(b)) {
                     resultado = true;
+                }
+                else{
+                    resultado = false;
                 }
                 break;
             default:

@@ -30,6 +30,7 @@ public static int verificarOp(int a, int b, String op){
                 return (int) Math.pow(a, b);
             case "sqrt":
                 return (int) Math.sqrt(a);
+
             default:
                 return 0;
         }

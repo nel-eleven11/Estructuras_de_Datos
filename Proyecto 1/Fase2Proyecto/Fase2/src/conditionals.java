@@ -31,6 +31,7 @@ public class conditionals {
                     }
                 }
                 break;
+            case "":
 
         }
         return resp;

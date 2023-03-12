@@ -7,9 +7,9 @@ Proyecto 1 Algoritmos y Estructuras de datos
 import java.util.HashMap;
 
 public class  variables{
-    private final HashMap<String, Object> variables = new HashMap<String, Object>();
+    private static final HashMap<String, Object> variables = new HashMap<String, Object>();
 
-    public void addVariable(String name, Object value){
+    public static void addVariable(String name, Object value){
         try {
             if (isValidRegex(name)) {
                 variables.put(name, value);
@@ -21,13 +21,22 @@ public class  variables{
         }
     }
 
-    public Object getVariable(String name){
-        return variables.get(name);
+    public static Object getVariable(String name){
+        try {
+            if (!variables.containsKey(name)) {
+                throw new Exception("Variable does not exist");
+            } else {
+                return variables.get(name);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 
-    private final HashMap<String, Object> constants= new HashMap<String, Object>();
+    private static final HashMap<String, Object> constants= new HashMap<String, Object>();
 
-    public void addConstant(String name, Object value){
+    public static void addConstant(String name, Object value){
         try {
             if (isValidRegex(name)) {
                 if (!variables.containsKey(name)) {
@@ -43,11 +52,20 @@ public class  variables{
         }
     }
 
-    public Object getConstant(String name){
-        return constants.get(name);
+    public static Object getConstant(String name){
+        try {
+            if (!constants.containsKey(name)) {
+                throw new Exception("Constant does not exist");
+            } else {
+                return constants.get(name);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 
-    private boolean isValidRegex(String name){
+    private static boolean isValidRegex(String name){
         return name.matches("[a-zA-Z]+");
     }
 

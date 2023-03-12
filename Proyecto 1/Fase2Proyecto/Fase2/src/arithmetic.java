@@ -24,6 +24,12 @@ public static int verificarOp(int a, int b, String op){
                 return a * b;
             case "/":
                 return a / b;
+            case "mod":
+                return a % b;
+            case "expt":
+                return (int) Math.pow(a, b);
+            case "sqrt":
+                return (int) Math.sqrt(a);
             default:
                 return 0;
         }

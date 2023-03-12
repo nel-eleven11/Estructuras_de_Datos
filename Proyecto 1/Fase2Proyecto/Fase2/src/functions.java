@@ -3,7 +3,7 @@ import java.util.HashMap;
 
 public class functions {
 
-    private final HashMap<String, Object> functions = new HashMap<String, Object>();
+    private static final HashMap<String, Object> functions = new HashMap<String, Object>();
 
     public static void addFunction(String name, Object value){
         try {
@@ -30,7 +30,7 @@ public class functions {
         }
     }
 
-    public boolean isValidRegex(String name){
+    public static boolean isValidRegex(String name){
         return name.matches("[a-zA-Z]+");
     }
 

@@ -38,7 +38,6 @@ public class conditionals {
                     respuesta = predicates.verificar(op[i], a[i], b[i]);
                     if (respuesta) {
                         resp = consecuencias[i];
-                        break;
                     } else {
                         resp = "NIL";
                     }

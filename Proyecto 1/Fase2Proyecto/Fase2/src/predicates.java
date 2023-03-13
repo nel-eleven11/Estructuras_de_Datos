@@ -31,7 +31,7 @@ public class predicates {
             case "evenp" -> resultado = Integer.parseInt(a) % 2 == 0;
             case "atom" -> resultado = StringUtils.isAlpha(a) || StringUtils.isNumeric(a);
             case "eq" -> resultado = a.equals(b);
-            case "listp" -> resultado = a.startsWith("(") && a.endsWith(")");
+            case "listp" -> resultado = a.startsWith("'(") && a.endsWith(")");
             case ">" -> resultado = Integer.parseInt(a) > Integer.parseInt(b);
             case "<" -> resultado = Integer.parseInt(a) < Integer.parseInt(b);
             case ">=" -> resultado = Integer.parseInt(a) >= Integer.parseInt(b);

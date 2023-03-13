@@ -8,7 +8,12 @@ import java.util.HashMap;
 
 public class  variables{
     private static final HashMap<String, Object> variables = new HashMap<String, Object>();
-
+    /*
+    añade varaibles a la lista de variables
+    * @param name
+    * @param value
+    * @return void
+     */
     public static void addVariable(String name, Object value){
         try {
             if (isValidRegex(name)) {
@@ -20,7 +25,11 @@ public class  variables{
             System.out.println(e.getMessage());
         }
     }
-
+    /*
+    *retorna el valor de una variable
+    * @param name
+    * @return Object
+     */
     public static Object getVariable(String name){
         try {
             if (!variables.containsKey(name)) {
@@ -35,7 +44,12 @@ public class  variables{
     }
 
     private static final HashMap<String, Object> constants= new HashMap<String, Object>();
-
+    /*
+    *añade una constante a la lista de constantes
+    * @param name
+    * @param value
+    * @return void
+     */
     public static void addConstant(String name, Object value){
         try {
             if (isValidRegex(name)) {
@@ -51,7 +65,11 @@ public class  variables{
             System.out.println(e.getMessage());
         }
     }
-
+    /*
+    *retorna el valor de una constante
+    * @param name
+    * @return Object
+     */
     public static Object getConstant(String name){
         try {
             if (!constants.containsKey(name)) {
@@ -64,7 +82,11 @@ public class  variables{
             return null;
         }
     }
-
+    /*
+    *verifica si el nombre de una variable o constante es valido
+    * @param name
+    * @return boolean
+     */
     private static boolean isValidRegex(String name){
         return name.matches("[a-zA-Z]+");
     }

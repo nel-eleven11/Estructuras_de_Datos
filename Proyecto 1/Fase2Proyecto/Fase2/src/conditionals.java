@@ -7,6 +7,15 @@ Proyecto 1 Algoritmos y Estructuras de datos
 
 
 public class conditionals {
+    /*
+    * verifica las  condicionales que tenemos en lisp
+    * @param cond
+    * @param op
+    * @param a
+    * @param b
+    * @param consecuencias
+    * @return String
+     */
 
     public static String verificarCondicion(String cond, String [] op,String [] a, String [] b, String [] consecuencias){
         boolean respuesta = false;

@@ -12,7 +12,13 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Objects;
 
 public class predicates {
-
+/*
+* verifica los predicados que tenemos en lisp
+* @param simbolo
+* @param a
+* @param b
+* @return boolean
+ */
     public static boolean verificar(String simbolo, String a, String b){
         boolean resultado = false;
         String [] lista;

@@ -9,10 +9,13 @@ Proyecto 1 Algoritmos y Estructuras de datos
 import javax.swing.JOptionPane;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Objects;
+
 public class predicates {
 
     public static boolean verificar(String simbolo, String a, String b){
         boolean resultado = false;
+        String [] lista;
 
         switch (simbolo){
             case "numberp":
@@ -35,6 +38,9 @@ public class predicates {
                 break;
             case "eq":
                 resultado = a.equals(b);
+                break;
+            case "listp":
+                resultado = a.startsWith("(") && a.endsWith(")");
                 break;
             case ">":
                 if (Integer.parseInt(a) > Integer.parseInt(b)) {
@@ -82,6 +88,32 @@ public class predicates {
                 }
                 else{
                     resultado = false;
+                }
+                break;
+            case "not":
+                if(predicates.verificar(simbolo, a, b) == true){
+                    resultado = false;
+                }
+                else{
+                    resultado = true;
+                }
+                break;
+            case "and":
+                lista = a.split(" ");
+                for (int i = 0; i < lista.length; i++) {
+                    if (lista[i].equals("NIL")) {
+                        resultado = false;
+                        break;
+                    }
+                }
+                break;
+            case "or":
+                lista = a.split(" ");
+                for (int i = 0; i < lista.length; i++) {
+                    if (!Objects.equals(lista[i], "NIL")) {
+                        resultado = true;
+                        break;
+                    }
                 }
                 break;
             default:

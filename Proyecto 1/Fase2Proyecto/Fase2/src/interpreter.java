@@ -4,10 +4,16 @@ Joaquín Puente 22296
 Oscar Fuentes
 Proyecto 1 Algoritmos y Estructuras de datos
  */
-
+import java.util.ArrayList;
+import java.util.List;
 public class interpreter {
-
     public static void interpretar(String comando) {
+        String[] predicates = new String[15];
+        String[] predicates = {"<", ">", "<=", ">=", "==", "!=", "listp", "atom", "symbolp", "numberp", "consp", "eq", "equal", "zerop","oddp","evenp","and","or","not"};
+        String[] arithmetic = new String[7];
+        String[] arithmetic = {"+", "-", "*", "/", "mod", "exp", "sqrt"};
+        String[] conditonals = new String[4];
+        String[] conditonals = {"if", "cond", "when", "unless"};
         comando = comando.substring(1, comando.length() - 1);
 
         String[] comandoSeparado = comando.split(" ");

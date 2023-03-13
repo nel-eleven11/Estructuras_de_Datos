@@ -4,37 +4,83 @@ Joaquín Puente 22296
 Oscar Fuentes
 Proyecto 1 Algoritmos y Estructuras de datos
  */
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
+import java.util.Stack;
+
 public class interpreter {
-    public static void interpretar(String comando) {
-        String[] predicates = new String[15];
-        String[] predicates = {"<", ">", "<=", ">=", "==", "!=", "listp", "atom", "symbolp", "numberp", "consp", "eq", "equal", "zerop","oddp","evenp","and","or","not"};
-        String[] arithmetic = new String[7];
-        String[] arithmetic = {"+", "-", "*", "/", "mod", "exp", "sqrt"};
-        String[] conditonals = new String[4];
-        String[] conditonals = {"if", "cond", "when", "unless"};
-        comando = comando.substring(1, comando.length() - 1);
 
-        String[] comandoSeparado = comando.split(" ");
 
-        if (comandoSeparado[0].equalsIgnoreCase("defun")) {
+
+    public class LispExpression {
+        public static int evaluate(String expression) {
+            String[] tokens = expression.split("\\s+");
+            Stack<Integer> stack = new Stack<>();
+            for (int i = tokens.length - 1; i >= 0; i--) {
+                String token = tokens[i];
+
+
+
+                if (isNumber(token)) {
+                    stack.push(Integer.parseInt(token));
+                } else if (isOperator(token)) {
+                    int operand1 = stack.pop();
+                    int operand2 = stack.pop();
+                    int result = evaluateExpression(token, operand1, operand2);
+                    stack.push(result);
+                } else if (isLispExpression(token)) {
+                    // Remove the first and last parentheses of the Lisp expression
+                    String lispExpression = token.substring(1, token.length() - 1);
+                    int result = evaluate(lispExpression);
+                    stack.push(result);
+                }
+            }
+            return stack.pop();
+        }
+
+        private static boolean isNumber(String token) {
+            try {
+                Integer.parseInt(token);
+                return true;
+            } catch (NumberFormatException e) {
+                return false;
+            }
+        }
+
+        private static boolean isOperator(String token) {
+            return token.equals("+") || token.equals("-") || token.equals("*") || token.equals("/");
+        }
+
+        private static boolean isLispExpression(String token) {
+            return token.startsWith("(") && token.endsWith(")");
+        }
+
+
+    public static void evaluateExpression(String comando) {
+        String[] predicatesSym = {"<", ">", "<=", ">=", "==", "!=", "listp", "atom", "symbolp", "numberp", "consp", "eq", "equal", "zerop","oddp","evenp","and","or","not"};
+        String[] arithmeticOp = {"+", "-", "*", "/", "mod", "exp", "sqrt"};
+        String[] conditonalsSym = {"if", "cond", "when", "unless"};
+
+        if (comando.equalsIgnoreCase("defun")) {
             String nombreFuncion = comandoSeparado[1];
             String[] parametros = comandoSeparado[2].split(",");
             String[] cuerpo = comando.substring(comando.indexOf("(") + 1, comando.lastIndexOf(")")).split(" ");
             tokens.defun(nombreFuncion, parametros, cuerpo);
-        } else if (comandoSeparado[0].equalsIgnoreCase("setq")) {
+        } else if (comando.equalsIgnoreCase("setq")) {
             tokens.setq(comandoSeparado[1], comandoSeparado[2]);
-        } else if (comandoSeparado[0].equalsIgnoreCase("defconstant")) {
+        } else if (comando.equalsIgnoreCase("defconstant")) {
             tokens.setConst(comandoSeparado[1], comandoSeparado[2]);
-        } else if (comandoSeparado[0].equalsIgnoreCase("+") || comandoSeparado[0].equalsIgnoreCase("-") || comandoSeparado[0].equalsIgnoreCase("*") || comandoSeparado[0].equalsIgnoreCase("/") || comandoSeparado[0].equalsIgnoreCase("mod") || comandoSeparado[0].equalsIgnoreCase("exp") || comandoSeparado[0].equalsIgnoreCase("sqrt")){
-            tokens.arithmetic(Integer.parseInt(comandoSeparado[1]), Integer.parseInt(comandoSeparado[2]), comandoSeparado[0]);
-        } else if (comandoSeparado[0].equalsIgnoreCase("if") || comandoSeparado[0].equalsIgnoreCase("cond") || comandoSeparado[0].equalsIgnoreCase("when") || comandoSeparado[0].equalsIgnoreCase("unless")) {
+        } else if (Arrays.stream(arithmeticOp).anyMatch(comando::equalsIgnoreCase)){
+            tokens.arithmetic(Integer.parseInt(comandoSeparado[1]), Integer.parseInt(comandoSeparado[2]), comando);
+        } else if (Arrays.stream(conditonalsSym).anyMatch(comando::equalsIgnoreCase)) {
 
-        } else if (comandoSeparado[0].equalsIgnoreCase("quote")) {
+            //TODO: conditonals
+
+        } else if (Arrays.stream(predicatesSym).anyMatch(comando::equalsIgnoreCase)) {
+            tokens.pred(comando, comandoSeparado[1], comandoSeparado[2]);
+        } else if (comando.equalsIgnoreCase("quote")) {
             tokens.quote(comandoSeparado[1]);
-        } else if () {
-            
+        } else if (comando.equalsIgnoreCase("print")) {
+            tokens.print(comandoSeparado[1]);
         }
 
 

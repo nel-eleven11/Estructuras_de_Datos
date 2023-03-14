@@ -43,6 +43,8 @@ public class conditionals {
                             resp = "NIL";
                         }
                     }
+                    if(resp.equals("NIL"))
+                        resp = consecuencias[consecuencias.length-1];
 
                 }
                 else{

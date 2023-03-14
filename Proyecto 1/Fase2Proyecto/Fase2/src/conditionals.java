@@ -34,12 +34,25 @@ public class conditionals {
                 }
             }
             case "cond" -> {
-                for (int i = 0; i < op.length; i++) {
-                    respuesta = predicates.verificar(op[i], a[i], b[i]);
-                    if (respuesta) {
-                        resp = consecuencias[i];
-                    } else {
-                        resp = "NIL";
+                if(op[op.length-1].equals("t")){
+                    for (int i = 0; i < op.length-1; i++) {
+                        respuesta = predicates.verificar(op[i], a[i], b[i]);
+                        if (respuesta) {
+                            resp = consecuencias[i];
+                        } else {
+                            resp = "NIL";
+                        }
+                    }
+
+                }
+                else{
+                    for (int i = 0; i < op.length; i++) {
+                        respuesta = predicates.verificar(op[i], a[i], b[i]);
+                        if (respuesta) {
+                            resp = consecuencias[i];
+                        } else {
+                            resp = "NIL";
+                        }
                     }
                 }
             }

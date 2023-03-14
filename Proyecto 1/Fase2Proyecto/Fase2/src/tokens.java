@@ -28,11 +28,11 @@ public class tokens {
     public static void setConst(String constant, String value) {
         variables.addConstant(constant, value);
     }
-/*
-*retorna el valor de una variable
-* @param variables
-* @param name
- */
+    /*
+    *retorna el valor de una variable
+    * @param variables
+    * @param name
+     */
     public static double arithmetic(double a, double b, String op) {
         return arithmetic.verificarOp(a, b, op);
     }
@@ -45,24 +45,26 @@ public class tokens {
      */
     public static String quote(Object value) {
         return value.toString();
-        /*
-        *predicados
-        *param simbolo
-        * @param a
-        * @param b
-        * @return boolean
-         */
     }
+
+    /**
+     *predicados
+     * @param simbolo
+     * @param a
+     * @param b
+     * @return boolean
+     */
     public  static boolean pred(String simbolo,String a, String b){
         return predicates.verificar(simbolo,a,b);
     }
-    /*
-    *retorna el valor de una variable
-    * @param variables
-    * @param name
-    * @return Object
-     */
+
     public static void print(Object value) {
         System.out.println(value);
+    }
+
+
+
+    public static String conditional(String cond, String [] op,String [] a, String [] b, String [] consecuencias){
+        return conditionals.verificarCondicion(cond, op, a, b, consecuencias);
     }
 }

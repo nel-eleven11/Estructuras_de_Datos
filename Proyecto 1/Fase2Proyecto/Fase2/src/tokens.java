@@ -16,8 +16,8 @@ public class tokens {
     * @param value
     * @return void
      */
-    public static void defun(String function, String value) {
-        functions.addFunction(function, value);
+    public static void defun(String function, String[] params, String[] body) {
+        functions.addFunction(function, new Object[]{params, body});
     }
     /*
     * añade una constante

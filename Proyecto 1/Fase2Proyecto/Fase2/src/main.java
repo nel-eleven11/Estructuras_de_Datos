@@ -24,7 +24,7 @@ public class main {
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
-                lineas = data.split("");
+                lineas = data.split(" ");
                 for (String item : lineas){
                     items.add(item);
                 }

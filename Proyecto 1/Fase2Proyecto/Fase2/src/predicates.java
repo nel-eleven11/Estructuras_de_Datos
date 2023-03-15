@@ -38,14 +38,10 @@ public class predicates {
             case "<=" -> resultado = Integer.parseInt(a) <= Integer.parseInt(b);
             case "==" -> resultado = Integer.parseInt(a) == Integer.parseInt(b);
             case "!=" -> resultado = Integer.parseInt(a) != Integer.parseInt(b);
-            case "not" -> resultado = !predicates.verificar(simbolo, a, b);
             case "and" -> {
                 lista = a.split(" ");
                 for (String s : lista) {
-                    if (s.equals("NIL")) {
-                        resultado = false;
-                        break;
-                    }
+                    resultado = !s.equals("NIL");
                 }
             }
             case "or" -> {
@@ -60,6 +56,13 @@ public class predicates {
             default -> JOptionPane.showMessageDialog(null, "Error: " + simbolo + " no es un predicado válido");
         }
         return resultado;
+    }
+
+    public static boolean verificar(String simbolo, String a){
+        if(simbolo.equals("not")){
+            return !Boolean.parseBoolean(a);
+        }
+        return false;
     }
 
 }

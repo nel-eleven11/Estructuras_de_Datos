@@ -58,8 +58,9 @@ public class tokens {
         return predicates.verificar(simbolo,a,b);
     }
 
-    public static void print(Object value) {
+    public static String print(String value) {
         System.out.println(value);
+        return value;
     }
 
 

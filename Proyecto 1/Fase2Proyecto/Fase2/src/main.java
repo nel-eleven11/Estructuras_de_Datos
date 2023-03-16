@@ -8,6 +8,7 @@ Proyecto 1 Algoritmos y Estructuras de datos
 import java.io.*;
 import java.util.Scanner;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class main {
 

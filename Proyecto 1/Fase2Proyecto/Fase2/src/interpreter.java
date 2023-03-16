@@ -122,6 +122,30 @@ public class interpreter {
                     }
                 }
 
+                if(currentToken.equalsIgnoreCase("cond")){
+                    ArrayList<String> body = new ArrayList<>();
+                    ArrayList<String> params = new ArrayList<>();
+                    for (int j = i+1; j < lisp.size(); j++) {
+                        if (lisp.get(j).equals(")")) {
+                            break;
+                        }
+                        if (lisp.get(j).equals("(")) {
+                            for (int k = j; k < lisp.size(); k++) {
+                                if (lisp.get(k).equals(")")) {
+                                    j = k;
+                                    break;
+                                }
+                                body.add(lisp.get(k));
+                            }
+                        }
+                        else {
+                            params.add(lisp.get(j));
+                        }
+                    }
+                    stack.push(params);
+                    stack.push(body);
+                }
+
 
                 if (Arrays.stream(reservedTokens).noneMatch(lisp.get(i)::equalsIgnoreCase) && !lisp.get(i).equals(")")){
                     stack.add(lisp.get(i));
@@ -159,7 +183,7 @@ public class interpreter {
                         String [] op2;
                         String [] consecuencias;
 
-                        //String resultado =tokens.conditional(currentToken, operadores, op1, op2, consecuencias);
+                        //String resultado = tokens.conditional(currentToken, operadores, op1, op2, consecuencias);
                        // stack.add(String.valueOf(resultado));
 
 

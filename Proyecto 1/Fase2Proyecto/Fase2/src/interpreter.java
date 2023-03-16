@@ -50,7 +50,7 @@ public class interpreter {
 
     public static String readLisp(ArrayList<String> lisp) {
 
-        Stack<String> stack = new Stack<>();
+        Stack<Object> stack = new Stack<>();
         String currentToken = "";
 
         String[] predicatesSym = {"<", ">", "<=", ">=", "==", "!=", "listp", "atom", "symbolp", "numberp", "consp", "eq", "equal", "zerop", "oddp", "evenp", "and", "or", "not"};
@@ -71,9 +71,7 @@ public class interpreter {
                     System.out.println("Token: " + lisp.get(i));
                     currentToken = lisp.get(i);
                 }
-                if (lisp.get(i).equals("(")){
-                    int startingIndex = i;
-                    int endingIndex = 0;
+                if (lisp.get(i).equals("(") && !currentToken.equalsIgnoreCase("defun") && !currentToken.equalsIgnoreCase("cond")){
                     ArrayList<String> microFunc = new ArrayList<>();
                     for (int j = i; j < lisp.size(); j++) {
                         if (lisp.get(j).equals(")")) {
@@ -85,8 +83,46 @@ public class interpreter {
                     microFunc.add(")");
 
                     stack.add(readLisp(microFunc));
-
                 }
+
+                if (currentToken.equalsIgnoreCase("defun")) {
+
+                    int counter = 0;
+                    String nombre = "";
+                    ArrayList<String> body = new ArrayList<>();
+                    ArrayList<String> params = new ArrayList<>();
+                    for (int j = i+1; j < lisp.size(); j++) {
+
+                        if (counter == 0) {
+                            nombre = lisp.get(j);
+                            counter++;
+                        }
+
+                        else if (counter == 1) {
+                            params.add(lisp.get(j));
+                            if (lisp.get(j).equals(")")) {
+                                counter++;
+                            }
+                        }
+                        else if (counter == 2) {
+                            body.add(lisp.get(j));
+                            if (lisp.get(j).equals(")")) {
+                                counter++;
+                            }
+                        }
+                        if (counter == 3) {
+                            break;
+                        }
+                        System.out.println("Nombre: " + nombre);
+                        System.out.println("Params: " + params);
+                        System.out.println("Body: " + body);
+                        stack.push(nombre);
+                        stack.push(params);
+                        stack.push(body);
+                    }
+                }
+
+
                 if (Arrays.stream(reservedTokens).noneMatch(lisp.get(i)::equalsIgnoreCase) && !lisp.get(i).equals(")")){
                     stack.add(lisp.get(i));
                 }
@@ -95,19 +131,19 @@ public class interpreter {
 
                     if (currentToken.equalsIgnoreCase("defun")) {
 
-                        //TODO: defun
+
 
                     } else if (currentToken.equalsIgnoreCase("setq")) {
-                        String valor = stack.pop();
-                        String variable = stack.pop();
+                        String valor = String.valueOf(stack.pop());
+                        String variable = String.valueOf(stack.pop());
                         tokens.setq(variable, valor);
                     } else if (currentToken.equalsIgnoreCase("defconstant")) {
-                        String valor = stack.pop();
-                        String variable = stack.pop();
+                        String valor = String.valueOf(stack.pop());
+                        String variable = String.valueOf(stack.pop());
                         tokens.setConst(variable, valor);
                     } else if (Arrays.stream(arithmeticOp).anyMatch(currentToken::equalsIgnoreCase)) {
-                        String operador2 = stack.pop();
-                        String operador1 = stack.pop();
+                        String operador2 = String.valueOf(stack.pop());
+                        String operador1 = String.valueOf(stack.pop());
 
                         double a = Double.parseDouble(operador1);
                         double b = Double.parseDouble(operador2);
@@ -129,24 +165,24 @@ public class interpreter {
 
 
                     } else if (Arrays.stream(predicatesSym).anyMatch(currentToken::equalsIgnoreCase)) {
-                        String operador2 = stack.pop();
-                        String operador1 = stack.pop();
+                        String operador2 = String.valueOf(stack.pop());
+                        String operador1 = String.valueOf(stack.pop());
 
                         boolean result = tokens.pred(currentToken, operador1, operador2);
                         stack.add(String.valueOf(result));
 
                     } else if (currentToken.equalsIgnoreCase("quote")) {
-                        String quote = stack.pop();
+                        String quote = String.valueOf(stack.pop());
                         stack.add(quote);
                     } else if (currentToken.equalsIgnoreCase("print")) {
-                        String print = stack.pop();
+                        String print = String.valueOf(stack.pop());
 
                         stack.add(tokens.print(print));
                     }
                 }
             }
         }
-        return stack.pop();
+        return String.valueOf(stack.pop());
     }
 }
 

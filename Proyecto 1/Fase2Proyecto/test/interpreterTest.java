@@ -10,13 +10,19 @@ class interpreterTest {
     void evaluateExpression() {
         ArrayList<String> lisp = new ArrayList<>();
         lisp.add("(");
-        lisp.add("print");
+        lisp.add("defun");
+        lisp.add("funcion");
+        lisp.add("(");
+        lisp.add("x");
+        lisp.add("y");
+        lisp.add(")");
         lisp.add("(");
         lisp.add("+");
-        lisp.add("1");
-        lisp.add("2");
+        lisp.add("x");
+        lisp.add("y");
         lisp.add(")");
         lisp.add(")");
+        System.out.println(lisp);
         interpreter.readLisp(lisp);
 
     }

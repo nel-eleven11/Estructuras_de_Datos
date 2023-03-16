@@ -117,6 +117,16 @@ public class interpreter {
                     } else if (Arrays.stream(conditonalsSym).anyMatch(currentToken::equalsIgnoreCase)) {
 
                         //TODO: conditonals
+                        String [] operadores = new String[3];
+
+                        String [] op1;
+                        String [] op2;
+                        String [] consecuencias;
+
+                        //String resultado =tokens.conditional(currentToken, operadores, op1, op2, consecuencias);
+                       // stack.add(String.valueOf(resultado));
+
+
 
                     } else if (Arrays.stream(predicatesSym).anyMatch(currentToken::equalsIgnoreCase)) {
                         String operador2 = stack.pop();

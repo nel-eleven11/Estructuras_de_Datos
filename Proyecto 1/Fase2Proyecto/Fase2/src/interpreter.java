@@ -123,8 +123,8 @@ public class interpreter {
                 }
 
                 if(currentToken.equalsIgnoreCase("cond")){
-                    ArrayList<String> body = new ArrayList<>();
-                    ArrayList<String> params = new ArrayList<>();
+                    ArrayList<String> condicion = new ArrayList<>();
+                    ArrayList<String> consecuencias = new ArrayList<>();
                     for (int j = i+1; j < lisp.size(); j++) {
                         if (lisp.get(j).equals(")")) {
                             break;
@@ -135,15 +135,15 @@ public class interpreter {
                                     j = k;
                                     break;
                                 }
-                                body.add(lisp.get(k));
+                                condicion.add(lisp.get(k));
                             }
                         }
                         else {
-                            params.add(lisp.get(j));
+                            consecuencias.add(lisp.get(j));
                         }
                     }
-                    stack.push(params);
-                    stack.push(body);
+                    stack.push(consecuencias);
+                    stack.push(condicion);
                 }
 
 

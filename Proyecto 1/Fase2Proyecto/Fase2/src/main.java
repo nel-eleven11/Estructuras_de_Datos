@@ -25,8 +25,27 @@ public class main {
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
                 lineas = data.split(" ");
+                int cont = 0;
                 for (String item : lineas){
-                    items.add(item);
+                    if(item.contains("(") || item.contains(")")){
+                        while(item.contains("(") || item.contains(")")){
+                            if(item.contains("(")){
+                                item = item.substring(1);
+                                items.add("(");
+
+                            }else if(item.contains(")")){
+                                item = item.substring(0, item.length()-1);
+                                cont++;
+                            }
+                        }
+                        items.add(item);
+                        for(int i = 0; i < cont; i++){
+                            items.add(")");
+                        }
+                    }else{
+                        items.add(item);
+
+                    }
                 }
             }
             myReader.close();

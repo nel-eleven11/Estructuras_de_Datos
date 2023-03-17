@@ -58,6 +58,12 @@ public class predicates {
         return resultado;
     }
 
+    /**
+     * verifica el predicado not
+     * @param simbolo
+     * @param a
+     * @return boolean
+     */
     public static boolean verificar(String simbolo, String a){
         if(simbolo.equals("not")){
             return !Boolean.parseBoolean(a);

@@ -69,14 +69,26 @@ public class tokens {
     public  static boolean pred(String simbolo,String a, String b){
         return predicates.verificar(simbolo,a,b);
     }
-
+    /**
+     * print sirve para imprimir en consola
+     *
+     * @param value
+     * @return String
+     */
     public static String print(String value) {
         System.out.println(value);
         return value;
     }
-
-
-
+    /**
+     * print sirve para imprimir en consola
+     *
+     * @param cond
+     * @param op
+     * @param a
+     * @param b
+     * @param consecuencias
+     * @return String
+     */
     public static String conditional(String cond, ArrayList<String> op, ArrayList<String> a, ArrayList<String> b, ArrayList<String> consecuencias){
         return conditionals.verificarCondicion(cond, op, a, b, consecuencias);
     }

@@ -37,7 +37,7 @@ class interpreterTest {
         lisp.add("(");
         lisp.add("(");
         lisp.add("<");
-        lisp.add("n");
+        lisp.add("1");
         lisp.add("5");
         lisp.add(")");
         lisp.add("suspenso");

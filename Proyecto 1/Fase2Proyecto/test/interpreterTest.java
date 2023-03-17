@@ -27,4 +27,27 @@ class interpreterTest {
         consecuencias4.add("hola");
         assertEquals("NIL", conditionals.verificarCondicion("unless", op, a, b, consecuencias4));
     }
+
+
+    @Test
+    void evaluateExpressionCond(){
+        ArrayList<String> lisp = new ArrayList<>();
+        lisp.add("(");
+        lisp.add("cond");
+        lisp.add("(");
+        lisp.add("(");
+        lisp.add("<");
+        lisp.add("n");
+        lisp.add("5");
+        lisp.add(")");
+        lisp.add("suspenso");
+        lisp.add(")");
+        lisp.add(")");
+
+        System.out.println(lisp);
+        interpreter.readLisp(lisp);
+        System.out.println("");
+
+
+    }
 }

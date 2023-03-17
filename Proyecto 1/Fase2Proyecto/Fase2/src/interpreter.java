@@ -193,11 +193,10 @@ public class interpreter {
                     } else if (Arrays.stream(conditonalsSym).anyMatch(currentToken::equalsIgnoreCase)) {
 
                         //TODO: conditonals
-                        String [] operadores = new String[3];
-
-                        String [] op1;
-                        String [] op2;
-                        String [] consecuencias;
+                        ArrayList<String> operadores;
+                        ArrayList<String> op1;
+                        ArrayList<String> op2;
+                        ArrayList<String> consecuencias;
 
                         //String resultado = tokens.conditional(currentToken, operadores, op1, op2, consecuencias);
                        // stack.add(String.valueOf(resultado));

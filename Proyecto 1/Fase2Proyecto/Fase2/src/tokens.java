@@ -77,7 +77,7 @@ public class tokens {
 
 
 
-    public static String conditional(String cond, String [] op,String [] a, String [] b, String [] consecuencias){
+    public static String conditional(String cond, ArrayList<String> op, ArrayList<String> a, ArrayList<String> b, ArrayList<String> consecuencias){
         return conditionals.verificarCondicion(cond, op, a, b, consecuencias);
     }
 }

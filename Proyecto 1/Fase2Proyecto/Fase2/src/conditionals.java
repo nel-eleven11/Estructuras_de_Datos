@@ -6,6 +6,8 @@ Proyecto 1 Algoritmos y Estructuras de datos
  */
 
 
+import java.util.ArrayList;
+
 public class conditionals {
     /*
     * verifica las  condicionales que tenemos en lisp
@@ -17,41 +19,41 @@ public class conditionals {
     * @return String
      */
 
-    public static String verificarCondicion(String cond, String [] op,String [] a, String [] b, String [] consecuencias){
+    public static String verificarCondicion(String cond, ArrayList<String> op, ArrayList<String> a, ArrayList<String> b, ArrayList<String> consecuencias){
         boolean respuesta = false;
         String resp = "";
         switch (cond) {
             case "if" -> {
-                respuesta = predicates.verificar(op[0], a[0], b[0]);
+                respuesta = predicates.verificar(op.get(0), a.get(0), b.get(0));
                 if (respuesta) {
-                    resp = consecuencias[0];
+                    resp = consecuencias.get(0);
                 } else {
-                    if (consecuencias.length > 1)
-                        resp = consecuencias[1];
+                    if (consecuencias.size() > 1)
+                        resp = consecuencias.get(0);
                     else {
                         resp = "NIL";
                     }
                 }
             }
             case "cond" -> {
-                if(op[op.length-1].equals("t")){
-                    for (int i = 0; i < op.length-1; i++) {
-                        respuesta = predicates.verificar(op[i], a[i], b[i]);
+                if(op.get(op.size()-1).equals("t")){
+                    for (int i = 0; i < op.size()-1; i++) {
+                        respuesta = predicates.verificar(op.get(i), a.get(i), b.get(i));
                         if (respuesta) {
-                            resp = consecuencias[i];
+                            resp = consecuencias.get(i);
                         } else {
                             resp = "NIL";
                         }
                     }
-                    if(resp.equals("NIL"))
-                        resp = consecuencias[consecuencias.length-1];
-
+                    if(resp.equals("NIL")) {
+                        resp = consecuencias.get(consecuencias.size() - 1);
+                    }
                 }
                 else{
-                    for (int i = 0; i < op.length; i++) {
-                        respuesta = predicates.verificar(op[i], a[i], b[i]);
+                    for (int i = 0; i < op.size(); i++) {
+                        respuesta = predicates.verificar(op.get(i), a.get(i), b.get(i));
                         if (respuesta) {
-                            resp = consecuencias[i];
+                            resp = consecuencias.get(i);
                         } else {
                             resp = "NIL";
                         }
@@ -59,17 +61,17 @@ public class conditionals {
                 }
             }
             case "when" -> {
-                respuesta = predicates.verificar(op[0], a[0], b[0]);
+                respuesta = predicates.verificar(op.get(0), a.get(0), b.get(0));
                 if (respuesta) {
-                    resp = consecuencias[consecuencias.length - 1];
+                    resp = consecuencias.get(consecuencias.size() - 1);
                 } else {
                     resp = "NIL";
                 }
             }
             case "unless" -> {
-                respuesta = predicates.verificar(op[0], a[0], b[0]);
+                respuesta = predicates.verificar(op.get(0), a.get(0), b.get(0));
                 if (!respuesta) {
-                    resp = consecuencias[consecuencias.length - 1];
+                    resp = consecuencias.get(consecuencias.size() - 1);
                 } else {
                     resp = "NIL";
                 }

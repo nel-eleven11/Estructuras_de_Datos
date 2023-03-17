@@ -10,6 +10,7 @@ class interpreterTest {
     void evaluateExpression() {
         ArrayList<String> lisp = new ArrayList<>();
         lisp.add("(");
+        lisp.add("(");
         lisp.add("defun");
         lisp.add("funcion");
         lisp.add("(");
@@ -18,10 +19,18 @@ class interpreterTest {
         lisp.add(")");
         lisp.add("(");
         lisp.add("+");
-        lisp.add("x");
+        lisp.add("X");
         lisp.add("y");
         lisp.add(")");
         lisp.add(")");
+        lisp.add("(");
+        lisp.add("funcion");
+        lisp.add("(");
+        lisp.add("1");
+        lisp.add("2");
+        lisp.add(")");
+        lisp.add(")");
+
         System.out.println(lisp);
         interpreter.readLisp(lisp);
         System.out.println(functions.getFunction("funcion").get(0));

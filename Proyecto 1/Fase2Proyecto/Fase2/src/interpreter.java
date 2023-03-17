@@ -5,6 +5,7 @@ Oscar Fuentes
 Proyecto 1 Algoritmos y Estructuras de datos
  */
 import java.util.*;
+import java.util.function.UnaryOperator;
 
 
 public class interpreter {
@@ -74,9 +75,33 @@ public class interpreter {
 
                 if (functions.getFunctions().containsKey(lisp.get(i)) || variables.getVariables().containsKey(lisp.get(i))) {
                     if (functions.getFunctions().containsKey(lisp.get(i))) {
-                        System.out.println("Function");
-                        System.out.println("Token: " + lisp.get(i));
-                        currentToken = lisp.get(i);
+                        int startIndex = i;
+                        int endIndex = 0;
+                        for (int j = i; j < lisp.size(); j++) {
+                            if (lisp.get(j).equals(")")) {
+                                endIndex = j;
+                                break;
+                            }
+                        }
+                        ArrayList<String> params = new ArrayList<>();
+                        for (int j = startIndex+1; j < endIndex; j++) {
+                            params.add(lisp.get(j));
+                        }
+
+                        ArrayList<String> func = (ArrayList<String>) functions.getFunction(lisp.get(i)).get(1);
+                        ArrayList<String> funcParams = (ArrayList<String>) functions.getFunction(lisp.get(i)).get(0);
+                        for (int j = 0; j < funcParams.size(); j++) {
+                            for (int k = 0; k < func.size(); k++) {
+                                if (func.get(k).equals(funcParams.get(j))) {
+                                    func.remove(k);
+                                    func.add(k, params.get(j));
+                                }
+                            }
+                        }
+
+                        lisp.subList(startIndex, endIndex).clear();
+                        lisp.addAll(startIndex, func);
+
                     }
                     else if (variables.getVariables().containsKey(lisp.get(i))) {
                         lisp.remove(i);
@@ -84,6 +109,7 @@ public class interpreter {
                     }
                 }
 
+                //Algoritmo de interpretación recursivo
                 if (lisp.get(i).equals("(") && !currentToken.equalsIgnoreCase("defun") && !currentToken.equalsIgnoreCase("cond")) {
                     ArrayList<String> microFunc = new ArrayList<>();
                     for (int j = i; j < lisp.size(); j++) {
@@ -98,6 +124,7 @@ public class interpreter {
                     stack.add(readLisp(microFunc));
                 }
 
+                //Programación del caso especial de defun
                 if (currentToken.equalsIgnoreCase("defun")) {
                     int counter = 0;
                     String nombre = "";

@@ -139,24 +139,30 @@ public class interpreter {
                     ArrayList<String> consecuencias = new ArrayList<>();
                     int abrir = 1;
                     int cerrar = 0;
-                    for (int j = i+1; j < lisp.size(); j++) {
-                        if (lisp.get(j).equals(")")) {
-                            cerrar++;
-                            break;
-                        }
-                        if (lisp.get(j).equals("(")) {
-                            abrir++;
-                            for (int k = j; k < lisp.size(); k++) {
-                                if (lisp.get(k).equals(")")) {
-                                    cerrar++;
-                                    j = k;
-                                    break;
-                                }
-                                condicion.add(lisp.get(k));
+                    while(abrir != cerrar){
+                        for (int j = i+1; j < lisp.size(); j++) {
+                            if (lisp.get(j).equals(")")) {
+                                cerrar++;
+                                break;
                             }
-                        }
-                        else {
-                            consecuencias.add(lisp.get(j));
+                            if (lisp.get(j).equals("(")) {
+                                abrir++;
+                                for (int k = j; k < lisp.size(); k++) {
+                                    if (lisp.get(k).equals(")")) {
+                                        cerrar++;
+                                        j = k;
+                                        break;
+                                    }
+                                    if(lisp.get(k).equals("t")){
+                                        condicion.add(lisp.get(k));
+                                        break;
+                                    }
+                                    condicion.add(lisp.get(k));
+                                }
+                            }
+                            else {
+                                consecuencias.add(lisp.get(j));
+                            }
                         }
                     }
                     stack.push(consecuencias);
@@ -197,11 +203,24 @@ public class interpreter {
 
                     } else if (Arrays.stream(conditonalsSym).anyMatch(currentToken::equalsIgnoreCase)) {
 
-
+                        ArrayList<String> cond = (ArrayList<String>) stack.pop();
+                        ArrayList<String> consecuencias = (ArrayList<String>) stack.pop();
                         ArrayList<String> operadores = new ArrayList<>();
                         ArrayList<String> op1 = new ArrayList<>();
                         ArrayList<String> op2 = new ArrayList<>();
-                        ArrayList<String> consecuencias = new ArrayList<>();
+                        String [] predicates = {"numberp", "symbolp", "listp", "zerop", "oddp", "evenp", "atom", "eq", "not", "and", "or", "<", ">", "<=", ">=", "==", "!="};
+                        for(int j = 0; j < cond.size(); j++) {
+                            if (Arrays.stream(predicates).anyMatch(cond.get(j)::equalsIgnoreCase)) {
+                                operadores.add(cond.get(j));
+                                op1.add(cond.get(j+1));
+                                op2.add(cond.get(j+2));
+                            }
+
+                            if (cond.get(j).equals("t")) {
+                                operadores.add(cond.get(j));
+                                break;
+                            }
+                        }
 
                         String resultado = tokens.conditional(currentToken, operadores, op1, op2, consecuencias);
                         stack.add(String.valueOf(resultado));

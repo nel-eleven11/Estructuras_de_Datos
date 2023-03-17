@@ -1,15 +1,16 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
 public class functions {
 
-    private static final HashMap<String, Object> functions = new HashMap<String, Object>();
+    private static final HashMap<String, ArrayList<ArrayList<String>>> functions = new HashMap<String, ArrayList<ArrayList<String>>>();
     /*
     *añade una funcion a la lista de funciones
     *param name
     *param value
      */
-    public static void addFunction(String name, Object value){
+    public static void addFunction(String name, ArrayList<ArrayList<String>> value){
         try {
             if (isValidRegex(name)) {
                 functions.put(name, value);
@@ -25,7 +26,7 @@ public class functions {
     * @param name
     * @return Object
      */
-    public Object getFunction(String name){
+    public static ArrayList getFunction(String name){
         try {
             if (!functions.containsKey(name)) {
                 throw new Exception("Function does not exist");

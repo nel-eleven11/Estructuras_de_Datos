@@ -57,9 +57,9 @@ public class interpreter {
         String[] arithmeticOp = {"+", "-", "*", "/", "mod", "exp", "sqrt"};
         String[] conditonalsSym = {"if", "cond", "when", "unless"};
 
-        if (lisp.get(0).equals("(")){
-            for (int i = 0; i < lisp.size(); i++){
-                if (lisp.get(i).equals(")")){
+        if (lisp.get(0).equals("(")) {
+            for (int i = lisp.size()-1; i >= 0; i--) {
+                if (lisp.get(i).equals(")")) {
                     lisp.remove(i);
                     lisp.remove(0);
                     break;
@@ -71,7 +71,7 @@ public class interpreter {
                     System.out.println("Token: " + lisp.get(i));
                     currentToken = lisp.get(i);
                 }
-                if (lisp.get(i).equals("(") && !currentToken.equalsIgnoreCase("defun") && !currentToken.equalsIgnoreCase("cond")){
+                if (lisp.get(i).equals("(") && !currentToken.equalsIgnoreCase("defun") && !currentToken.equalsIgnoreCase("cond")) {
                     ArrayList<String> microFunc = new ArrayList<>();
                     for (int j = i; j < lisp.size(); j++) {
                         if (lisp.get(j).equals(")")) {
@@ -86,13 +86,13 @@ public class interpreter {
                 }
 
                 if (currentToken.equalsIgnoreCase("defun")) {
-
                     int counter = 0;
                     String nombre = "";
                     ArrayList<String> body = new ArrayList<>();
                     ArrayList<String> params = new ArrayList<>();
-                    for (int j = i+1; j < lisp.size(); j++) {
 
+
+                    for (int j = i+1; j < lisp.size(); j++){
                         if (counter == 0) {
                             nombre = lisp.get(j);
                             counter++;
@@ -111,15 +111,20 @@ public class interpreter {
                             }
                         }
                         if (counter == 3) {
+                            i=j;
                             break;
                         }
-                        System.out.println("Nombre: " + nombre);
-                        System.out.println("Params: " + params);
-                        System.out.println("Body: " + body);
-                        stack.push(nombre);
-                        stack.push(params);
-                        stack.push(body);
+
                     }
+                    stack.push(body);
+                    stack.push(params);
+                    stack.push(nombre);
+
+                    System.out.println("Nombre: " + nombre);
+                    System.out.println("Params: " + params);
+                    System.out.println("Body: " + body);
+
+                    System.out.println(stack.size());
                 }
 
                 if(currentToken.equalsIgnoreCase("cond")){
@@ -147,6 +152,7 @@ public class interpreter {
                 }
 
 
+
                 if (Arrays.stream(reservedTokens).noneMatch(lisp.get(i)::equalsIgnoreCase) && !lisp.get(i).equals(")")){
                     stack.add(lisp.get(i));
                 }
@@ -154,8 +160,11 @@ public class interpreter {
                 if(stack.size() == tokenArguments.get(currentToken)){
 
                     if (currentToken.equalsIgnoreCase("defun")) {
+                        String nombre = String.valueOf(stack.pop());
+                        ArrayList<String> params = (ArrayList<String>) stack.pop();
+                        ArrayList<String> body = (ArrayList<String>) stack.pop();
 
-
+                        tokens.defun(nombre, params, body);
 
                     } else if (currentToken.equalsIgnoreCase("setq")) {
                         String valor = String.valueOf(stack.pop());
@@ -206,7 +215,12 @@ public class interpreter {
                 }
             }
         }
-        return String.valueOf(stack.pop());
+        if (stack.size() == 0) {
+            return null;
+        } else {
+            return String.valueOf(stack.pop());
+        }
+
     }
 }
 

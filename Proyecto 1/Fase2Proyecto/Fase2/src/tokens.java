@@ -5,6 +5,7 @@ Oscar Fuentes
 Proyecto 1 Algoritmos y Estructuras de datos
  */
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class tokens {
     /*
@@ -22,8 +23,13 @@ public class tokens {
     * @param value
     * @return void
      */
-    public static void defun(String function, String[] params, String[] body) {
-        functions.addFunction(function, new Object[]{params, body});
+    public static void defun(String function, ArrayList<String> params, ArrayList<String> body) {
+        ArrayList<ArrayList<String>> paramsAndBody = new ArrayList<>();
+        params.remove(0);
+        params.remove(params.size() - 1);
+        paramsAndBody.add(params);
+        paramsAndBody.add(body);
+        functions.addFunction(function, paramsAndBody);
     }
     /*
     * añade una constante

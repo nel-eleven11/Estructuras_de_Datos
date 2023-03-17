@@ -24,6 +24,10 @@ class interpreterTest {
         lisp.add(")");
         System.out.println(lisp);
         interpreter.readLisp(lisp);
+        System.out.println(functions.getFunction("funcion").get(0));
+
+
+
 
     }
 }

@@ -137,13 +137,18 @@ public class interpreter {
                 if(currentToken.equalsIgnoreCase("cond")){
                     ArrayList<String> condicion = new ArrayList<>();
                     ArrayList<String> consecuencias = new ArrayList<>();
+                    int abrir = 1;
+                    int cerrar = 0;
                     for (int j = i+1; j < lisp.size(); j++) {
                         if (lisp.get(j).equals(")")) {
+                            cerrar++;
                             break;
                         }
                         if (lisp.get(j).equals("(")) {
+                            abrir++;
                             for (int k = j; k < lisp.size(); k++) {
                                 if (lisp.get(k).equals(")")) {
+                                    cerrar++;
                                     j = k;
                                     break;
                                 }
@@ -192,14 +197,14 @@ public class interpreter {
 
                     } else if (Arrays.stream(conditonalsSym).anyMatch(currentToken::equalsIgnoreCase)) {
 
-                        //TODO: conditonals
-                        ArrayList<String> operadores;
-                        ArrayList<String> op1;
-                        ArrayList<String> op2;
-                        ArrayList<String> consecuencias;
 
-                        //String resultado = tokens.conditional(currentToken, operadores, op1, op2, consecuencias);
-                       // stack.add(String.valueOf(resultado));
+                        ArrayList<String> operadores = new ArrayList<>();
+                        ArrayList<String> op1 = new ArrayList<>();
+                        ArrayList<String> op2 = new ArrayList<>();
+                        ArrayList<String> consecuencias = new ArrayList<>();
+
+                        String resultado = tokens.conditional(currentToken, operadores, op1, op2, consecuencias);
+                        stack.add(String.valueOf(resultado));
 
 
 

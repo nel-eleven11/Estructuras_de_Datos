@@ -7,14 +7,14 @@ Proyecto 1 Algoritmos y Estructuras de datos
 import java.util.HashMap;
 
 public class  variables{
-    private static final HashMap<String, Object> variables = new HashMap<String, Object>();
+    private static final HashMap<String, String> variables = new HashMap<String, String>();
     /*
     añade varaibles a la lista de variables
     * @param name
     * @param value
     * @return void
      */
-    public static void addVariable(String name, Object value){
+    public static void addVariable(String name, String value){
         try {
             if (isValidRegex(name)) {
                 variables.put(name, value);
@@ -30,7 +30,7 @@ public class  variables{
     * @param name
     * @return Object
      */
-    public static Object getVariable(String name){
+    public static String getVariable(String name){
         try {
             if (!variables.containsKey(name)) {
                 throw new Exception("Variable does not exist");
@@ -89,6 +89,10 @@ public class  variables{
      */
     private static boolean isValidRegex(String name){
         return name.matches("[a-zA-Z]+");
+    }
+
+    public static HashMap<String, String> getVariables() {
+        return variables;
     }
 
 }

@@ -71,6 +71,19 @@ public class interpreter {
                     System.out.println("Token: " + lisp.get(i));
                     currentToken = lisp.get(i);
                 }
+
+                if (functions.getFunctions().containsKey(lisp.get(i)) || variables.getVariables().containsKey(lisp.get(i))) {
+                    if (functions.getFunctions().containsKey(lisp.get(i))) {
+                        System.out.println("Function");
+                        System.out.println("Token: " + lisp.get(i));
+                        currentToken = lisp.get(i);
+                    }
+                    else if (variables.getVariables().containsKey(lisp.get(i))) {
+                        lisp.remove(i);
+                        lisp.add(i, variables.getVariable(lisp.get(i)));
+                    }
+                }
+
                 if (lisp.get(i).equals("(") && !currentToken.equalsIgnoreCase("defun") && !currentToken.equalsIgnoreCase("cond")) {
                     ArrayList<String> microFunc = new ArrayList<>();
                     for (int j = i; j < lisp.size(); j++) {
@@ -119,12 +132,6 @@ public class interpreter {
                     stack.push(body);
                     stack.push(params);
                     stack.push(nombre);
-
-                    System.out.println("Nombre: " + nombre);
-                    System.out.println("Params: " + params);
-                    System.out.println("Body: " + body);
-
-                    System.out.println(stack.size());
                 }
 
                 if(currentToken.equalsIgnoreCase("cond")){

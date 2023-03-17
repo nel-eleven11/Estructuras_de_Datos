@@ -43,8 +43,12 @@ public class functions {
     * @param name
     * @return boolean
      */
-    public static boolean isValidRegex(String name){
+    private static boolean isValidRegex(String name){
         return name.matches("[a-zA-Z]+");
+    }
+
+    public static HashMap<String, ArrayList<ArrayList<String>>> getFunctions() {
+        return functions;
     }
 
 }

@@ -33,6 +33,8 @@ class interpreterTest {
     void evaluateExpressionCond(){
         ArrayList<String> lisp = new ArrayList<>();
         lisp.add("(");
+        lisp.add("print");
+        lisp.add("(");
         lisp.add("cond");
         lisp.add("(");
         lisp.add("(");
@@ -43,10 +45,11 @@ class interpreterTest {
         lisp.add("suspenso");
         lisp.add(")");
         lisp.add(")");
+        lisp.add(")");
 
         System.out.println(lisp);
         interpreter.readLisp(lisp);
-        System.out.println("");
+
 
 
     }

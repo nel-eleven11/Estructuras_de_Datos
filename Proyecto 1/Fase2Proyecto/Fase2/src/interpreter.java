@@ -9,9 +9,13 @@ import java.util.function.UnaryOperator;
 
 
 public class interpreter {
-
+    /**
+     * Tokens reservado en lisp
+     */
     private static final String[] reservedTokens = {"<", ">", "<=", ">=", "==", "!=", "listp", "atom", "symbolp", "numberp", "consp", "eq", "equal", "zerop", "oddp", "evenp", "and", "or", "not", "+", "-", "*", "/", "mod", "exp", "sqrt", "if", "cond", "when", "unless", "print", "setq", "defun", "quote"};
-
+    /**
+     * The number of arguments each token takes.
+     */
     private static final HashMap<String, Integer> tokenArguments = new HashMap<>() {{
         put("<", 2);
         put(">", 2);
@@ -48,6 +52,12 @@ public class interpreter {
         put("defun", 3);
         put("quote", 1);
     }};
+
+    /*
+     *verifica si el nombre de una funcion es valido
+     * @param ArrayList<String> lisp
+     * @return String
+     */
 
     public static String readLisp(ArrayList<String> lisp) {
 

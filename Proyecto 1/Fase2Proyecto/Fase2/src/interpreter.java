@@ -9,49 +9,7 @@ import java.util.function.UnaryOperator;
 
 
 public class interpreter {
-    /**
-     * Tokens reservado en lisp
-     */
-    private static final String[] reservedTokens = {"<", ">", "<=", ">=", "==", "!=", "listp", "atom", "symbolp", "numberp", "consp", "eq", "equal", "zerop", "oddp", "evenp", "and", "or", "not", "+", "-", "*", "/", "mod", "exp", "sqrt", "if", "cond", "when", "unless", "print", "setq", "defun", "quote"};
-    /**
-     * The number of arguments each token takes.
-     */
-    private static final HashMap<String, Integer> tokenArguments = new HashMap<>() {{
-        put("<", 2);
-        put(">", 2);
-        put("<=", 2);
-        put(">=", 2);
-        put("==", 2);
-        put("!=", 2);
-        put("listp", 1);
-        put("atom", 1);
-        put("symbolp", 1);
-        put("numberp", 1);
-        put("consp", 1);
-        put("eq", 2);
-        put("equal", 2);
-        put("zerop", 1);
-        put("oddp", 1);
-        put("evenp", 1);
-        put("and", 2);
-        put("or", 2);
-        put("not", 1);
-        put("+", 2);
-        put("-", 2);
-        put("*", 2);
-        put("/", 2);
-        put("mod", 2);
-        put("exp", 2);
-        put("sqrt", 1);
-        put("if", 3);
-        put("cond", 2);
-        put("when", 2);
-        put("unless", 2);
-        put("print", 1);
-        put("setq", 2);
-        put("defun", 3);
-        put("quote", 1);
-    }};
+
 
     /*
      *verifica si el nombre de una funcion es valido
@@ -77,7 +35,10 @@ public class interpreter {
                 }
             }
             for (int i = 0; i < lisp.size(); i++) {
-                if (Arrays.stream(reservedTokens).anyMatch(lisp.get(i)::equalsIgnoreCase)) {
+                System.out.println("Iteración: " + i + " Token: " + lisp.get(i));
+                System.out.println("Stack: " + stack);
+                System.out.println("Lista: " + lisp);
+                if (Arrays.stream(tokens.getReservedTokens()).anyMatch(lisp.get(i)::equalsIgnoreCase)) {
                     System.out.println("Reserved token");
                     System.out.println("Token: " + lisp.get(i));
                     currentToken = lisp.get(i);
@@ -108,14 +69,17 @@ public class interpreter {
                                 }
                             }
                         }
+                        System.out.println("Funcion: " + func);
 
                         lisp.subList(startIndex, endIndex).clear();
                         lisp.addAll(startIndex, func);
 
                     }
                     else if (variables.getVariables().containsKey(lisp.get(i))) {
+                        String valor = variables.getVariable(lisp.get(i));
+                        System.out.println("Valor: " + valor);
                         lisp.remove(i);
-                        lisp.add(i, variables.getVariable(lisp.get(i)));
+                        lisp.add(i, valor);
                     }
                 }
 
@@ -131,7 +95,14 @@ public class interpreter {
                     }
                     microFunc.add(")");
 
-                    stack.add(readLisp(microFunc));
+                    String returnVal = readLisp(microFunc);
+                    System.out.println("Sali");
+                    System.out.println("Stack Size: " + stack.size());
+                    if(returnVal != null) {
+                        stack.push(returnVal);
+                    }
+                    System.out.println("Stack Size: " + stack.size());
+
                 }
 
                 //Programación del caso especial de defun
@@ -208,78 +179,84 @@ public class interpreter {
 
 
 
-                if (Arrays.stream(reservedTokens).noneMatch(lisp.get(i)::equalsIgnoreCase) && !lisp.get(i).equals(")")){
+                if (Arrays.stream(tokens.getReservedTokens()).noneMatch(lisp.get(i)::equalsIgnoreCase) && !lisp.get(i).equals(")")){
                     stack.add(lisp.get(i));
                 }
 
-                if(stack.size() == tokenArguments.get(currentToken)){
+                try {
+                    if(stack.size() == tokens.getTokenArguments().get(currentToken)){
 
-                    if (currentToken.equalsIgnoreCase("defun")) {
-                        String nombre = String.valueOf(stack.pop());
-                        ArrayList<String> params = (ArrayList<String>) stack.pop();
-                        ArrayList<String> body = (ArrayList<String>) stack.pop();
 
-                        tokens.defun(nombre, params, body);
+                        if (currentToken.equalsIgnoreCase("defun")) {
+                            String nombre = String.valueOf(stack.pop());
+                            ArrayList<String> params = (ArrayList<String>) stack.pop();
+                            ArrayList<String> body = (ArrayList<String>) stack.pop();
 
-                    } else if (currentToken.equalsIgnoreCase("setq")) {
-                        String valor = String.valueOf(stack.pop());
-                        String variable = String.valueOf(stack.pop());
-                        tokens.setq(variable, valor);
-                    } else if (currentToken.equalsIgnoreCase("defconstant")) {
-                        String valor = String.valueOf(stack.pop());
-                        String variable = String.valueOf(stack.pop());
-                        tokens.setConst(variable, valor);
-                    } else if (Arrays.stream(arithmeticOp).anyMatch(currentToken::equalsIgnoreCase)) {
-                        String operador2 = String.valueOf(stack.pop());
-                        String operador1 = String.valueOf(stack.pop());
+                            tokens.defun(nombre, params, body);
 
-                        double a = Double.parseDouble(operador1);
-                        double b = Double.parseDouble(operador2);
-                        double result = tokens.arithmetic(a, b, currentToken);
-                        stack.add(String.valueOf(result));
+                        } else if (currentToken.equalsIgnoreCase("setq")) {
+                            String valor = String.valueOf(stack.pop());
+                            String variable = String.valueOf(stack.pop());
+                            tokens.setq(variable, valor);
+                            System.out.println();
+                            System.out.println("Varaiable " + variable + " seteada a " + valor);
+                            return null;
+                        } else if (Arrays.stream(arithmeticOp).anyMatch(currentToken::equalsIgnoreCase)) {
+                            String operador2 = String.valueOf(stack.pop());
+                            String operador1 = String.valueOf(stack.pop());
 
-                    } else if (Arrays.stream(conditonalsSym).anyMatch(currentToken::equalsIgnoreCase)) {
+                            double a = Double.parseDouble(operador1);
+                            double b = Double.parseDouble(operador2);
+                            double result = tokens.arithmetic(a, b, currentToken);
+                            stack.add(String.valueOf(result));
 
-                        ArrayList<String> cond = (ArrayList<String>) stack.pop();
-                        ArrayList<String> consecuencias = (ArrayList<String>) stack.pop();
-                        ArrayList<String> operadores = new ArrayList<>();
-                        ArrayList<String> op1 = new ArrayList<>();
-                        ArrayList<String> op2 = new ArrayList<>();
-                        String [] predicates = {"numberp", "symbolp", "listp", "zerop", "oddp", "evenp", "atom", "eq", "not", "and", "or", "<", ">", "<=", ">=", "==", "!="};
-                        for(int j = 0; j < cond.size(); j++) {
-                            if (Arrays.stream(predicates).anyMatch(cond.get(j)::equalsIgnoreCase)) {
-                                operadores.add(cond.get(j));
-                                op1.add(cond.get(j+1));
-                                op2.add(cond.get(j+2));
+                        } else if (Arrays.stream(conditonalsSym).anyMatch(currentToken::equalsIgnoreCase)) {
+
+                            ArrayList<String> cond = (ArrayList<String>) stack.pop();
+                            ArrayList<String> consecuencias = (ArrayList<String>) stack.pop();
+                            ArrayList<String> operadores = new ArrayList<>();
+                            ArrayList<String> op1 = new ArrayList<>();
+                            ArrayList<String> op2 = new ArrayList<>();
+                            String [] predicates = {"numberp", "symbolp", "listp", "zerop", "oddp", "evenp", "atom", "eq", "not", "and", "or", "<", ">", "<=", ">=", "==", "!="};
+                            for(int j = 0; j < cond.size(); j++) {
+                                if (Arrays.stream(predicates).anyMatch(cond.get(j)::equalsIgnoreCase)) {
+                                    operadores.add(cond.get(j));
+                                    op1.add(cond.get(j+1));
+                                    op2.add(cond.get(j+2));
+                                }
+
+                                if (cond.get(j).equals("t")) {
+                                    operadores.add(cond.get(j));
+                                    break;
+                                }
                             }
 
-                            if (cond.get(j).equals("t")) {
-                                operadores.add(cond.get(j));
-                                break;
-                            }
+                            String resultado = tokens.conditional(currentToken, operadores, op1, op2, consecuencias);
+                            stack.add(String.valueOf(resultado));
+
+
+
+                        } else if (Arrays.stream(predicatesSym).anyMatch(currentToken::equalsIgnoreCase)) {
+                            String operador2 = String.valueOf(stack.pop());
+                            String operador1 = String.valueOf(stack.pop());
+
+                            boolean result = tokens.pred(currentToken, operador1, operador2);
+                            stack.add(String.valueOf(result));
+
+                        } else if (currentToken.equalsIgnoreCase("quote")) {
+                            String quote = String.valueOf(stack.pop());
+                            stack.add(quote);
+                        } else if (currentToken.equalsIgnoreCase("print")) {
+                            String print = String.valueOf(stack.pop());
+
+                            stack.add(tokens.print(print));
                         }
-
-                        String resultado = tokens.conditional(currentToken, operadores, op1, op2, consecuencias);
-                        stack.add(String.valueOf(resultado));
-
-
-
-                    } else if (Arrays.stream(predicatesSym).anyMatch(currentToken::equalsIgnoreCase)) {
-                        String operador2 = String.valueOf(stack.pop());
-                        String operador1 = String.valueOf(stack.pop());
-
-                        boolean result = tokens.pred(currentToken, operador1, operador2);
-                        stack.add(String.valueOf(result));
-
-                    } else if (currentToken.equalsIgnoreCase("quote")) {
-                        String quote = String.valueOf(stack.pop());
-                        stack.add(quote);
-                    } else if (currentToken.equalsIgnoreCase("print")) {
-                        String print = String.valueOf(stack.pop());
-
-                        stack.add(tokens.print(print));
                     }
                 }
+                catch (Exception e){
+                    System.out.println("Error");
+                }
+
             }
         }
         if (stack.size() == 0) {
@@ -290,91 +267,3 @@ public class interpreter {
 
     }
 }
-
-/*
-
-    private static Object evaluate(String expression) {
-        String[] tokensL = expression.split("\\s+");
-        Stack<Object> stack = new Stack<>();
-        for (int i = tokensL.length - 1; i >= 0; i--) {
-            String token = tokensL[i];
-
-            if (isNumber(token)) {
-                stack.push(Double.parseDouble(token));
-            } else if (isOperator(token)) {
-                Object operand1 = stack.pop();
-                Object operand2 = stack.pop();
-                double result = (tokens.arithmetic((Double) operand1, (Double) operand2,token));
-                stack.push(result);
-            } else if (isLispExpression(token)) {
-                // Remove the first and last parentheses of the Lisp expression
-                String lispExpression = token.substring(1, token.length() - 1);
-                Object result = evaluate(lispExpression);
-                stack.push(result);
-            }
-        }
-        return stack.pop();
-    }
-
-    private static boolean isNumber(String token) {
-        try {
-            Integer.parseInt(token);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-
-    private static boolean isOperator(String token) {
-        return token.equals("+") || token.equals("-") || token.equals("*") || token.equals("/");
-    }
-
-    private static boolean isLispExpression(String token) {
-        return token.startsWith("(") && token.endsWith(")");
-    }
-
-    public static void evaluateExpression(String comando) {
-        String[] comandoSeparado = comando.split(" ");
-
-        System.out.println(comando);
-
-        for (int i = 0; i < comandoSeparado.length; i++) {
-            comandoSeparado[i] = comandoSeparado[i].trim();
-            System.out.println(comandoSeparado[i]);
-        }
-
-        for (int i = 0; i < comandoSeparado.length; i++) {
-            if (comandoSeparado[i].equals("(")) {
-
-            }
-        }
-
-        if (comandoSeparado[0].equals("(")) {
-            // Start of a Lisp expression
-            Stack<String> stack = new Stack<>();
-            stack.push("(");
-            for (int i = 1; i < comandoSeparado.length; i++) {
-                String token = comandoSeparado[i];
-                if (token.equals("(")) {
-                    stack.push("(");
-                } else if (token.equals(")")) {
-                    stack.pop();
-                    if (stack.isEmpty()) {
-                        // End of the Lisp expression
-                        String lispExpression = comando.substring(1, i + 1);
-                        System.out.println(lispExpression);
-                        Object result = evaluate(lispExpression);
-                        System.out.println(result); // Print the result
-                        break;
-                    }
-                }
-            }
-        } else {
-            // Not a Lisp expression, handle as a regular token
-
-
-
-        }
-    }
-
-*/

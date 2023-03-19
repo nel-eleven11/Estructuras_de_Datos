@@ -32,10 +32,10 @@ public class  variables{
      */
     public static String getVariable(String name){
         try {
-            if (!variables.containsKey(name)) {
-                throw new Exception("Variable does not exist");
-            } else {
+            if (variables.containsKey((String) name)) {
                 return variables.get(name);
+            } else {
+                throw new Exception("Variable does not exist");
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -43,50 +43,7 @@ public class  variables{
         }
     }
 
-    private static final HashMap<String, Object> constants= new HashMap<String, Object>();
-    /*
-    *añade una constante a la lista de constantes
-    * @param name
-    * @param value
-    * @return void
-     */
-    public static void addConstant(String name, Object value){
-        try {
-            if (isValidRegex(name)) {
-                if (!variables.containsKey(name)) {
-                    constants.put(name, value);
-                } else {
-                    throw new Exception("Constant already exists");
-                }
-            } else {
-                throw new Exception("Invalid constant name");
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-    /*
-    *retorna el valor de una constante
-    * @param name
-    * @return Object
-     */
-    public static Object getConstant(String name){
-        try {
-            if (!constants.containsKey(name)) {
-                throw new Exception("Constant does not exist");
-            } else {
-                return constants.get(name);
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return null;
-        }
-    }
-    /*
-    *verifica si el nombre de una variable o constante es valido
-    * @param name
-    * @return boolean
-     */
+
     private static boolean isValidRegex(String name){
         return name.matches("[a-zA-Z]+");
     }

@@ -6,6 +6,7 @@ Proyecto 1 Algoritmos y Estructuras de datos
  */
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class tokens {
     /*
@@ -36,14 +37,6 @@ public class tokens {
     * @param constants
     * @param value
     * @return void
-     */
-    public static void setConst(String constant, String value) {
-        variables.addConstant(constant, value);
-    }
-    /*
-    *retorna el valor de una variable
-    * @param variables
-    * @param name
      */
     public static double arithmetic(double a, double b, String op) {
         return arithmetic.verificarOp(a, b, op);
@@ -92,4 +85,58 @@ public class tokens {
     public static String conditional(String cond, ArrayList<String> op, ArrayList<String> a, ArrayList<String> b, ArrayList<String> consecuencias){
         return conditionals.verificarCondicion(cond, op, a, b, consecuencias);
     }
+
+    /**
+     * Tokens reservado en lisp
+     */
+    private static final String[] reservedTokens = {"<", ">", "<=", ">=", "==", "!=", "listp", "atom", "symbolp", "numberp", "consp", "eq", "equal", "zerop", "oddp", "evenp", "and", "or", "not", "+", "-", "*", "/", "mod", "exp", "sqrt", "if", "cond", "when", "unless", "print", "setq", "defun", "quote"};
+    /**
+     * The number of arguments each token takes.
+     */
+    private static final HashMap<String, Integer> tokenArguments = new HashMap<>() {{
+        put("<", 2);
+        put(">", 2);
+        put("<=", 2);
+        put(">=", 2);
+        put("==", 2);
+        put("!=", 2);
+        put("listp", 1);
+        put("atom", 1);
+        put("symbolp", 1);
+        put("numberp", 1);
+        put("consp", 1);
+        put("eq", 2);
+        put("equal", 2);
+        put("zerop", 1);
+        put("oddp", 1);
+        put("evenp", 1);
+        put("and", 2);
+        put("or", 2);
+        put("not", 1);
+        put("+", 2);
+        put("-", 2);
+        put("*", 2);
+        put("/", 2);
+        put("mod", 2);
+        put("exp", 2);
+        put("sqrt", 1);
+        put("if", 3);
+        put("cond", 2);
+        put("when", 2);
+        put("unless", 2);
+        put("print", 1);
+        put("setq", 2);
+        put("defun", 3);
+        put("quote", 1);
+    }};
+
+    public static HashMap<String, Integer> getTokenArguments() {
+        return tokenArguments;
+    }
+
+    public static String[] getReservedTokens() {
+        return reservedTokens;
+    }
+
+
 }

@@ -37,10 +37,27 @@ class interpreterTest {
         assertEquals(expected, result);
     }
 
+    @Test
     public void testAndOperator() {
         ArrayList<String> lisp = new ArrayList<>(Arrays.asList("(", "and", "(", ">", "5", "3", ")", "(", "<", "2", "1", ")", ")", "t", "nil"));
         String expected = "nil";
         String result = interpreter.readLisp(lisp);
 
+    }
+
+    @Test
+    void setqTest() {
+        ArrayList<String> lisp = new ArrayList<>(Arrays.asList("(","(","setq", "a", "5", ")","(","print", "a", ")",")"));
+        String expected = "5";
+        String result = interpreter.readLisp(lisp);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void defunTest() {
+        ArrayList<String> lisp = new ArrayList<>(Arrays.asList("(","defun","suma","(", "x", "y", ")","(","print", "(","+","x","y",")",")","(", "suma", "2", "5", ")",")"));
+        String expected = "7";
+        String result = interpreter.readLisp(lisp);
+        System.out.println(functions.getFunction("suma"));
     }
 }

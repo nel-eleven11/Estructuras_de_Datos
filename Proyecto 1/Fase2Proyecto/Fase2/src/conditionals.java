@@ -24,7 +24,7 @@ public class conditionals {
         String resp = "";
         switch (cond) {
             case "if" -> {
-                respuesta = predicates.verificar(op.get(0), a.get(0), b.get(0));
+                respuesta = predicates.verificar(op.get(0), a.get(0), b.get(0), "");
                 if (respuesta) {
                     resp = consecuencias.get(0);
                 } else {
@@ -38,7 +38,7 @@ public class conditionals {
             case "cond" -> {
                 if(op.get(op.size()-1).equals("t")){
                     for (int i = 0; i < op.size()-1; i++) {
-                        respuesta = predicates.verificar(op.get(i), a.get(i), b.get(i));
+                        respuesta = predicates.verificar(op.get(i), a.get(i), b.get(i), "");
                         if (respuesta) {
                             resp = consecuencias.get(i);
                         } else {
@@ -51,7 +51,7 @@ public class conditionals {
                 }
                 else{
                     for (int i = 0; i < op.size(); i++) {
-                        respuesta = predicates.verificar(op.get(i), a.get(i), b.get(i));
+                        respuesta = predicates.verificar(op.get(i), a.get(i), b.get(i), "");
                         if (respuesta) {
                             resp = consecuencias.get(i);
                         } else {
@@ -61,7 +61,7 @@ public class conditionals {
                 }
             }
             case "when" -> {
-                respuesta = predicates.verificar(op.get(0), a.get(0), b.get(0));
+                respuesta = predicates.verificar(op.get(0), a.get(0), b.get(0), "");
                 if (respuesta) {
                     resp = consecuencias.get(consecuencias.size() - 1);
                 } else {
@@ -69,7 +69,7 @@ public class conditionals {
                 }
             }
             case "unless" -> {
-                respuesta = predicates.verificar(op.get(0), a.get(0), b.get(0));
+                respuesta = predicates.verificar(op.get(0), a.get(0), b.get(0), "");
                 if (!respuesta) {
                     resp = consecuencias.get(consecuencias.size() - 1);
                 } else {

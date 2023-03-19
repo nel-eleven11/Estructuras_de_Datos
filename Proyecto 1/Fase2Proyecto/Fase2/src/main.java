@@ -43,6 +43,7 @@ public class main {
                         for(int i = 0; i < cont; i++){
                             items.add(")");
                         }
+                        cont = 0;
                     }else{
                         items.add(item);
 

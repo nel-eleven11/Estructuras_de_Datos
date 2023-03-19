@@ -1,1 +1,2 @@
-(defun suma (x y) (print( +x y ) )(suma 2 5))
+(defun suma (x y) (print ( + x y)) (suma 2 5))
+(listp '(a b c))

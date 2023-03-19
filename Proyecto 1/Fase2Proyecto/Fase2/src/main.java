@@ -27,8 +27,29 @@ public class main {
                 String data = myReader.nextLine();
                 lineas = data.split(" ");
                 int cont = 0;
+                String lista = "";
                 for (String item : lineas){
-                    if(item.contains("(") || item.contains(")")){
+                    //ver si es una lista
+                    if(item.contains("'(")||(cont > 0)){
+                        cont++;
+                        if(item.contains(")")){
+                            String [] temp = item.split("");
+                            String item1 = temp[0]+temp[1];
+                            item = "";
+                            for(int i = 2; i < temp.length; i++){
+                                item += temp[i];
+                            }
+                            lista += item1;
+                            items.add(lista);
+                            cont = 0;
+                        }
+                        else{
+                            lista += item + " ";
+                            item = "";
+                        }
+                    }
+                    //si no contiene lista
+                    if((item.contains("(") || item.contains(")"))&& (!item.contains("'("))){
                         while(item.contains("(") || item.contains(")")){
                             if(item.contains("(")){
                                 item = item.substring(1);
@@ -45,8 +66,9 @@ public class main {
                         }
                         cont = 0;
                     }else{
-                        items.add(item);
-
+                        if(item != ""){
+                            items.add(item);
+                        }
                     }
                 }
             }

@@ -29,9 +29,9 @@ public class predicates {
             case "zerop" -> resultado = a.equals("0");
             case "oddp" -> resultado = Integer.parseInt(a) % 2 != 0;
             case "evenp" -> resultado = Integer.parseInt(a) % 2 == 0;
-            case "atom" -> resultado = StringUtils.isAlpha(a) || StringUtils.isNumeric(a);
+            case "atom" -> resultado = !a.contains("'(");
             case "eq" -> resultado = a.equals(b);
-            case "listp" -> resultado = a.startsWith("'(") && a.endsWith(")");
+            case "listp" -> resultado = a.contains("'(");
             case ">" -> resultado = Integer.parseInt(a) > Integer.parseInt(b);
             case "<" -> resultado = Integer.parseInt(a) < Integer.parseInt(b);
             case ">=" -> resultado = Integer.parseInt(a) >= Integer.parseInt(b);
@@ -56,7 +56,6 @@ public class predicates {
             case "not" -> {
                 resultado = predicates.verificar(simbolo2, a, b, "");
                 resultado = !resultado;
-                break;
             }
             default -> JOptionPane.showMessageDialog(null, "Error: " + simbolo + " no es un predicado válido");
         }

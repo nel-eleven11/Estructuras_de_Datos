@@ -19,7 +19,7 @@ public class predicates {
 * @param b
 * @return boolean
  */
-    public static boolean verificar(String simbolo, String a, String b){
+    public static boolean verificar(String simbolo, String a, String b, String simbolo2){
         boolean resultado = false;
         String [] lista;
 
@@ -53,22 +53,15 @@ public class predicates {
                     }
                 }
             }
+            case "not" -> {
+                resultado = predicates.verificar(simbolo2, a, b, "");
+                resultado = !resultado;
+                break;
+            }
             default -> JOptionPane.showMessageDialog(null, "Error: " + simbolo + " no es un predicado válido");
         }
         return resultado;
     }
 
-    /**
-     * verifica el predicado not
-     * @param simbolo
-     * @param a
-     * @return boolean
-     */
-    public static boolean verificar(String simbolo, String a){
-        if(simbolo.equals("not")){
-            return !Boolean.parseBoolean(a);
-        }
-        return false;
-    }
 
 }

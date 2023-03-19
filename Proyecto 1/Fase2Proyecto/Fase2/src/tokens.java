@@ -59,8 +59,8 @@ public class tokens {
      * @param b
      * @return boolean
      */
-    public  static boolean pred(String simbolo,String a, String b){
-        return predicates.verificar(simbolo,a,b);
+    public  static boolean pred(String simbolo,String a, String b, String simobolo2){
+        return predicates.verificar(simbolo,a,b,simobolo2);
     }
     /**
      * print sirve para imprimir en consola

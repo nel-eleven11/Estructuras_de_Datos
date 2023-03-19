@@ -239,10 +239,24 @@ public class interpreter {
 
 
                         } else if (Arrays.stream(predicatesSym).anyMatch(currentToken::equalsIgnoreCase)) {
-                            String operador2 = String.valueOf(stack.pop());
-                            String operador1 = String.valueOf(stack.pop());
+                            String operador2 = "";
+                            String operador1 = "";
+                            String token2 = "";
+                            if(currentToken.equalsIgnoreCase("not")){
+                                operador2 = String.valueOf(stack.pop());
+                                operador1 = String.valueOf(stack.pop());
+                                token2 = String.valueOf(stack.pop());
 
-                            boolean result = tokens.pred(currentToken, operador1, operador2);
+                            }
+                            else if(currentToken.equalsIgnoreCase("atom")||currentToken.equalsIgnoreCase("listp")){
+                                operador1 = String.valueOf(stack.pop());
+                            }
+                            else{
+                                operador2 = String.valueOf(stack.pop());
+                                operador1 = String.valueOf(stack.pop());
+                            }
+
+                            boolean result = tokens.pred(currentToken, operador1, operador2,token2);
                             stack.add(String.valueOf(result));
 
                         } else if (currentToken.equalsIgnoreCase("quote")) {

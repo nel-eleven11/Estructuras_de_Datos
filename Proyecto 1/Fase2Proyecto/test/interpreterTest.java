@@ -3,54 +3,44 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+import java.util.Arrays;
 class interpreterTest {
 
     @Test
-    void readLisp() {
-        ArrayList<String> op = new ArrayList<>();
-        op.add("<");
-        ArrayList<String> a = new ArrayList<>();
-        a.add("1");
-        ArrayList<String> b = new ArrayList<>();
-        b.add("2");
-        ArrayList<String> consecuencias = new ArrayList<>();
-        consecuencias.add("hola");
-        assertEquals("hola", conditionals.verificarCondicion("if", op, a, b, consecuencias));
-        ArrayList<String> consecuencias2 = new ArrayList<>();
-        consecuencias2.add("hola");
-        assertEquals("hola", conditionals.verificarCondicion("cond", op, a, b, consecuencias2));
-        ArrayList<String> consecuencias3 = new ArrayList<>();
-        consecuencias3.add("hola");
-        assertEquals("hola", conditionals.verificarCondicion("when", op, a, b, consecuencias3));
-        ArrayList<String> consecuencias4 = new ArrayList<>();
-        consecuencias4.add("hola");
-        assertEquals("NIL", conditionals.verificarCondicion("unless", op, a, b, consecuencias4));
+    public void testReadLisp() {
+        ArrayList<String> lisp = new ArrayList<>(Arrays.asList("(", "+", "2", "3", ")"));
+        String result = interpreter.readLisp(lisp);
+        assertEquals("5", result);
+
+        lisp = new ArrayList<>(Arrays.asList("(", "*", "(", "+", "1", "2", ")", "3", ")"));
+        result = interpreter.readLisp(lisp);
+        assertEquals("9", result);
+
+        lisp = new ArrayList<>(Arrays.asList("(", "if", "(", "<", "1", "2", ")", "(", "+", "1", "2", ")", "(", "*", "3", "4", ")", ")"));
+        result = interpreter.readLisp(lisp);
+        assertEquals("3", result);
     }
 
+    @Test
+    public void testIfOperator() {
+        ArrayList<String> lisp = new ArrayList<>(Arrays.asList("(", "if", "(", ">", "5", "3", ")", "(", "+", "2", "2", ")", "(", "-", "2", "2", ")", ")"));
+        String expected = "4";
+        String result = interpreter.readLisp(lisp);
+        assertEquals(expected, result);
+    }
 
     @Test
-    void evaluateExpressionCond(){
-        ArrayList<String> lisp = new ArrayList<>();
-        lisp.add("(");
-        lisp.add("print");
-        lisp.add("(");
-        lisp.add("cond");
-        lisp.add("(");
-        lisp.add("(");
-        lisp.add("<");
-        lisp.add("1");
-        lisp.add("5");
-        lisp.add(")");
-        lisp.add("suspenso");
-        lisp.add(")");
-        lisp.add(")");
-        lisp.add(")");
+    public void testOrOperator() {
+        ArrayList<String> lisp = new ArrayList<>(Arrays.asList("(", "or", "(", ">", "5", "3", ")", "(", "<", "2", "1", ")", ")", "t", "nil"));
+        String expected = "t";
+        String result = interpreter.readLisp(lisp);
+        assertEquals(expected, result);
+    }
 
-        System.out.println(lisp);
-        interpreter.readLisp(lisp);
-
-
+    public void testAndOperator() {
+        ArrayList<String> lisp = new ArrayList<>(Arrays.asList("(", "and", "(", ">", "5", "3", ")", "(", "<", "2", "1", ")", ")", "t", "nil"));
+        String expected = "nil";
+        String result = interpreter.readLisp(lisp);
 
     }
 }

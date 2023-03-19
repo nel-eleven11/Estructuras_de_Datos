@@ -62,6 +62,23 @@ public class main {
 
     public static void main(String[] args) {
 
-    }
+        JOptionPane.showMessageDialog(null, "Bienvenido al interprete de Lisp");
+        while(true){
+            String opcion = JOptionPane.showInputDialog("Ingrese el numero de la opcion que desea realizar: \n 1. Leer archivo \n 2. Salir");
+            if(opcion.equals("1")){
+                String nombreDelArchivo = JOptionPane.showInputDialog("Ingrese el nombre del archivo que desea leer");
+                importFile(nombreDelArchivo);
+                ArrayList<String> lisp = getItems();
+                System.out.println(lisp);
+                interpreter.readLisp(lisp);
+                break;
+            }else if(opcion.equals("2")){
+                System.exit(0);
+            }else{
+                JOptionPane.showMessageDialog(null, "Opcion no valida");
+            }
+        }
 
+
+    }
 }

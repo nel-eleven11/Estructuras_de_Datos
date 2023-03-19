@@ -71,9 +71,8 @@ public class interpreter {
                         i = startIndex-1;
                     }
                     else if (variables.getVariables().containsKey(lisp.get(i))) {
-                        String valor = variables.getVariable(lisp.get(i));
-                        lisp.remove(i);
-                        lisp.add(i, valor);
+                        lisp.add(i, variables.getVariable(lisp.get(i)));
+                        lisp.remove(i+1);
                     }
                 }
 
@@ -156,11 +155,9 @@ public class interpreter {
                 }
 
                 //Algoritmo de interpretación recursivo
-
                 if (lisp.get(i).equals("(") && !currentToken.equalsIgnoreCase("defun") && !currentToken.equalsIgnoreCase("cond")) {
-
                     ArrayList<String> microFunc = new ArrayList<>();
-                    int ParenthesisCounter = 1;
+                    int ParenthesisCounter = 0;
 
                     for (int j = i; j < lisp.size(); j++) {
                         if (lisp.get(j).equals("(")) {
@@ -180,7 +177,6 @@ public class interpreter {
                     if(returnVal != null) {
                         stack.push(returnVal);
                     }
-
                 }
 
                 if (Arrays.stream(tokens.getReservedTokens()).noneMatch(lisp.get(i)::equalsIgnoreCase) && !lisp.get(i).equals(")") && !lisp.get(i).equals("(")) {
@@ -195,6 +191,7 @@ public class interpreter {
                             ArrayList<String> body = (ArrayList<String>) stack.pop();
 
                             tokens.defun(nombre, params, body);
+
 
                         } else if (currentToken.equalsIgnoreCase("setq")) {
                             String valor = String.valueOf(stack.pop());

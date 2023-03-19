@@ -1,2 +1,1 @@
-((setq x 5)))
-(setq y 3)
+(defun suma (x y) (print(+x y ) )(suma 2 5))

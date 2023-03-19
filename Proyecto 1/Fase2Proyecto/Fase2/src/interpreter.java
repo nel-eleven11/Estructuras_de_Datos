@@ -35,12 +35,7 @@ public class interpreter {
                 }
             }
             for (int i = 0; i < lisp.size(); i++) {
-                System.out.println("Iteración: " + i + " Token: " + lisp.get(i));
-                System.out.println("Stack: " + stack);
-                System.out.println("Lista: " + lisp);
                 if (Arrays.stream(tokens.getReservedTokens()).anyMatch(lisp.get(i)::equalsIgnoreCase)) {
-                    System.out.println("Reserved token");
-                    System.out.println("Token: " + lisp.get(i));
                     currentToken = lisp.get(i);
                 }
 
@@ -69,49 +64,27 @@ public class interpreter {
                                 }
                             }
                         }
-                        System.out.println("Funcion: " + func);
 
-                        lisp.subList(startIndex, endIndex).clear();
-                        lisp.addAll(startIndex, func);
+                        lisp.subList(startIndex-1, endIndex).clear();
+                        lisp.addAll(startIndex-1, func);
 
+                        i = startIndex-1;
                     }
                     else if (variables.getVariables().containsKey(lisp.get(i))) {
                         String valor = variables.getVariable(lisp.get(i));
-                        System.out.println("Valor: " + valor);
                         lisp.remove(i);
                         lisp.add(i, valor);
                     }
                 }
 
-                //Algoritmo de interpretación recursivo
-                if (lisp.get(i).equals("(") && !currentToken.equalsIgnoreCase("defun") && !currentToken.equalsIgnoreCase("cond")) {
-                    ArrayList<String> microFunc = new ArrayList<>();
-                    for (int j = i; j < lisp.size(); j++) {
-                        if (lisp.get(j).equals(")")) {
-                            i = j;
-                            break;
-                        }
-                        microFunc.add(lisp.get(j));
-                    }
-                    microFunc.add(")");
-
-                    String returnVal = readLisp(microFunc);
-                    System.out.println("Sali");
-                    System.out.println("Stack Size: " + stack.size());
-                    if(returnVal != null) {
-                        stack.push(returnVal);
-                    }
-                    System.out.println("Stack Size: " + stack.size());
-
-                }
 
                 //Programación del caso especial de defun
-                if (currentToken.equalsIgnoreCase("defun")) {
+                if (currentToken.equalsIgnoreCase("defun") && !lisp.get(i).equals("(")){
                     int counter = 0;
                     String nombre = "";
                     ArrayList<String> body = new ArrayList<>();
                     ArrayList<String> params = new ArrayList<>();
-
+                    int bodyCounter = 0;
 
                     for (int j = i+1; j < lisp.size(); j++){
                         if (counter == 0) {
@@ -127,22 +100,27 @@ public class interpreter {
                         }
                         else if (counter == 2) {
                             body.add(lisp.get(j));
-                            if (lisp.get(j).equals(")")) {
+                            if (lisp.get(j).equals("(")) {
+                                bodyCounter++;
+                            } else if (lisp.get(j).equals(")")) {
+                                bodyCounter--;
+                            }
+
+                            if (bodyCounter == 0) {
                                 counter++;
                             }
                         }
                         if (counter == 3) {
                             i=j;
-                            break;
+                        break;
                         }
-
                     }
                     stack.push(body);
                     stack.push(params);
                     stack.push(nombre);
                 }
 
-                if(currentToken.equalsIgnoreCase("cond")){
+                if(currentToken.equalsIgnoreCase("cond") && !lisp.get(i).equals("(")){
                     ArrayList<String> condicion = new ArrayList<>();
                     ArrayList<String> consecuencias = new ArrayList<>();
                     int abrir = 1;
@@ -177,16 +155,40 @@ public class interpreter {
                     stack.push(condicion);
                 }
 
+                //Algoritmo de interpretación recursivo
 
+                if (lisp.get(i).equals("(") && !currentToken.equalsIgnoreCase("defun") && !currentToken.equalsIgnoreCase("cond")) {
 
-                if (Arrays.stream(tokens.getReservedTokens()).noneMatch(lisp.get(i)::equalsIgnoreCase) && !lisp.get(i).equals(")")){
+                    ArrayList<String> microFunc = new ArrayList<>();
+                    int ParenthesisCounter = 1;
+
+                    for (int j = i; j < lisp.size(); j++) {
+                        if (lisp.get(j).equals("(")) {
+                            ParenthesisCounter++;
+                        }
+                        else if (lisp.get(j).equals(")")) {
+                            ParenthesisCounter--;
+                        }
+                        if (ParenthesisCounter == 0) {
+                            i = j;
+                            break;
+                        }
+                        microFunc.add(lisp.get(j));
+                    }
+                    microFunc.add(")");
+                    String returnVal = readLisp(microFunc);
+                    if(returnVal != null) {
+                        stack.push(returnVal);
+                    }
+
+                }
+
+                if (Arrays.stream(tokens.getReservedTokens()).noneMatch(lisp.get(i)::equalsIgnoreCase) && !lisp.get(i).equals(")") && !lisp.get(i).equals("(")) {
                     stack.add(lisp.get(i));
                 }
 
                 try {
                     if(stack.size() == tokens.getTokenArguments().get(currentToken)){
-
-
                         if (currentToken.equalsIgnoreCase("defun")) {
                             String nombre = String.valueOf(stack.pop());
                             ArrayList<String> params = (ArrayList<String>) stack.pop();
@@ -254,7 +256,7 @@ public class interpreter {
                     }
                 }
                 catch (Exception e){
-                    System.out.println("Error");
+
                 }
 
             }

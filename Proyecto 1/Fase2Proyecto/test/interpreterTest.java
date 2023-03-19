@@ -56,8 +56,9 @@ class interpreterTest {
     @Test
     void defunTest() {
         ArrayList<String> lisp = new ArrayList<>(Arrays.asList("(","defun","suma","(", "x", "y", ")","(","print", "(","+","x","y",")",")","(", "suma", "2", "5", ")",")"));
-        String expected = "7";
+        String expected = "7.0";
         String result = interpreter.readLisp(lisp);
-        System.out.println(functions.getFunction("suma"));
+
+        assertEquals(expected, result);
     }
 }

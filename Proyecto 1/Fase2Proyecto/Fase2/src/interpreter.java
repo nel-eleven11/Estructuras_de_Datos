@@ -197,8 +197,6 @@ public class interpreter {
                             String valor = String.valueOf(stack.pop());
                             String variable = String.valueOf(stack.pop());
                             tokens.setq(variable, valor);
-                            System.out.println();
-                            System.out.println("Varaiable " + variable + " seteada a " + valor);
                             return null;
                         } else if (Arrays.stream(arithmeticOp).anyMatch(currentToken::equalsIgnoreCase)) {
                             String operador2 = String.valueOf(stack.pop());

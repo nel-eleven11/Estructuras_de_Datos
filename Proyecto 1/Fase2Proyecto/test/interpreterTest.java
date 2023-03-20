@@ -58,7 +58,6 @@ class interpreterTest {
         ArrayList<String> lisp = new ArrayList<>(Arrays.asList("(","defun","suma","(", "x", "y", ")","(","print", "(","+","x","y",")",")","(", "suma", "2", "5", ")",")"));
         String expected = "7.0";
         String result = interpreter.readLisp(lisp);
-
         assertEquals(expected, result);
     }
 

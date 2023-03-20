@@ -61,4 +61,22 @@ class interpreterTest {
 
         assertEquals(expected, result);
     }
+
+    @Test
+    void atomTest() {
+        ArrayList<String> lisp = new ArrayList<>(Arrays.asList("(","atom","'(a b c)", ")"));
+        String expected = "false";
+        String result = interpreter.readLisp(lisp);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void listpTest() {
+        ArrayList<String> lisp = new ArrayList<>(Arrays.asList("(","listp","a", ")"));
+        String expected = "false";
+        String result = interpreter.readLisp(lisp);
+
+        assertEquals(expected, result);
+    }
 }

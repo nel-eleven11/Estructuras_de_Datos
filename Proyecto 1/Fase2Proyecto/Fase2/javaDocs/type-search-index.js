@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"arithmetic"},{"p":"<Unnamed>","l":"conditionals"},{"p":"<Unnamed>","l":"functions"},{"p":"<Unnamed>","l":"interpreter"},{"p":"<Unnamed>","l":"main"},{"p":"<Unnamed>","l":"predicates"},{"p":"<Unnamed>","l":"tokens"},{"p":"<Unnamed>","l":"variables"}];updateSearchResults();

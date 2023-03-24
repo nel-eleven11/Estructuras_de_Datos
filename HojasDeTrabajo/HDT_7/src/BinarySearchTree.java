@@ -16,7 +16,7 @@ public class BinarySearchTree <K, V> {
 
     private TreeNode<K, V> root;
     private Comparator<K> keyComparator;
-    private IGetKey<K, V> keyGenerator;
+
     private boolean isEmpty;
     private int count;
 
@@ -26,29 +26,14 @@ public class BinarySearchTree <K, V> {
      @param _keyComparator the comparator to use for comparing keys
      @param _keyGenerator the key generator to use for generating keys from values
      */
-    public BinarySearchTree(Comparator<K> _keyComparator, IGetKey<K, V> _keyGenerator) {
+    public BinarySearchTree(Comparator<K> _keyComparator) {
         root = null;
         keyComparator = _keyComparator;
-        keyGenerator = _keyGenerator;
         isEmpty = true;
         count = 0;
     }
 
-    /**
 
-     Adds the specified value to the tree
-     @param value the value to be added
-     */
-    public void add(V value) {
-        TreeNode<K, V> newNode = new TreeNode<K, V>((K)keyGenerator.getKeyFromValue(value), value);
-        if (isEmpty) { //Es el primer elemento que se inserta
-            root = newNode;
-            isEmpty = false;
-            count++;
-        } else { //Ya hay elementos insertados
-            internalInsert(root, newNode);
-        }
-    }
 
     /**
 

@@ -151,7 +151,7 @@ public class Controlador {
             for(String item : items){
                 oracionFinal = oracionFinal + "*"+ item + "* ";
             }
-            oracionFinal = "No se pudo detectar el idioma del texto: \n" + oracionFinal;
+            oracionFinal = "Ninguna de las palabras se encuentra en el diccioario, no se pudo traducir la oración: \n" + oracionFinal;
         }
         else{
             //se traduce la oracion

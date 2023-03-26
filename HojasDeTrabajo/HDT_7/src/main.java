@@ -24,20 +24,29 @@ public class main {
         String menu = "";
         String menu2 = "";
         while (!menu.equals("3")){
-            menu = JOptionPane.showInputDialog("Elija una opción: \n 1. Traducir texto\n 2. Mostrar Diccionario\n3. Salir");
+            menu = JOptionPane.showInputDialog("Elija una opción: \n 1. Traducir texto\n 2. Mostrar Diccionario\n 3. Salir");
             switch (menu){
                 case"1":
                     //se traduce el texto
-                    menu2 = JOptionPane.showInputDialog("Elija a qué idioma desea traducir el texto: \n1. Inglés\n 2. Francés\n3. Español");
+                    menu2 = JOptionPane.showInputDialog("Elija a qué idioma desea traducir el texto: \n1. Inglés\n2. Francés\n3. Español");
                     switch (menu2){
                         case "1":
-                            JOptionPane.showMessageDialog(null, "Traducción al inglés: \n" + Micontrolador.TraducirTexto(Micontrolador.getItems1(), "ingles"));
+                            //se traduce al ingles
+                            for(int i = 0; i < Micontrolador.getItems1().size(); i++){
+                                JOptionPane.showMessageDialog(null, "Traducción al inglés: \n" + Micontrolador.TraducirTexto(Micontrolador.getItems1().get(i), "ingles"));
+                            }
                             break;
                         case "2":
-                            JOptionPane.showMessageDialog(null, "Traducción al francés: \n" + Micontrolador.TraducirTexto(Micontrolador.getItems1(), "frances"));
+                            //se traduce al frances
+                            for(int i = 0; i < Micontrolador.getItems1().size(); i++) {
+                                JOptionPane.showMessageDialog(null, "Traducción al francés: \n" + Micontrolador.TraducirTexto(Micontrolador.getItems1().get(i), "frances"));
+                            }
                             break;
                         case "3":
-                            JOptionPane.showMessageDialog(null, "Traducción al español: \n" + Micontrolador.TraducirTexto(Micontrolador.getItems1(), "espanol"));
+                            //se traduce al español
+                            for(int i = 0; i < Micontrolador.getItems1().size(); i++) {
+                                JOptionPane.showMessageDialog(null, "Traducción al español: \n" + Micontrolador.TraducirTexto(Micontrolador.getItems1().get(i), "espaniol"));
+                            }
                             break;
                         default:
                             JOptionPane.showMessageDialog(null, "Opción no válida");
@@ -47,7 +56,7 @@ public class main {
                 case "2":
                     //se muestra el diccionario
                     JOptionPane.showMessageDialog(null, "Palabras que están en el diccionario:");
-                    Micontrolador.MostrarDiccionario();
+                    JOptionPane.showMessageDialog(null , Micontrolador.MostrarDiccionario());
 
                     break;
                 case "3":

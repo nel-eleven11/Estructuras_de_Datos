@@ -11,14 +11,20 @@ import java.util.Scanner;
 
 public class Controlador {
 
-    private static BinarySearchTree<String, String> ArbolIngles = new BinarySearchTree<String, String>(new ComparadorPalabras());
-    private static BinarySearchTree<String, String> ArbolEspaniol = new BinarySearchTree<String, String>(new ComparadorPalabras());
-    private static BinarySearchTree<String, String> ArbolFrances = new BinarySearchTree<String, String>(new ComparadorPalabras());
+    private static final BinarySearchTree<String, Palabra> ArbolIngles = new BinarySearchTree<String, Palabra>(new ComparadorPalabras());
+    private static final BinarySearchTree<String, Palabra> ArbolEspaniol = new BinarySearchTree<String, Palabra>(new ComparadorPalabras());
+    private static final BinarySearchTree<String, Palabra> ArbolFrances = new BinarySearchTree<String, Palabra>(new ComparadorPalabras());
 
-    ArrayList<String> items = new ArrayList<String>();
+    ArrayList<String> itemsDicc = new ArrayList<String>();
 
-    public ArrayList<String> getItems() {
-        return items;
+    ArrayList<String> itemsTexto = new ArrayList<String>();
+
+    public ArrayList<String> getItems1() {
+        return itemsTexto;
+    }
+
+    public ArrayList<String> getItems2() {
+        return itemsDicc;
     }
 
     public void importFile(String nombreDelArchivo){
@@ -30,10 +36,20 @@ public class Controlador {
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
-                String [] parts = data.split(",");
-                for (int i = 0; i < parts.length; i++) {
-                    items.add(parts[i]);
+                String [] parts = null;
+                if(nombreDelArchivo.equals("diccionario")){
+                    parts = data.split(",");
+                    for (int i = 0; i < parts.length; i++) {
+                        itemsDicc.add(parts[i]);
+                    }
                 }
+                if(nombreDelArchivo.equals("texto")){
+                    parts = data.split(" ");
+                    for (int i = 0; i < parts.length; i++) {
+                        itemsTexto.add(parts[i]);
+                    }
+                }
+
             }
             myReader.close();
         } catch (FileNotFoundException e) {
@@ -43,26 +59,34 @@ public class Controlador {
     }
 
     public void AgregarPalabras(ArrayList<String> items){
-        for (int i = 0; i < items.size(); i++) {
-            if(i%3==0){
-                ArbolIngles.insert(items.get(i), items.get(i+1));
-                ArbolEspaniol.insert(items.get(i+1), items.get(i));
-                ArbolFrances.insert(items.get(i+2), items.get(i));
-            }
-            if(i%3==1){
-                ArbolIngles.insert(items.get(i), items.get(i-1));
-                ArbolEspaniol.insert(items.get(i), items.get(i-1));
-                ArbolFrances.insert(items.get(i+1), items.get(i-1));
-            }
-            if(i%3==2){
-                ArbolIngles.insert(items.get(i), items.get(i-2));
-                ArbolEspaniol.insert(items.get(i), items.get(i-2));
-                ArbolFrances.insert(items.get(i), items.get(i-2));
-            }
+        for (int i = 0; i < items.size(); i = i + 3) {
+            String [] lista = {items.get(i), items.get(i+1), items.get(i+2)};
+            ArbolIngles.insert(items.get(i), new Palabra(lista[0], lista[0], lista[1], lista[2]));
+            ArbolEspaniol.insert(items.get(i+1), new Palabra(lista[1], lista[0], lista[1], lista[2]));
+            ArbolFrances.insert(items.get(i+2), new Palabra(lista[2], lista[0], lista[1], lista[2]));
         }
     }
 
+    public String TraducirTexto(ArrayList<String> items, String idioma){
+        String oracionFinal = "";
+        for (int i = 0; i < items.size(); i++) {
+            Palabra pal = (Palabra)ArbolIngles.search(items.get(i));
 
+            if(pal != null){
+                String palabra = pal.getPEspanol();
+                oracionFinal = oracionFinal + palabra + " ";
+            }
+            else{
+                oracionFinal = oracionFinal + "*"+ items.get(i) + "* ";
+            }
+
+        }
+        return oracionFinal;
+    }
+
+    public void MostrarDiccionario(){
+        ArbolIngles.InOrderTraversal(new VerPalabra<String, Palabra>());
+    }
 
 
 }

@@ -5,8 +5,11 @@ hdt 7
  */
 
 /**
- * @author MAAG
+ * The type Tree node.
  *
+ * @param <K> the type parameter
+ * @param <V> the type parameter
+ * @author MAAG
  */
 public class TreeNode <K, V>{
 
@@ -17,6 +20,12 @@ public class TreeNode <K, V>{
     private TreeNode<K,V> right;
     private TreeNode<K,V> parent;
 
+    /**
+     * Instantiates a new Tree node.
+     *
+     * @param _key   the key
+     * @param _value the value
+     */
     public TreeNode(K _key, V _value) {
         setKey(_key);
         setValue(_value);
@@ -26,6 +35,8 @@ public class TreeNode <K, V>{
     }
 
     /**
+     * Gets key.
+     *
      * @return the key
      */
     public K getKey() {
@@ -33,6 +44,8 @@ public class TreeNode <K, V>{
     }
 
     /**
+     * Sets key.
+     *
      * @param key the key to set
      */
     public void setKey(K key) {
@@ -40,6 +53,8 @@ public class TreeNode <K, V>{
     }
 
     /**
+     * Gets value.
+     *
      * @return the value
      */
     public V getValue() {
@@ -47,6 +62,8 @@ public class TreeNode <K, V>{
     }
 
     /**
+     * Sets value.
+     *
      * @param value the value to set
      */
     public void setValue(V value) {
@@ -54,6 +71,8 @@ public class TreeNode <K, V>{
     }
 
     /**
+     * Gets left.
+     *
      * @return the left
      */
     public TreeNode<K, V> getLeft() {
@@ -61,6 +80,8 @@ public class TreeNode <K, V>{
     }
 
     /**
+     * Sets left.
+     *
      * @param left the left to set
      */
     public void setLeft(TreeNode<K, V> left) {
@@ -68,6 +89,8 @@ public class TreeNode <K, V>{
     }
 
     /**
+     * Gets right.
+     *
      * @return the right
      */
     public TreeNode<K, V> getRight() {
@@ -75,6 +98,8 @@ public class TreeNode <K, V>{
     }
 
     /**
+     * Sets right.
+     *
      * @param right the right to set
      */
     public void setRight(TreeNode<K, V> right) {
@@ -82,6 +107,8 @@ public class TreeNode <K, V>{
     }
 
     /**
+     * Gets parent.
+     *
      * @return the parent
      */
     public TreeNode<K, V> getParent() {
@@ -89,6 +116,8 @@ public class TreeNode <K, V>{
     }
 
     /**
+     * Sets parent.
+     *
      * @param parent the parent to set
      */
     public void setParent(TreeNode<K, V> parent) {

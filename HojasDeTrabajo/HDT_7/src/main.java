@@ -8,9 +8,19 @@ import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+
+/**
+ * The type Main.
+ * clase main
+ */
 public class main {
 
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
 
         Controlador Micontrolador = new Controlador();

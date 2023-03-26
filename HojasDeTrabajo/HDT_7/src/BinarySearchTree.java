@@ -9,10 +9,12 @@ Este ABB fue tomado del repositorio de ejemplos de Moisés
  */
 
 /**
- * @author MAAG
+ * The type Binary search tree.
  *
+ * @param <K> the type parameter
+ * @param <V> the type parameter
+ * @author MAAG
  */
-
 public class BinarySearchTree <K, V> {
 
 
@@ -23,10 +25,9 @@ public class BinarySearchTree <K, V> {
     private int count;
 
     /**
-
-     Constructs an empty binary search tree with the specified comparator and key generator
-     @param _keyComparator the comparator to use for comparing keys
-     @param _keyGenerator the key generator to use for generating keys from values
+     * Constructs an empty binary search tree with the specified comparator and key generator
+     *
+     * @param _keyComparator the comparator to use for comparing keys
      */
     public BinarySearchTree(Comparator<K> _keyComparator) {
         root = null;
@@ -69,10 +70,10 @@ public class BinarySearchTree <K, V> {
     }
 
     /**
-
-     Inserts a node with the specified key and value into the tree
-     @param id the key to be inserted
-     @param value the value to be inserted
+     * Inserts a node with the specified key and value into the tree
+     *
+     * @param id    the key to be inserted
+     * @param value the value to be inserted
      */
     public void insert(K id, V value) {
 
@@ -87,19 +88,19 @@ public class BinarySearchTree <K, V> {
     }
 
     /**
-
-     Returns true if the tree is empty, false otherwise
-     @return true if the tree is empty, false otherwise
+     * Returns true if the tree is empty, false otherwise
+     *
+     * @return true if the tree is empty, false otherwise
      */
     public boolean isEmpty() {
         return isEmpty;
     }
 
     /**
-
-     Searches the tree for the node with the specified key and returns its value
-     @param key the key to search for
-     @return the value of the node with the specified key, or null if no such node exists
+     * Searches the tree for the node with the specified key and returns its value
+     *
+     * @param key the key to search for
+     * @return the value of the node with the specified key, or null if no such node exists
      */
     public V search(K key) {
         return (V) internalSearch(root, key);
@@ -135,6 +136,11 @@ public class BinarySearchTree <K, V> {
 
     }
 
+    /**
+     * In order traversal.
+     *
+     * @param visitador the visitador
+     */
     public void InOrderTraversal(ITraversal<K, V> visitador) {
         internalInOrder(root, visitador);
     }
@@ -158,6 +164,11 @@ public class BinarySearchTree <K, V> {
     }
 
 
+    /**
+     * Post order traversal.
+     *
+     * @param visitador the visitador
+     */
     public void PostOrderTraversal(ITraversal<K, V> visitador) {
         internalPostOrder(root, visitador);
     }
@@ -181,6 +192,11 @@ public class BinarySearchTree <K, V> {
     }
 
 
+    /**
+     * Pre order traversal.
+     *
+     * @param visitador the visitador
+     */
     public void PreOrderTraversal(ITraversal<K, V> visitador) {
         internalPreOrder(root, visitador);
     }
@@ -203,6 +219,12 @@ public class BinarySearchTree <K, V> {
 
     }
 
+    /**
+     * Delete v.
+     *
+     * @param id the id
+     * @return the v
+     */
     public V delete(K id) {
         if (!isEmpty()) {
             int result = keyComparator.compare(root.getKey(), id);
@@ -450,6 +472,11 @@ public class BinarySearchTree <K, V> {
         }
     }
 
+    /**
+     * Count int.
+     *
+     * @return the int
+     */
     public int count() {
         return count;
     }

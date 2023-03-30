@@ -4,14 +4,14 @@ Joaquín Puente 22296
 HDT 8
  */
 
-public class proceso {
+public class proceso implements Comparable<proceso>{
 
     private String nombre;
     private int nice;
     private String nombre_usuario;
     private int prioridad;
 
-    public proceso(String nombre, int nice, String nombre_usuario, int prioridad) {
+    public proceso(String nombre, String nombre_usuario, int nice, int prioridad) {
         this.nombre = nombre;
         this.nice = nice;
         this.nombre_usuario = nombre_usuario;
@@ -48,6 +48,16 @@ public class proceso {
 
     public void setPrioridad(int prioridad) {
         this.prioridad = prioridad;
+    }
+
+    public int compareTo(proceso o) {
+        if (this.prioridad > o.prioridad) {
+            return -1;
+        }
+        if (this.prioridad < o.prioridad) {
+            return 1;
+        }
+        return 0;
     }
 
 }

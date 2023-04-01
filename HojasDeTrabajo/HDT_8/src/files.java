@@ -1,31 +1,28 @@
-/*
-Nelson García 22434
-Joaquín Puente 22296
-HDT 8
- */
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class controlador {
+public class files {
 
-    ArrayList<String> items = new ArrayList<String>();
+    private static ArrayList<ArrayList<String>> items = new ArrayList<>();
 
-    public void importFile(String nombreDelArchivo){
+    public static void importFile(){
         //Ruta del archivo
-        String fpath = ".\\src\\"+nombreDelArchivo+".txt";
+        String fpath = ".\\src\\procesos.txt";
 
         try {
             File myObj = new File(fpath);
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
+                ArrayList<String> subItems = new ArrayList<>();
                 String data = myReader.nextLine();
                 String [] datos = data.split(",");
-                for(int i = 0; i < datos.length; i++){
-                    items.add(datos[i]);
-                }
+                subItems.addAll(Arrays.asList(datos));
+                int prioridad = Integer.parseInt(datos[2]) + 120;
+                subItems.add(String.valueOf(prioridad));
+                items.add(subItems);
             }
             myReader.close();
         } catch (FileNotFoundException e) {
@@ -34,7 +31,8 @@ public class controlador {
         }
     }
 
-    public ArrayList<String> getItems() {
+    public static ArrayList<ArrayList<String>> getItems() {
         return items;
     }
+
 }

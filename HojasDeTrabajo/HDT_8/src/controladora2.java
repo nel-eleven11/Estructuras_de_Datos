@@ -13,7 +13,7 @@ public class controladora2 {
         return _colaPrioridad.poll();
     }
 
-    public static PriorityQueue<proceso> get_colaPrioridad() {
-        return _colaPrioridad;
+    public static boolean isEmpty() {
+        return _colaPrioridad.isEmpty();
     }
 }

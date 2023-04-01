@@ -25,4 +25,12 @@ public class controladora {
         return _colaPrioridad.isEmpty();
     }
 
+    public static VectorHeap<proceso> getColaPrioridad() {
+        return _colaPrioridad;
+    }
+
+    public static void setColaPrioridad(VectorHeap<proceso> colaPrioridad) {
+        _colaPrioridad = colaPrioridad;
+    }
+
 }

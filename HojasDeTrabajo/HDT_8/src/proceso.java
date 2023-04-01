@@ -52,10 +52,10 @@ public class proceso implements Comparable<proceso>{
 
     public int compareTo(proceso o) {
         if (this.prioridad > o.prioridad) {
-            return -1;
+            return 1;
         }
         if (this.prioridad < o.prioridad) {
-            return 1;
+            return -1;
         }
         return 0;
     }

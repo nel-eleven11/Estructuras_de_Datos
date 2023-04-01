@@ -8,10 +8,14 @@ import java.util.ArrayList;
 
 public class main {
     public static void main(String[] args) {
+
+
         ArrayList<proceso> procesos = new ArrayList<>();
 
+        //Importar los procesos del txt
         files.importFile();
 
+        //Crear los objetos procesos
         for (int i = 0; i < files.getItems().size(); i++) {
             String nombre = files.getItems().get(i).get(0);
             String nombre_usuario = files.getItems().get(i).get(1);
@@ -21,6 +25,7 @@ public class main {
             procesos.add(new proceso(nombre, nombre_usuario, nice, prioridad));
         }
 
+        //Odenar los procesos con el VectorHeap
         System.out.println("VectorHeap");
         controladora.buildQueue(procesos);
         while (!controladora.isEmpty()) {
@@ -28,17 +33,12 @@ public class main {
             System.out.println(proceso.getNombre() + ", " + proceso.getNombre_usuario() + ", " + proceso.getNice() + ", PR=" + proceso.getPrioridad());
         }
 
+        //Ordenar los procesos con el PriorityQueue
         System.out.println("\nPriorityQueue");
         controladora2.buildQueue(procesos);
         while (!controladora2.isEmpty()) {
             proceso proceso = controladora2.getProceso();
             System.out.println(proceso.getNombre() + ", " + proceso.getNombre_usuario() + ", " + proceso.getNice() + ", PR=" + proceso.getPrioridad());
         }
-
-
-
-
-
-
     }
 }

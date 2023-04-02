@@ -8,15 +8,31 @@ Clase obtenida de la documentaicón del libro
 import java.util.*;
 import java.lang.Comparable;
 
+/**
+ * The type Vector heap.
+ *
+ * @param <E> the type parameter
+ */
 public class VectorHeap<E extends Comparable<E>> implements IPriorityQueue<E> {
 
+    /**
+     * The Data.
+     */
     protected Vector<E> data;
 
+    /**
+     * Instantiates a new Vector heap.
+     */
     public VectorHeap()
     {
         data = new Vector<E>();
     }
 
+    /**
+     * Instantiates a new Vector heap.
+     *
+     * @param v the v
+     */
     public VectorHeap(Vector<E> v)
     {
         int i;
@@ -27,21 +43,44 @@ public class VectorHeap<E extends Comparable<E>> implements IPriorityQueue<E> {
         }
     }
 
+    /**
+     * Parent int.
+     *
+     * @param i the
+     * @return the int
+     */
     protected static int parent(int i)
     {
         return (i-1)/2;
     }
 
+    /**
+     * Left int.
+     *
+     * @param i the
+     * @return the int
+     */
     protected static int left(int i)
     {
         return 2*i+1;
     }
 
+    /**
+     * Right int.
+     *
+     * @param i the
+     * @return the int
+     */
     protected static int right(int i)
     {
         return (2*i+1) + 1;
     }
 
+    /**
+     * Percolate up.
+     *
+     * @param leaf the leaf
+     */
     protected void percolateUp(int leaf)
     {
         int parent = parent(leaf);
@@ -62,6 +101,11 @@ public class VectorHeap<E extends Comparable<E>> implements IPriorityQueue<E> {
         percolateUp(data.size()-1);
     }
 
+    /**
+     * Push down root.
+     *
+     * @param root the root
+     */
     protected void pushDownRoot(int root)
     {
         int heapSize = data.size();

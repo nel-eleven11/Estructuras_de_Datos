@@ -4,6 +4,7 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$/.idea" />
     <content url="file://$MODULE_DIR$/javadoc" />
+    <content url="file://$MODULE_DIR$/lib" />
     <content url="file://$MODULE_DIR$/src">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
@@ -12,5 +13,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="bailey" level="project" />
   </component>
 </module>

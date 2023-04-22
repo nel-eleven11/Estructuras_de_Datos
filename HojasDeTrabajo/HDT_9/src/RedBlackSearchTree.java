@@ -4,7 +4,7 @@
 import java.util.Iterator;
 import java.util.Comparator;
 import java.util.Random;
-import structure5.RedBlackTree;
+
 
 /**
  * Red black trees, are binary trees that guarantee the following three properties. <BR>

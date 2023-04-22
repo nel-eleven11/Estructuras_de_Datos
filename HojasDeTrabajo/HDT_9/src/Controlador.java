@@ -63,7 +63,7 @@ public class Controlador {
         EstructuraArbol arbol = Factory.getArbol(tipoArbol);
         for (int i = 0; i < items.size(); i = i + 2) {
             String [] lista = {items.get(i), items.get(i+1)};
-            arbol.add(new Palabra(lista[0], lista[0], lista[1]));
+            arbol.add(new Palabra(lista[0],lista[1]));
         }
     }
 

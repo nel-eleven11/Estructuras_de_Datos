@@ -4,25 +4,17 @@
  *Clase palabra
  *
  **/
-public class Palabra {
+public class Palabra implements Comparable<Palabra> {
 
-    private String Palabra;
     private String PIngles;
     private String PEspanol;
 
-    public Palabra(String Palabra, String PIngles, String PEspanol) {
-        this.Palabra = Palabra;
+    public Palabra(String PIngles, String PEspanol) {
+
         this.PIngles = PIngles;
         this.PEspanol = PEspanol;
     }
 
-    public String getPalabra() {
-        return Palabra;
-    }
-
-    public void setPalabra(String palabra) {
-        Palabra = palabra;
-    }
 
     public String getPIngles() {
         return PIngles;
@@ -38,5 +30,10 @@ public class Palabra {
 
     public void setPEspanol(String PEspanol) {
         this.PEspanol = PEspanol;
+    }
+
+    @Override
+    public int compareTo(Palabra palabra) {
+        return PIngles.compareTo(palabra.getPIngles());
     }
 }

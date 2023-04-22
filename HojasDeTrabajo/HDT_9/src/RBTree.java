@@ -6,8 +6,6 @@
  **/
 
 
-import structure5.RedBlackSearchTree;
-
 public class RBTree<T extends Comparable<T>> implements EstructuraArbol<T> {
 
     private RedBlackSearchTree<T> miArbolInterno;

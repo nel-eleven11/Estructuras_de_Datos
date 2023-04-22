@@ -13,7 +13,7 @@ public class ComparadorPalabras<T> implements Comparator<T> {
     public int compare(T o1, T o2) {
         Palabra p1 = (Palabra) o1;
         Palabra p2 = (Palabra) o2;
-        return p1.getPalabra().compareTo(p2.getPalabra());
+        return p1.getPIngles().compareTo(p2.getPIngles());
     }
 
 }

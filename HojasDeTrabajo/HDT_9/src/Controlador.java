@@ -114,12 +114,12 @@ public class Controlador {
             for (int i = 0; i < itemsDicc.size(); i = i + 2) {
                 if (item.equals(itemsDicc.get(i))) {
                     idiomaDetectado = true;
-                    break;
+
                 }
             }
         }
 
-        if(!idiomaDetectado){
+        if(idiomaDetectado == false){
             for(String item : items){
                 oracionFinal = oracionFinal + "*"+ item + "* ";
             }
@@ -127,7 +127,7 @@ public class Controlador {
         }
         else{
             for (int i = 0; i < items.size(); i++) {
-                Palabra pal = (Palabra)arbol.get(items.get(i));
+                Palabra pal = (Palabra) arbol.get(new Palabra(items.get(i), ""));
 
                 if(pal != null){
                     String palabra = ((Palabra) arbol.get(items.get(i))).getPEspanol();

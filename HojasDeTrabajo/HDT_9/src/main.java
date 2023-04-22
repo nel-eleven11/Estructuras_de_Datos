@@ -38,28 +38,15 @@ public class main {
             switch (menu) {
                 case "1":
                     arbol = JOptionPane.showInputDialog("Elija el tipo de arbol que desea utilizar: \n 1. RBTree\n 2. SplayTree\n 3. AVLTree");
-                    switch (arbol) {
-                        case "1":
-                            Micontrolador.AgregarPalabras(Micontrolador.itemsDicc, "1");
-                            for(int i = 0; i < Micontrolador.getItems1().size(); i++){
-                                JOptionPane.showMessageDialog(null, "Traducción al español: \n" + Micontrolador.TraducirTexto(Micontrolador.getItems1().get(i), "1"));
-                            }
-                            break;
-                        case "2":
-                            Micontrolador.AgregarPalabras(Micontrolador.itemsDicc, "2");
-                            for(int i = 0; i < Micontrolador.getItems1().size(); i++){
-                                JOptionPane.showMessageDialog(null, "Traducción al español: \n" + Micontrolador.TraducirTexto(Micontrolador.getItems1().get(i), "2"));
-                            }
-                            break;
-                        case "3":
-                            Micontrolador.AgregarPalabras(Micontrolador.itemsDicc, "3");
-                            for(int i = 0; i < Micontrolador.getItems1().size(); i++){
-                                JOptionPane.showMessageDialog(null, "Traducción al español: \n" + Micontrolador.TraducirTexto(Micontrolador.getItems1().get(i), "3"));
-                            }
-                            break;
-                        default:
-                            JOptionPane.showMessageDialog(null, "Opción no válida");
-                            break;
+                    int NumArbol = Integer.parseInt(arbol);
+                    if(NumArbol<1 || NumArbol>3){
+                        JOptionPane.showMessageDialog(null, "Opción no válida");
+                        break;
+                    }
+                    else{
+                        Micontrolador.AgregarPalabras(Micontrolador.getItems2(), arbol);
+                        for(int i = 0; i < Micontrolador.getItems1().size(); i++){
+                            JOptionPane.showMessageDialog(null, "Traducción al español: \n" + Micontrolador.TraducirTexto(Micontrolador.getItems1().get(i), arbol));}
                     }
                     break;
                 case "2":

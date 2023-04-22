@@ -1,5 +1,6 @@
 house,casa
 dog,perro
+dogs,perros
 homework,tarea
 woman,mujer
 town,pueblo

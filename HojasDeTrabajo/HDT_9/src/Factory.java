@@ -16,14 +16,15 @@ public class Factory {
      * @return the estructura arbol
      */
     public static EstructuraArbol getArbol(String tipoArbol){
-        if (tipoArbol.equals("1")){
-            return new RBTree();
-        } else if (tipoArbol.equals("2")){
-            return new SplayArbol();
-        } else if (tipoArbol.equals("3")){
-            return new AVLArbol();
-        } else {
-            return null;
+        switch (tipoArbol){
+            case "1":
+                return new RBTree();
+            case "2":
+                return new SplayArbol();
+            case "3":
+                return new AVLArbol();
+            default:
+                return null;
         }
     }
 }

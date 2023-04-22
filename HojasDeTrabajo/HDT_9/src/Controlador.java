@@ -15,6 +15,8 @@ import javax.swing.JOptionPane;
  */
 public class Controlador {
 
+    EstructuraArbol arbol;
+
     /**
      * The Items texto.
      */
@@ -90,7 +92,7 @@ public class Controlador {
      * @param tipoArbol the tipo arbol
      */
     public void AgregarPalabras(ArrayList<String> items, String tipoArbol){
-        EstructuraArbol arbol = Factory.getArbol(tipoArbol);
+        arbol = Factory.getArbol(tipoArbol);
         for (int i = 0; i < items.size(); i = i + 2) {
             String [] lista = {items.get(i), items.get(i+1)};
             arbol.add(new Palabra(lista[0],lista[1]));
@@ -105,11 +107,11 @@ public class Controlador {
      * @return the string
      */
     public String TraducirTexto(ArrayList<String> items, String tipoArbol){
-        EstructuraArbol arbol = Factory.getArbol(tipoArbol);
+        arbol = Factory.getArbol(tipoArbol);
         String oracionFinal = "";
         Boolean idiomaDetectado = false;
         for(String item : items) {
-            for (int i = 0; i < itemsDicc.size(); i = i + 3) {
+            for (int i = 0; i < itemsDicc.size(); i = i + 2) {
                 if (item.equals(itemsDicc.get(i))) {
                     idiomaDetectado = true;
                     break;

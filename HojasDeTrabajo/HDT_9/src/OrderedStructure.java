@@ -1,7 +1,7 @@
 // Interface for container classes that manipulated ordered structures.
 // (c) 1998, 2001 duane a. bailey
 
-package structure5;
+
 
 /**
  * An interface that supports a Collection whose values are kept

@@ -1,6 +1,6 @@
 // Interface of a basic, mutable data structure.
 // (c) 2001 duane a. bailey
-package structure5;
+
 import java.util.Iterator;
 import java.util.Collection;
 

@@ -1,8 +1,9 @@
 // A basic, abstract implementation of a Structure.
 // (c) 2001 duane a. bailey
-package structure5;
+import  structure5.AbstractIterator;
 import java.util.Collection;
 import java.util.Iterator;
+
 
 /**
  * An abstract implementation of a basic, mutable data structure.
@@ -117,6 +118,6 @@ public abstract class AbstractStructure<E> implements Structure<E>
      */
     public Collection<E> values()
     {
-        return new StructCollection<E>(this);
+        return new StructCollection<E>( this);
     }
 }

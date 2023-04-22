@@ -6,10 +6,18 @@
  **/
 
 
+/**
+ * The type Rb tree.
+ *
+ * @param <T> the type parameter
+ */
 public class RBTree<T extends Comparable<T>> implements EstructuraArbol<T> {
 
     private RedBlackSearchTree<T> miArbolInterno;
 
+    /**
+     * Instantiates a new Rb tree.
+     */
     public RBTree() {
         miArbolInterno = new RedBlackSearchTree<T>();
     }
@@ -39,6 +47,11 @@ public class RBTree<T extends Comparable<T>> implements EstructuraArbol<T> {
         return miArbolInterno.isEmpty();
     }
 
+    /**
+     * Get internal tree red black search tree.
+     *
+     * @return the red black search tree
+     */
     public RedBlackSearchTree<T> getInternalTree(){
         return miArbolInterno;
     }

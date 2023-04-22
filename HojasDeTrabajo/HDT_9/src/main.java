@@ -11,8 +11,17 @@ import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+
+/**
+ * The type Main.
+ */
 public class main {
 
+    /**
+     * Main.
+     *
+     * @param args the args
+     */
     public static void main (String [] args){
 
         Controlador Micontrolador = new Controlador();

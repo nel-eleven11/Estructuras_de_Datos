@@ -5,10 +5,18 @@
  *
  **/
 
+/**
+ * The type Avl arbol.
+ *
+ * @param <T> the type parameter
+ */
 public class AVLArbol <T extends Comparable<T>> implements EstructuraArbol<T>{
 
     private AVLTree<T> miArbolInterno;
 
+    /**
+     * Instantiates a new Avl arbol.
+     */
     public AVLArbol(){
         miArbolInterno = new AVLTree<T>();
     }
@@ -38,6 +46,11 @@ public class AVLArbol <T extends Comparable<T>> implements EstructuraArbol<T>{
         return miArbolInterno.isEmpty();
     }
 
+    /**
+     * Get internal tree avl tree.
+     *
+     * @return the avl tree
+     */
     public AVLTree<T> getInternalTree(){
         return miArbolInterno;
     }

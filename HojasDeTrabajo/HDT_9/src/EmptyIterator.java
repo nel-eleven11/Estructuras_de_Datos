@@ -7,6 +7,11 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * The type Empty iterator.
+ *
+ * @param <E> the type parameter
+ */
 public class EmptyIterator<E> implements Iterator<E> {
 
     @Override

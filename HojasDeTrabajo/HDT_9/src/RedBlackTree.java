@@ -7,11 +7,12 @@ import structure5.*;
 
 /**
  * This class implements a single node of a red-black tree.  It is a
- * recursive structure.  Relationships between nodes are 
+ * recursive structure.  Relationships between nodes are
  * doubly linked, with parent and child references.  Many characteristics
  * of trees may be detected with static methods.
  *
- * @version $Id: RedBlackTree.java 22 2006-08-21 19:27:26Z bailey $
+ * @param <E> the type parameter
+ * @version $Id : RedBlackTree.java 22 2006-08-21 19:27:26Z bailey $
  * @author, 2002 duane a. bailey, evan s. sandhaus
  * @see structure.AVLTree
  * @see structure.BinaryTree
@@ -52,8 +53,9 @@ public class RedBlackTree<E extends Comparable<E>>
 
     /**
      * A one-time constructor, for constructing empty trees.
-     * @post Private constructor that generates the EMPTY node
+     *
      * @return the EMPTY node; leaves have EMPTY as children
+     * @post Private constructor that generates the EMPTY node
      */
     public RedBlackTree()
     {
@@ -63,11 +65,11 @@ public class RedBlackTree<E extends Comparable<E>>
         isRed = false;  // empty trees below the leaves should be black
     }
 
-     /**
-     * Constructs a red-black tree with no children, value of the node 
+    /**
+     * Constructs a red-black tree with no children, value of the node
      * is provided by the user
      *
-     * @param value A (possibly null) value to be referenced by node
+     * @param v the v
      * @pre v is a non-null Comparable
      * @post constructs a single node red-black tree
      */
@@ -105,7 +107,7 @@ public class RedBlackTree<E extends Comparable<E>>
     /**
      * Set this node to be a red node
      *
-     * @post sets this node red 
+     * @post sets this node red
      */
     protected void setRed()
     {
@@ -113,8 +115,10 @@ public class RedBlackTree<E extends Comparable<E>>
     }
 
     /**
-     * Set this node to be a red or black node, depending on value of 
+     * Set this node to be a red or black node, depending on value of
      * <code>isRed</code>.
+     *
+     * @param isRed the is red
      * @post sets this node red or black, depending on boolean isRed
      */
     protected void setRed(boolean isRed)
@@ -124,6 +128,7 @@ public class RedBlackTree<E extends Comparable<E>>
 
     /**
      * Set this node to be black
+     *
      * @post sets this node black
      */
     protected void setBlack()
@@ -131,12 +136,12 @@ public class RedBlackTree<E extends Comparable<E>>
         isRed = false;
     }
 
-  
+
     /**
      * Returns value associated with this node
      *
-     * @post Returns value associated with this node
      * @return The node's value
+     * @post Returns value associated with this node
      */
     protected E value()
     {
@@ -146,8 +151,8 @@ public class RedBlackTree<E extends Comparable<E>>
     /**
      * Get left subtree of current node
      *
-     * @post Returns reference to left subtree, or null
      * @return The left subtree of this node
+     * @post Returns reference to left subtree, or null
      */
     protected RedBlackTree<E> left()
     {
@@ -157,8 +162,8 @@ public class RedBlackTree<E extends Comparable<E>>
     /**
      * Get right subtree of current node
      *
-     * @post Returns reference to right subtree, or null
      * @return The right subtree of this node
+     * @post Returns reference to right subtree, or null
      */
     protected RedBlackTree<E> right()
     {
@@ -169,8 +174,8 @@ public class RedBlackTree<E extends Comparable<E>>
     /**
      * Get reference to parent of this node
      *
-     * @post Returns reference to parent node, or null
      * @return Reference to parent of this node
+     * @post Returns reference to parent node, or null
      */
     protected RedBlackTree<E> parent()
     {
@@ -180,8 +185,8 @@ public class RedBlackTree<E extends Comparable<E>>
     /**
      * Update the parent of this node
      *
-     * @post Re-parents this node to parent reference, or null
      * @param newParent A reference to the new parent of this node
+     * @post Re -parents this node to parent reference, or null
      */
     protected void setParent(RedBlackTree<E> newParent)
     {
@@ -192,11 +197,10 @@ public class RedBlackTree<E extends Comparable<E>>
      * Update the left subtree of this node.  Parent of the left subtree
      * is updated consistently.  Existing subtree is detached
      *
+     * @param newLeft the new left
      * @pre newLeft is a non-null RedBlackTree node, possibly EMPTY
-     * @post does nothing to the EMPTY node;
-     *       else makes newLeft a left child of this, 
-     *       and this newLeft's parent
-    */
+     * @post does nothing to the EMPTY node;       else makes newLeft a left child of this,        and this newLeft's parent
+     */
     protected void setLeft(RedBlackTree<E> newLeft)
     {
         if (isEmpty()) return;
@@ -209,11 +213,10 @@ public class RedBlackTree<E extends Comparable<E>>
      * Update the right subtree of this node.  Parent of the right subtree
      * is updated consistently.  Existing subtree is detached
      *
+     * @param newRight the new right
      * @pre newRight is a non-null RedBlackTree node, possibly EMPTY
-     * @post does nothing to the EMPTY node;
-     *       else makes newRight a right child of this, 
-     *       and this newRight's parent
-    */
+     * @post does nothing to the EMPTY node;       else makes newRight a right child of this,        and this newRight's parent
+     */
     protected void setRight(RedBlackTree<E> newRight)
     {
         if (isEmpty()) return;
@@ -225,8 +228,8 @@ public class RedBlackTree<E extends Comparable<E>>
     /**
      * Determine if this node is a left child
      *
-     * @post Returns true if this is a left child of parent
      * @return True iff this node is a left child of parent
+     * @post Returns true if this is a left child of parent
      */
     public boolean isLeftChild(){
         if (parent() == null) return false;
@@ -236,8 +239,8 @@ public class RedBlackTree<E extends Comparable<E>>
     /**
      * Determine if this node is a right child
      *
-     * @post Returns true if this is a right child of parent
      * @return True iff this node is a right child of parent
+     * @post Returns true if this is a right child of parent
      */
     public boolean isRightChild(){
         if (parent() == null) return false;
@@ -247,20 +250,20 @@ public class RedBlackTree<E extends Comparable<E>>
     /**
      * Returns true if tree is empty.
      *
-     * @post Returns true iff the tree rooted at node is empty
      * @return True iff tree is empty
+     * @post Returns true iff the tree rooted at node is empty
      */
     public boolean isEmpty()
     {
         return value == null;
     }
 
-    
+
     /**
      * Determine if this node is a root.
      *
-     * @post Returns true if this is a root node
      * @return true iff this is a root node
+     * @post Returns true if this is a root node
      */
     protected boolean isRoot()
     {
@@ -270,9 +273,9 @@ public class RedBlackTree<E extends Comparable<E>>
     /**
      * Returns reference to root of tree containing n
      *
+     * @return Root of tree
      * @pre this node not EMPTY
      * @post Returns the root of the tree node n
-     * @return Root of tree
      */
     protected RedBlackTree<E> root()
     {
@@ -287,8 +290,8 @@ public class RedBlackTree<E extends Comparable<E>>
      * Compute the depth of a node.  The depth is the path length
      * from node to root
      *
-     * @post Returns the depth of a node in the tree
      * @return The path length to root of tree
+     * @post Returns the depth of a node in the tree
      */
     public int depth(){
         if (parent() == null) return 0;
@@ -359,13 +362,12 @@ public class RedBlackTree<E extends Comparable<E>>
 
     /**
      * Add a value to the red black tree, performing neccisary rotations
-     * and adjustments. 
+     * and adjustments.
      *
      * @param c The value to be added to the tree.
      * @return The new value of the root.
      * @pre c is a non-null Comparable value
-     * @post adds a comparable value to the red-black tree;
-     *       returns the modified tree
+     * @post adds a comparable value to the red-black tree;       returns the modified tree
      */
     public RedBlackTree<E> add(E c)
     {
@@ -379,6 +381,7 @@ public class RedBlackTree<E extends Comparable<E>>
      * Insert a (possibly duplicate) value to red-black search tree
      *
      * @param c The value to be inserted into the tree.
+     * @return the red black tree
      * @pre c is a non-null Comparable value
      * @post c is inserted into search tree rooted at this
      */
@@ -414,7 +417,7 @@ public class RedBlackTree<E extends Comparable<E>>
     }
 
     /**
-     * Takes a red node and, restores the red nodes of the tree  
+     * Takes a red node and, restores the red nodes of the tree
      * to maintain red-black properties if this node has a red parent.
      *
      * @pre this node is a red node; if parent is red, violates property
@@ -494,8 +497,8 @@ public class RedBlackTree<E extends Comparable<E>>
      * is removed, and no guarantee is made concerning which of duplicate
      * values are removed.  Value returned is no longer part of the
      * structure
-     * 
-     * @param val Value sought to be removed from tree
+     *
+     * @param c the c
      * @return Actual value removed from tree
      * @pre c is non-null
      * @post the value is removed; resulting tree is returned
@@ -562,11 +565,9 @@ public class RedBlackTree<E extends Comparable<E>>
      * This method restores black-height balance to such an imbalanced
      * tree.
      *
-     * @pre a black node has just been removed above this;
-     *      this node is the root of a black-height balanced tree, but
-     *      the ancestors of this node are shy one black node on this branch
+     * @pre a black node has just been removed above this;      this node is the root of a black-height balanced tree, but      the ancestors of this node are shy one black node on this branch
      * @post the tree is black-height balanced
-    */
+     */
     protected void blackFixup()
     {
         // if root - we're actually balanced; if red, set to black
@@ -672,9 +673,8 @@ public class RedBlackTree<E extends Comparable<E>>
     /**
      * Determines if the red black search tree contains a value
      *
-     * @param val The value sought.  Should be non-null
+     * @param c the c
      * @return True iff the tree contains a value "equals to" sought value
-     *
      * @pre c is non-null
      * @post returns true iff c is contained within the tree
      */
@@ -682,11 +682,13 @@ public class RedBlackTree<E extends Comparable<E>>
     {
         return locate(c);
     }
-    
+
     /**
      * Locates a value in the search tree or returns the largest value
      * less than <code>value</code>.
      *
+     * @param c the c
+     * @return the red black tree
      * @pre c is non-null
      * @post returns a node of this tree that contains c, or null
      */
@@ -703,6 +705,7 @@ public class RedBlackTree<E extends Comparable<E>>
      * Returns a c-equivalent value from tree, or null.
      *
      * @param c The c-equivalent value we are looking for in the tree.
+     * @return the e
      * @pre c is non-null
      * @post returns a c-equivalent value from tree, or null
      */
@@ -716,6 +719,7 @@ public class RedBlackTree<E extends Comparable<E>>
     /**
      * Returns true if this node is consistently structured
      *
+     * @return the boolean
      * @post returns true if this node is consistently structured
      */
     public boolean consistency()
@@ -726,6 +730,7 @@ public class RedBlackTree<E extends Comparable<E>>
     /**
      * Returns the black height of this subtree.
      *
+     * @return the int
      * @pre tree is black-height balanced
      * @post returns the black height of this subtree
      */
@@ -738,7 +743,8 @@ public class RedBlackTree<E extends Comparable<E>>
 
     /**
      * Returns true if no red node in subtree has red children
-     * 
+     *
+     * @return the boolean
      * @post returns true if no red node in subtree has red children
      */
     protected boolean redConsistency()
@@ -751,6 +757,7 @@ public class RedBlackTree<E extends Comparable<E>>
     /**
      * Returns true if black properties of tree are correct
      *
+     * @return the boolean
      * @post returns true if black properties of tree are correct
      */
     protected boolean blackConsistency()
@@ -776,6 +783,9 @@ public class RedBlackTree<E extends Comparable<E>>
 
     /**
      * Checks to make sure that the black height of tree is height
+     *
+     * @param height the height
+     * @return the boolean
      * @post checks to make sure that the black height of tree is height
      */
     protected boolean consistentlyBlackHeight(int height)
@@ -824,8 +834,9 @@ public class RedBlackTree<E extends Comparable<E>>
         return ok;
     }
     */
+
     /**
-     *
+     * Print.
      */
     public void print()
     {
@@ -836,11 +847,10 @@ public class RedBlackTree<E extends Comparable<E>>
     }
 
     /**
-     * Returns an in-order iterator over the subtree rooted at 
+     * Returns an in-order iterator over the subtree rooted at
      * this node.
-     * 
-     * @return An in-order iterator over the subtree rooted at 
-     * this node.
+     *
+     * @return An in-order iterator over the subtree rooted at  this node.
      */
     public Iterator<E> iterator(){
         return new RedBlackIterator<E>(this);
@@ -863,7 +873,7 @@ public class RedBlackTree<E extends Comparable<E>>
     /**
      * Returns a string representing the tree rooted at this node.
      * <font color="#FF0000">WARNING</font> this can be a very long string.
-     * 
+     *
      * @return A string representing the tree rooted at this node.
      */
     public String treeString(){

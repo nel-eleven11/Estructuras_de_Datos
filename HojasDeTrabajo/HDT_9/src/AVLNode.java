@@ -7,13 +7,36 @@
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
+
+/**
+ * The type Avl node.
+ *
+ * @param <E> the type parameter
+ */
 public class AVLNode<E extends Comparable<E>> {
 
+    /**
+     * The Value.
+     */
     E value;
+    /**
+     * The Left.
+     */
     AVLNode<E> left;
+    /**
+     * The Right.
+     */
     AVLNode<E> right;
+    /**
+     * The Height.
+     */
     int height;
 
+    /**
+     * Instantiates a new Avl node.
+     *
+     * @param value the value
+     */
     public AVLNode(E value) {
         this.value = value;
         this.left = null;
@@ -21,6 +44,12 @@ public class AVLNode<E extends Comparable<E>> {
         this.height = 1;
     }
 
+    /**
+     * Add avl node.
+     *
+     * @param newValue the new value
+     * @return the avl node
+     */
     public AVLNode<E> add(E newValue) {
         int cmp = newValue.compareTo(value);
         if (cmp < 0) {
@@ -34,6 +63,12 @@ public class AVLNode<E extends Comparable<E>> {
         return balance();
     }
 
+    /**
+     * Contains boolean.
+     *
+     * @param target the target
+     * @return the boolean
+     */
     public boolean contains(E target) {
         int cmp = target.compareTo(value);
         if (cmp < 0) {
@@ -45,6 +80,12 @@ public class AVLNode<E extends Comparable<E>> {
         }
     }
 
+    /**
+     * Get e.
+     *
+     * @param target the target
+     * @return the e
+     */
     public E get(E target) {
         int cmp = target.compareTo(value);
         if (cmp < 0) {
@@ -56,6 +97,12 @@ public class AVLNode<E extends Comparable<E>> {
         }
     }
 
+    /**
+     * Remove avl node.
+     *
+     * @param target the target
+     * @return the avl node
+     */
     public AVLNode<E> remove(E target) {
         int cmp = target.compareTo(value);
         if (cmp < 0) {
@@ -138,6 +185,11 @@ public class AVLNode<E extends Comparable<E>> {
         return node == null ? 0 : node.height;
     }
 
+    /**
+     * Iterator iterator.
+     *
+     * @return the iterator
+     */
     public Iterator<E> iterator() {
         Queue<AVLNode<E>> queue = new LinkedList<>();
         queue.offer(this);
@@ -161,6 +213,12 @@ public class AVLNode<E extends Comparable<E>> {
         };
     }
 
+    /**
+     * Tree string string.
+     *
+     * @param depth the depth
+     * @return the string
+     */
     public String treeString(int depth) {
         StringBuilder sb = new StringBuilder();
         if (right != null) {

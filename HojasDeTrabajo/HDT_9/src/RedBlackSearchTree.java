@@ -8,28 +8,28 @@ import java.util.Random;
 
 /**
  * Red black trees, are binary trees that guarantee the following three properties. <BR>
- * 1. Every child of every leaf is considered black<BR> 
+ * 1. Every child of every leaf is considered black<BR>
  * 2. Every red node has two black children<BR>
  * 3. Every path from a node to a descendant leaf contains the same
- *    number of black nodes. <BR>
- * <P>
- * These properties ensure that elements can be inserted, deleted, and 
- * located in logorithmic time. 
- * <P>
+ * number of black nodes. <BR>
+ * <p>
+ * These properties ensure that elements can be inserted, deleted, and
+ * located in logorithmic time.
+ * <p>
  * Example usage:
- * <P>
+ * <p>
  * To create a red-black tree containing the months of the year
  * and to print out this tree as it grows we could use the following
- * <P>
+ * <p>
  * <pre>
  * public static void main(String[] argv){
  *     RedBlackSearchTree test = new {@link #RedBlackSearchTree()};
- *       
+ *
  *     //declare an array of months
- *     String[] months = new String[]{"March", "May", "November", "August", 
+ *     String[] months = new String[]{"March", "May", "November", "August",
  *                                    "April", "January", "December", "July",
  *                                    "February", "June", "October", "September"};
- *      
+ *
  *     //add the months to the tree and print out the tree as it grows
  *     for(int i=0; i < months.length; i++){
  *        test.{@link #add(Object) add(months[i])};
@@ -38,7 +38,8 @@ import java.util.Random;
  *  }
  * </pre>
  *
- * @version $Id: RedBlackSearchTree.java 22 2006-08-21 19:27:26Z bailey $
+ * @param <E> the type parameter
+ * @version $Id : RedBlackSearchTree.java 22 2006-08-21 19:27:26Z bailey $
  * @author, 2001 duane a. bailey & evan s. sandhaus
  * @see AVLTree
  * @see SplayTree
@@ -46,12 +47,21 @@ import java.util.Random;
  */
 public class RedBlackSearchTree<E extends Comparable<E>> extends AbstractStructure<E> implements OrderedStructure<E>
 {
+    /**
+     * The Root.
+     */
     protected RedBlackTree<E> root;
 
 
+    /**
+     * The Count.
+     */
     protected int count;
 
 
+    /**
+     * Instantiates a new Red black search tree.
+     */
     public RedBlackSearchTree()
     {
         root = new RedBlackTree<E>();
@@ -101,11 +111,22 @@ public class RedBlackSearchTree<E extends Comparable<E>> extends AbstractStructu
     }
 
 
+    /**
+     * Get e.
+     *
+     * @param value the value
+     * @return the e
+     */
     public E get(E value){
         return root.contains(value).value;
     }
 
 
+    /**
+     * Is red black boolean.
+     *
+     * @return the boolean
+     */
     public boolean isRedBlack()
     {
         return root.consistency();
@@ -118,6 +139,11 @@ public class RedBlackSearchTree<E extends Comparable<E>> extends AbstractStructu
     }
 
 
+    /**
+     * Tree string string.
+     *
+     * @return the string
+     */
     public String treeString(){
         return root.treeString();
     }

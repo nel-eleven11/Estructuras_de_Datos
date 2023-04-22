@@ -4,8 +4,17 @@
 *
 */
 
+/**
+ * The type Factory.
+ */
 public class Factory {
 
+    /**
+     * Get arbol estructura arbol.
+     *
+     * @param tipoArbol the tipo arbol
+     * @return the estructura arbol
+     */
     public static EstructuraArbol getArbol(String tipoArbol){
         if (tipoArbol.equals("1")){
             return new RBTree();

@@ -7,6 +7,11 @@
 
 import java.util.Comparator;
 
+/**
+ * The type Comparador palabras.
+ *
+ * @param <T> the type parameter
+ */
 public class ComparadorPalabras<T> implements Comparator<T> {
 
     @Override

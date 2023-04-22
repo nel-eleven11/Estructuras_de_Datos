@@ -4,13 +4,28 @@
  *
  */
 import java.util.Iterator;
+
+/**
+ * The type Avl tree.
+ *
+ * @param <E> the type parameter
+ */
 public class AVLTree<E extends Comparable<E>> extends AbstractStructure<E> implements OrderedStructure<E>
 {
 
+    /**
+     * The Root.
+     */
     protected AVLNode<E> root;
 
+    /**
+     * The Count.
+     */
     protected int count;
 
+    /**
+     * Instantiates a new Avl tree.
+     */
     public AVLTree()
     {
         root = null;
@@ -56,6 +71,12 @@ public class AVLTree<E extends Comparable<E>> extends AbstractStructure<E> imple
         return root != null && root.contains(value);
     }
 
+    /**
+     * Get e.
+     *
+     * @param value the value
+     * @return the e
+     */
     public E get(E value){
         return root == null ? null : root.get(value);
     }
@@ -65,6 +86,11 @@ public class AVLTree<E extends Comparable<E>> extends AbstractStructure<E> imple
         return root == null ? new EmptyIterator<>() : root.iterator();
     }
 
+    /**
+     * Tree string string.
+     *
+     * @return the string
+     */
     public String treeString(){
         return root == null ? "" : root.treeString(0);
     }

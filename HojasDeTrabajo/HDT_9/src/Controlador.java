@@ -10,20 +10,44 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
+/**
+ * The type Controlador.
+ */
 public class Controlador {
 
+    /**
+     * The Items texto.
+     */
     ArrayList<ArrayList<String>> itemsTexto = new ArrayList<ArrayList<String>>();
 
+    /**
+     * The Items dicc.
+     */
     ArrayList<String> itemsDicc = new ArrayList<String>();
 
+    /**
+     * Gets items 1.
+     *
+     * @return the items 1
+     */
     public ArrayList<ArrayList<String>> getItems1() {
         return itemsTexto;
     }
 
+    /**
+     * Gets items 2.
+     *
+     * @return the items 2
+     */
     public ArrayList<String> getItems2() {
         return itemsDicc;
     }
 
+    /**
+     * Import file.
+     *
+     * @param nombreDelArchivo the nombre del archivo
+     */
     public void importFile(String nombreDelArchivo){
         //Ruta del archivo
         String fpath = ".\\src\\"+nombreDelArchivo+".txt";
@@ -59,6 +83,12 @@ public class Controlador {
         }
     }
 
+    /**
+     * Agregar palabras.
+     *
+     * @param items     the items
+     * @param tipoArbol the tipo arbol
+     */
     public void AgregarPalabras(ArrayList<String> items, String tipoArbol){
         EstructuraArbol arbol = Factory.getArbol(tipoArbol);
         for (int i = 0; i < items.size(); i = i + 2) {
@@ -67,6 +97,13 @@ public class Controlador {
         }
     }
 
+    /**
+     * Traducir texto string.
+     *
+     * @param items     the items
+     * @param tipoArbol the tipo arbol
+     * @return the string
+     */
     public String TraducirTexto(ArrayList<String> items, String tipoArbol){
         EstructuraArbol arbol = Factory.getArbol(tipoArbol);
         String oracionFinal = "";

@@ -9,14 +9,27 @@ import java.util.Comparator;
 
 import structure5.SplayTree;
 
+/**
+ * The type Splay arbol.
+ *
+ * @param <T> the type parameter
+ */
 public class SplayArbol <T extends Comparable<T>> implements EstructuraArbol<T> {
 
     private SplayTree<T> miArbolInterno;
 
+    /**
+     * Instantiates a new Splay arbol.
+     */
     public SplayArbol() {
         miArbolInterno = new SplayTree<T>();
     }
 
+    /**
+     * Instantiates a new Splay arbol.
+     *
+     * @param comparador the comparador
+     */
     public SplayArbol(Comparator<T> comparador) {
         miArbolInterno = new SplayTree<T>(comparador);
     }
@@ -49,6 +62,11 @@ public class SplayArbol <T extends Comparable<T>> implements EstructuraArbol<T> 
         return miArbolInterno.isEmpty();
     }
 
+    /**
+     * Get internal tree splay tree.
+     *
+     * @return the splay tree
+     */
     public SplayTree<T> getInternalTree(){
         return miArbolInterno;
     }

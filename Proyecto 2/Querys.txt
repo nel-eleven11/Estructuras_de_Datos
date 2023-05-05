@@ -1,0 +1,46 @@
+Agragar inicialemente los nodos de sexo
+CREATE (:Sex {name: "Masculino"})
+CREATE (:Sex {name: "Femenino"})
+
+Agregar inicialmente los nodos de tipo de relación
+CREATE (:RelationshipType {name: "Amistad"})
+CREATE (:RelationshipType {name: "Casual"})
+CREATE (:RelationshipType {name: "Formal"})
+
+Agregar nuevo nodo de intereses
+MERGE (i:Interest {name: $interestName})
+
+Agregar nuevo nodo de ubicacion:
+MERGE (l:Location {name: $cityName})
+
+Agrgar nuevo usuario:
+MERGE (u:User {
+  userId: $userId,
+  nombre: $nombre,
+  apellido: $apellido,
+  edad: $edad,
+  sexo: $sexo,
+  usuario: $usuario,
+  contraseña: $contraseña
+})
+
+
+
+***Relacionar al usuario con los respectivos nodos***
+
+Relacionar el usuario con su sexo
+MATCH (u:User {userId: params.userId}), (s:Sex {name: params.sex})
+MERGE (u)-[:HAS_SEX]->(s)
+
+Relacionar el usuario con su ubicación
+MATCH (u:User {userId: params.userId}), (l:Location {name: params.location})
+MERGE (u)-[:LIVES_IN]->(l)
+
+Relacionar el usuario con sus intereses
+UNWIND params.interests as interestName
+MATCH (u:User {userId: params.userId}), (i:Interest {name: interestName})
+MERGE (u)-[:INTERESTED_IN]->(i)
+
+Relacionar el usuario con el tipo de relación que busca
+MATCH (u:User {userId: params.userId}), (r:RelationshipType {name: params.relationshipType})
+MERGE (u)-[:WANTS_RELATIONSHIP]->(r)

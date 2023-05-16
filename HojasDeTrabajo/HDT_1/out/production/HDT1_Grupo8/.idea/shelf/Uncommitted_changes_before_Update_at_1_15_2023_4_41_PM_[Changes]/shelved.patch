@@ -1,0 +1,16 @@
+Index: IRadio.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IRadio.java b/scr/IRadio.java
+rename from IRadio.java
+rename to scr/IRadio.java
+--- a/IRadio.java	(revision adb7e944bd6321f32f298a6d0acf212769d39f74)
++++ b/scr/IRadio.java	(date 1673821263127)
+@@ -1,3 +1,5 @@
++package scr;
++
+ /**
+  * @author moises.alonso
+  */

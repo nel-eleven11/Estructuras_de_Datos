@@ -1,7 +1,6 @@
 /**
- * 
- */
-package edu.uvg.graphs;
+ * Clase recuperada del repositorio de Moisés
+ * /
 
 /**
  * @author MAAG

@@ -14,8 +14,8 @@
     <servlet-class>MoviesByActor</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>SaveMovieServlet</servlet-name>
-    <servlet-class>SaveMovieServlet</servlet-class>
+    <servlet-name>AddUserServlet</servlet-name>
+    <servlet-class>AddUserServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>HelloServlet</servlet-name>
@@ -26,8 +26,8 @@
     <url-pattern>/MoviesByActor</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>SaveMovieServlet</servlet-name>
-    <url-pattern>/SaveMovieServlet</url-pattern>
+    <servlet-name>AddUserServlet</servlet-name>
+    <url-pattern>/AddUserServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>HelloServlet</servlet-name>

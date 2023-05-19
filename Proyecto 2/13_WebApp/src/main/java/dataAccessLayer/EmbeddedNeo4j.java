@@ -111,14 +111,16 @@ public class EmbeddedNeo4j implements AutoCloseable{
         }
    }
 
-    public String createUser(String userId, String firstName, String lastName, int age, String password) {
+    public String createUser(String Name, String lastName, String age) {
         try (Session session = driver.session()) {
             String result = session.writeTransaction(new TransactionWork<String>() {
                 @Override
                 public String execute(Transaction tx) {
-                    tx.run("CREATE (u:User {userId: $userId, firstName: $firstName, lastName: $lastName, age: $age, password: $password, score: 0})",
-                            parameters("userId", userId, "firstName", firstName, "lastName", lastName, "age", age, "password", password));
+                    tx.run("CREATE (u:User {firstName:'" + Name + "', lastName:" + lastName + "', age:" + age + ", score: 0})")
+;
                     return "OK";
+
+
                 }
             });
             return result;

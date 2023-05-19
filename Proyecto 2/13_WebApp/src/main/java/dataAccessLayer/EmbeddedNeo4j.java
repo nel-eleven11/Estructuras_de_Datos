@@ -110,28 +110,78 @@ public class EmbeddedNeo4j implements AutoCloseable{
             return actors;
         }
    }
-    
-    public String insertMovie(String title, int releaseYear, String tagline) {
-    	try ( Session session = driver.session() )
-        {
-   		 
-   		 String result = session.writeTransaction( new TransactionWork<String>()
-   		 
-            {
-                @Override
-                public String execute( Transaction tx )
-                {
-                    tx.run( "CREATE (Test:Movie {title:'" + title + "', released:"+ releaseYear +", tagline:'"+ tagline +"'})");
-                    
-                    return "OK";
-                }
-            }
-   		 
-   		 );
-            
-            return result;
-        } catch (Exception e) {
-        	return e.getMessage();
+
+    public void createUser(String userId, String username, String password, int age, String name, String lastName, String sex) {
+        String query = "MERGE (u:User {userId: $userId}) " +
+                "ON CREATE SET u.username = $username, u.password = $password, u.age = $age, u.name = $name, u.lastName = $lastName, u.sex = $sex";
+
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("userId", userId);
+        parameters.put("username", username);
+        parameters.put("password", password);
+        parameters.put("age", age);
+        parameters.put("name", name);
+        parameters.put("lastName", lastName);
+        parameters.put("sex", sex);
+
+        try (Session session = driver.session()) {
+            session.run(query, parameters);
+        }
+    }
+
+    public void createRelationshipToCity(String userId, String cityName) {
+        String query = "MATCH (u:User {userId: $userId}) " +
+                "MERGE (c:City {name: $cityName}) " +
+                "MERGE (u)-[:LIVES_IN]->(c)";
+
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("userId", userId);
+        parameters.put("cityName", cityName);
+
+        try (Session session = driver.session()) {
+            session.run(query, parameters);
+        }
+    }
+
+    public void createRelationshipToInterest(String userId, String interestName) {
+        String query = "MATCH (u:User {userId: $userId}) " +
+                "MERGE (i:Interest {name: $interestName}) " +
+                "MERGE (u)-[:INTERESTED_IN]->(i)";
+
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("userId", userId);
+        parameters.put("interestName", interestName);
+
+        try (Session session = driver.session()) {
+            session.run(query, parameters);
+        }
+    }
+
+    public void createRelationshipToSex(String userId, String sex) {
+        String query = "MATCH (u:User {userId: $userId}) " +
+                "MERGE (s:Sex {name: $sex}) " +
+                "MERGE (u)-[:HAS_SEX]->(s)";
+
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("userId", userId);
+        parameters.put("sex", sex);
+
+        try (Session session = driver.session()) {
+            session.run(query, parameters);
+        }
+    }
+
+    public void createRelationshipToRelationshipType(String userId, String relationshipType) {
+        String query = "MATCH (u:User {userId: $userId}) " +
+                "MERGE (r:RelationshipType {name: $relationshipType}) " +
+                "MERGE (u)-[:SEEKS]->(r)";
+
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("userId", userId);
+        parameters.put("relationshipType", relationshipType);
+
+        try (Session session = driver.session()) {
+            session.run(query, parameters);
         }
     }
 

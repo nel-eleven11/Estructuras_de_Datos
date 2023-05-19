@@ -111,77 +111,92 @@ public class EmbeddedNeo4j implements AutoCloseable{
         }
    }
 
-    public void createUser(String userId, String username, String password, int age, String name, String lastName, String sex) {
-        String query = "MERGE (u:User {userId: $userId}) " +
-                "ON CREATE SET u.username = $username, u.password = $password, u.age = $age, u.name = $name, u.lastName = $lastName, u.sex = $sex";
-
-        Map<String, Object> parameters = new HashMap<>();
-        parameters.put("userId", userId);
-        parameters.put("username", username);
-        parameters.put("password", password);
-        parameters.put("age", age);
-        parameters.put("name", name);
-        parameters.put("lastName", lastName);
-        parameters.put("sex", sex);
-
+    public String createUser(String userId, String firstName, String lastName, int age, String password) {
         try (Session session = driver.session()) {
-            session.run(query, parameters);
+            String result = session.writeTransaction(new TransactionWork<String>() {
+                @Override
+                public String execute(Transaction tx) {
+                    tx.run("CREATE (u:User {userId: $userId, firstName: $firstName, lastName: $lastName, age: $age, password: $password, score: 0})",
+                            parameters("userId", userId, "firstName", firstName, "lastName", lastName, "age", age, "password", password));
+                    return "OK";
+                }
+            });
+            return result;
+        } catch (Exception e) {
+            return e.getMessage();
         }
     }
 
-    public void createRelationshipToCity(String userId, String cityName) {
-        String query = "MATCH (u:User {userId: $userId}) " +
-                "MERGE (c:City {name: $cityName}) " +
-                "MERGE (u)-[:LIVES_IN]->(c)";
 
-        Map<String, Object> parameters = new HashMap<>();
-        parameters.put("userId", userId);
-        parameters.put("cityName", cityName);
-
+    public String linkUserToCity(String userId, String cityName) {
         try (Session session = driver.session()) {
-            session.run(query, parameters);
+            String result = session.writeTransaction(new TransactionWork<String>() {
+                @Override
+                public String execute(Transaction tx) {
+                    tx.run("MATCH (u:User {userId: $userId}), (l:Location {name: $cityName})" +
+                                    "MERGE (u)-[:LIVES_IN]->(l)",
+                            parameters("userId", userId, "cityName", cityName));
+                    return "OK";
+                }
+            });
+            return result;
+        } catch (Exception e) {
+            return e.getMessage();
         }
     }
 
-    public void createRelationshipToInterest(String userId, String interestName) {
-        String query = "MATCH (u:User {userId: $userId}) " +
-                "MERGE (i:Interest {name: $interestName}) " +
-                "MERGE (u)-[:INTERESTED_IN]->(i)";
 
-        Map<String, Object> parameters = new HashMap<>();
-        parameters.put("userId", userId);
-        parameters.put("interestName", interestName);
-
+    public String linkUserToInterests(String userId, List<String> interests) {
         try (Session session = driver.session()) {
-            session.run(query, parameters);
+            String result = session.writeTransaction(new TransactionWork<String>() {
+                @Override
+                public String execute(Transaction tx) {
+                    for (String interest : interests) {
+                        tx.run("MATCH (u:User {userId: $userId}), (i:Interest {name: $interest})" +
+                                        "MERGE (u)-[:INTERESTED_IN]->(i)",
+                                parameters("userId", userId, "interest", interest));
+                    }
+                    return "OK";
+                }
+            });
+            return result;
+        } catch (Exception e) {
+            return e.getMessage();
         }
     }
 
-    public void createRelationshipToSex(String userId, String sex) {
-        String query = "MATCH (u:User {userId: $userId}) " +
-                "MERGE (s:Sex {name: $sex}) " +
-                "MERGE (u)-[:HAS_SEX]->(s)";
 
-        Map<String, Object> parameters = new HashMap<>();
-        parameters.put("userId", userId);
-        parameters.put("sex", sex);
-
+    public String linkUserToRelationshipType(String userId, String relationshipType) {
         try (Session session = driver.session()) {
-            session.run(query, parameters);
+            String result = session.writeTransaction(new TransactionWork<String>() {
+                @Override
+                public String execute(Transaction tx) {
+                    tx.run("MATCH (u:User {userId: $userId}), (r:RelationshipType {name: $relationshipType})" +
+                                    "MERGE (u)-[:WANTS_RELATIONSHIP]->(r)",
+                            parameters("userId", userId, "relationshipType", relationshipType));
+                    return "OK";
+                }
+            });
+            return result;
+        } catch (Exception e) {
+            return e.getMessage();
         }
     }
 
-    public void createRelationshipToRelationshipType(String userId, String relationshipType) {
-        String query = "MATCH (u:User {userId: $userId}) " +
-                "MERGE (r:RelationshipType {name: $relationshipType}) " +
-                "MERGE (u)-[:SEEKS]->(r)";
-
-        Map<String, Object> parameters = new HashMap<>();
-        parameters.put("userId", userId);
-        parameters.put("relationshipType", relationshipType);
-
+    public String linkUserToSex(String userId, String sex) {
         try (Session session = driver.session()) {
-            session.run(query, parameters);
+            String result = session.writeTransaction(new TransactionWork<String>() {
+                @Override
+                public String execute(Transaction tx) {
+                    tx.run("MATCH (u:User {userId: $userId}), (s:Sex {type: $sex})" +
+                                    "MERGE (u)-[:IS_OF_SEX]->(s)",
+                            parameters("userId", userId, "sex", sex));
+                    return "OK";
+                }
+            });
+            return result;
+        } catch (Exception e) {
+            return e.getMessage();
         }
     }
 

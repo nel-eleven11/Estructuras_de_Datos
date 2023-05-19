@@ -105,7 +105,6 @@
 		//alert("Resultado: " + '/Seccion10Grupo15/SaveMovieServlet?title=' + $('#txt-movie-title').val() + '&release_year=' + $('#txt-movie-release_year').val() + '&tagline=' + $('#txt-movie-tagline').val());
 				
 		$.ajax( {
-			
 			type: "GET",
 			url: '/Seccion10Grupo15/SaveMovieServlet?title=' + $('#txt-movie-title').val() + '&release_year=' + $('#txt-movie-release_year').val() + '&tagline=' + $('#txt-movie-tagline').val() ,
 			success: function(data) {

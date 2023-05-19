@@ -9,30 +9,33 @@
 <body>
     <h1>My College Soulmate</h1>
     <div>
-        <form action="POST">
+        <form>
             <label for="name">Nombre</label><br>
-            <input type="text" name="name" placeholder="Name"><br>
+            <input type="text" name="name" placeholder="Name" id="userInputName"><br>
 
             <label for="lastname">Apellido</label><br>
-            <input type="text" name="lastname" placeholder="Lastname"><br>
+            <input type="text" name="lastname" placeholder="Lastname" id="userInputLastname"><br>
 
             <label for="location">Ciudad</label><br>
-            <input type="text" name="location" placeholder="Location"><br>
+            <input type="text" name="location" placeholder="Location" id="userInputLocation"><br>
 
             <label for="age">Edad</label><br>
-            <input type="number" name="age" placeholder="Age"><br>
+            <input type="number" name="age" placeholder="Age" id="userInputAge"><br>
 
             <label for="Sex">Género</label><br>
-            <input type="text" name="Gender" placeholder="Gender"><br>
+            <input type="text" name="Gender" placeholder="Gender" id="userInputSex"><br>
+
+            <label for="relationshipType">Tipo de relacion</label><br>
+            <input type="text" name="relationshipType" placeholder="Relationship type" id="userInputRelationshipType"><br>
 
             <label for="interests">Intereses (Separados por comas)</label><br>
-            <textarea rows="5" cols="40" name="interests" spellcheck="true" placeholder="Interests">
+            <textarea rows="5" cols="40" name="interests" spellcheck="true" placeholder="Interests" id="userInputInterests">
             </textarea><br>
             <div>
                 <label for="agreement"><input type="checkbox" name="agreement" id="agreement" checked>Acepto que la información brindada sea usada para el proyecto en cuestión</label>
             </div>
             
-            <input type="submit" text="Enviar"><br>
+            <input type="button" id="userInputSendBUton" text="Enviar"><br>
         </form>
     </div>
 </body>

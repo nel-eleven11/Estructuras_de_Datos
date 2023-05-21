@@ -69,7 +69,6 @@ public class FloydWarshall {
 		for (int i = 0; i < SIZE; i++) { //Que fila y que columna trabajo
 			for (int j = 0; j < SIZE; j++) {
 				for (int k = 0; k < SIZE; k++) {
-					
 					if ((i != j) && (i != k)) {
 						int suma = distancias[j][i] + distancias[i][k]; 
 						if (suma < distancias[j][k]) {
@@ -77,7 +76,6 @@ public class FloydWarshall {
 							recorridos[j][k] = vertices[i];
 						}
 					}
-					
 				}
 			}
 		}

@@ -103,7 +103,7 @@
 	$("#userInputSendButton").click(function(){
 		//alert("Resultado: " + '/Seccion10Grupo15/SaveMovieServlet?title=' + $('#txt-movie-title').val() + '&release_year=' + $('#txt-movie-release_year').val() + '&tagline=' + $('#txt-movie-tagline').val());
 
-        console.log("Recibido")
+    console.log("Recibido")
 		$.ajax( {
 			type: "GET",
 			url: '/Seccion10Grupo15/AddUserServlet?name=' + $('#userInputName').val() + '&lastName=' + $('#userInputLastname').val() + '&city=' + $('#userInputLocation').val() + '&age=' + $('#userInputAge').val() + '&sex=' + $('#userInputSex').val() + '&relationshipType=' + $('#userInputRelationshipType').val(),

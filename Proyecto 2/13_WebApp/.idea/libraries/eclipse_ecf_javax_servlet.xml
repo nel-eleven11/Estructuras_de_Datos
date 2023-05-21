@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="eclipse.ecf.javax.servlet" type="repository">
+    <properties include-transitive-deps="false" maven-id="org.eclipse.ecf:javax.servlet:3.1.0.v201410161800" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/javax.servlet-3.1.0.v201410161800.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

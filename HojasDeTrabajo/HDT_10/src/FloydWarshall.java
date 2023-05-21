@@ -13,14 +13,11 @@ public class FloydWarshall {
 	private String[] vertices;
 	private int SIZE;
 	
-	public FloydWarshall(int [][]_distancias, String[][] _recorridos, int matriz_size) {
+	public FloydWarshall(int [][]_distancias, String[][] _recorridos, int matriz_size, String[] _vertices) {
 		SIZE = matriz_size;
 		distancias = _distancias;
 		recorridos = _recorridos;
-		vertices = new String[matriz_size];
-		for (int i = 0; i < matriz_size; i++) {
-			vertices[i] = _recorridos[0][i];
-		}
+		vertices = _vertices;
 	}
 
 	/**

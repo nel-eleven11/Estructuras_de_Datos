@@ -70,7 +70,6 @@ public class Controladora {
             indicesCiudades.put(nombresCiudades[i], i);
         }
 
-        // Inicializando la matriz de recorridos verticalmente.
         for (int j = 0; j < n; j++) {
             for (int i = 0; i < n; i++) {
                 if (i != j && recorridos[i][j].equals("-")) {
@@ -103,27 +102,13 @@ public class Controladora {
             System.out.println();
         }
 
-        this.floydWarshall = new FloydWarshall(distancias, recorridos, n);
+        this.floydWarshall = new FloydWarshall(distancias, recorridos, n, nombresCiudades);
 
-        //Calcular la ruta más corta entre dos ciudades
         floydWarshall.CalcularRutas();
 
         recorridos = floydWarshall.getRecorridos();
         distancias = floydWarshall.getDistancias();
 
-        for (int i = 0; i < n ; i++) {
-            for (int j = 0; j < n ; j++) {
-                System.out.print(distancias[i][j] + " ");
-            }
-            System.out.println();
-        }
-
-        for (int i = 0; i < n ; i++) {
-            for (int j = 0; j < n ; j++) {
-                System.out.print(recorridos[i][j] + "");
-            }
-            System.out.println();
-        }
     }
 
     public Integer getIndiceCiudadPorNombre(String nombre) {

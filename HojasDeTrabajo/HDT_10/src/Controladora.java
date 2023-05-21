@@ -16,6 +16,10 @@ public class Controladora {
         return floydWarshall;
     }
 
+    public void modificarArchivo(){
+
+    }
+
     public void leerArchivo() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(".\\src\\logistica.txt"));
@@ -55,9 +59,11 @@ public class Controladora {
     }
     private void crearFloydWarshall() {
         int n = ciudades.size();
+        // se inicializan las matrices
         int[][] distancias = new int[n][n];
         String[][] recorridos = new String[n][n];
 
+        //se llenan las matrices
         for (int i = 0; i < n; i++) {
             Arrays.fill(distancias[i], Integer.MAX_VALUE);
             distancias[i][i] = 0;
@@ -70,6 +76,7 @@ public class Controladora {
             indicesCiudades.put(nombresCiudades[i], i);
         }
 
+        //se crea la matriz de recorridos
         for (int j = 0; j < n; j++) {
             for (int i = 0; i < n; i++) {
                 if (i != j && recorridos[i][j].equals("-")) {
@@ -78,6 +85,8 @@ public class Controladora {
             }
         }
 
+
+        //se crea la matriz de distancias
         for (Node ciudad : ciudades.values()) {
             for (Map.Entry<String, Integer[]> entry : ciudad.getTiemposViaje().entrySet()) {
                 int origen = getIndiceCiudadPorNombre(ciudad.getNombre());

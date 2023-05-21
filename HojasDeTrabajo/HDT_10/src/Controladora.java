@@ -61,6 +61,7 @@ public class Controladora {
         for (int i = 0; i < n; i++) {
             Arrays.fill(distancias[i], Integer.MAX_VALUE);
             distancias[i][i] = 0;
+            Arrays.fill(recorridos[i], "-");
         }
 
         nombresCiudades = new String[n];
@@ -69,12 +70,11 @@ public class Controladora {
             indicesCiudades.put(nombresCiudades[i], i);
         }
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (i != j) {
-                    recorridos[i][j] = nombresCiudades[i];
-                } else {
-                    recorridos[i][j] = "-";
+        // Inicializando la matriz de recorridos verticalmente.
+        for (int j = 0; j < n; j++) {
+            for (int i = 0; i < n; i++) {
+                if (i != j && recorridos[i][j].equals("-")) {
+                    recorridos[i][j] = nombresCiudades[j];
                 }
             }
         }

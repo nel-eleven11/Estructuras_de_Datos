@@ -7,6 +7,7 @@
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -21,11 +22,20 @@ class ControladoraTest {
     }
 
     @Test
-    void leerArchivoTest(){
-        Controladora grafo = new Controladora();
-        grafo.leerArchivo();
-        FloydWarshall fw = grafo.getFloydWarshall();
-        assertArrayEquals(new int[]{0, 10, 15}, fw.getDistancias()[0]);
-        assertArrayEquals(new String[]{"", "SaoPaulo", "Lima"}, fw.getRecorridos()[0]);
+    void getRutaMasCorta() {
+        Controladora controladora = new Controladora();
+
+        List<String> ciudades = Arrays.asList("BuenosAires", "Lima", "Quito");
+
+        ArrayList<String> rutaMasCorta = controladora.getRutaMasCorta("BuenosAires", "Quito");
+
+        for (int i = 0; i < rutaMasCorta.size(); i++) {
+            System.out.println(i + " " + rutaMasCorta.get(i));
+        }
+
+        assertEquals(3, rutaMasCorta.size());
+        assertEquals("BuenosAires", rutaMasCorta.get(0));
+        assertEquals("Lima", rutaMasCorta.get(1));
+        assertEquals("Quito", rutaMasCorta.get(2));
     }
 }

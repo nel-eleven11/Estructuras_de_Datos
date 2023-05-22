@@ -113,20 +113,6 @@ public class Controladora {
             }
         }
 
-        for (int i = 0; i < n ; i++) {
-            for (int j = 0; j < n ; j++) {
-                System.out.print(distancias[i][j] + " ");
-            }
-            System.out.println();
-        }
-
-        for (int i = 0; i < n ; i++) {
-            for (int j = 0; j < n ; j++) {
-                System.out.print(recorridos[i][j] + "");
-            }
-            System.out.println();
-        }
-
         this.floydWarshall = new FloydWarshall(distancias, recorridos, n, nombresCiudades);
 
         floydWarshall.CalcularRutas();
@@ -149,4 +135,31 @@ public class Controladora {
     public String getNombreCiudadPorIndice(int indice) {
         return nombresCiudades[indice];
     }
+
+    public ArrayList<String> getRutaMasCorta(String ciudadSalida, String ciudadDestino) {
+        int indiceOrigen = getIndiceCiudadPorNombre(ciudadSalida);
+        int indiceDestino = getIndiceCiudadPorNombre(ciudadDestino);
+
+        if (indiceOrigen == -1 || indiceDestino == -1) {
+            return null;
+        }
+        String[][] recorridos = floydWarshall.getRecorridos();
+
+        ArrayList<String> ruta = new ArrayList<>();
+
+        if (recorridos[indiceDestino][indiceOrigen].equals("-")) {
+            ruta.add(ciudadSalida);
+            ruta.add(ciudadDestino);
+            return ruta;
+        } else if (!recorridos[indiceDestino][indiceOrigen].equals(ciudadSalida)) {
+            ruta.addAll(getRutaMasCorta(ciudadSalida, recorridos[indiceDestino][indiceOrigen]));
+            ruta.add(ciudadDestino);
+        } else {
+            ruta.add(ciudadSalida);
+            ruta.add(ciudadDestino);
+        }
+
+        return ruta;
+    }
+
 }

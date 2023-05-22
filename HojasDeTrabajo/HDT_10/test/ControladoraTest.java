@@ -38,4 +38,13 @@ class ControladoraTest {
         assertEquals("Lima", rutaMasCorta.get(1));
         assertEquals("Quito", rutaMasCorta.get(2));
     }
+
+    @Test
+    void getCentroDelGrafo(){
+        Controladora controladora = new Controladora();
+
+        String centroDelGrafo = controladora.getCentroDelGrafo();
+
+        assertEquals("Lima", centroDelGrafo);
+    }
 }

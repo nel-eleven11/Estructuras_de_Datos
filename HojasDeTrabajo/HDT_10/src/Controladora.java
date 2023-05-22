@@ -162,4 +162,31 @@ public class Controladora {
         return ruta;
     }
 
+    public String getCentroDelGrafo() {
+        int[][] distancias = floydWarshall.getDistancias();
+
+        int minMaxDistancia = Integer.MAX_VALUE;
+        String centro = null;
+
+        for (String ciudad : ciudades.keySet()) {
+            int indiceCiudad = getIndiceCiudadPorNombre(ciudad);
+
+            int maxDistancia = Integer.MIN_VALUE;
+
+            for (int i = 0; i < distancias[indiceCiudad].length; i++) {
+                if (i != indiceCiudad) {
+                    maxDistancia = Math.max(maxDistancia, distancias[indiceCiudad][i]);
+                }
+            }
+
+            if (maxDistancia < minMaxDistancia) {
+                minMaxDistancia = maxDistancia;
+                centro = ciudad;
+            }
+        }
+
+        return centro;
+    }
+
+
 }

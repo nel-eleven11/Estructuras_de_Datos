@@ -13,6 +13,8 @@ public class main {
     public static void main (String [] args){
 
         JOptionPane.showMessageDialog(null, "Bienvenido al programa de rutas de ciudades");
+        Controladora Micontroladora = new Controladora();
+
         int menu = 0;
         while(menu != 4){
             menu = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de la opcion que desea realizar: \n 1. Encontrar la ruta mas corta entre dos ciudades \n 2. Ciudad en el centro del grafo \n 3. Modificar grafo \n 4. Salir"));
@@ -50,6 +52,10 @@ public class main {
                                 tiempos[1] = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tiempo de viaje en lluvia"));
                                 tiempos[2] = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tiempo de viaje en nieve"));
                                 tiempos[3] = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tiempo de viaje en tormenta"));
+                                String linea = ciudad1 + " "+ ciudad2 + " " + tiempos[0] + " " + tiempos[1] + " " + tiempos[2] + " " + tiempos[3];
+                                System.out.println(linea);
+                                Micontroladora.modificarArchivo(linea);
+
 
                                 break;
                             case 3:

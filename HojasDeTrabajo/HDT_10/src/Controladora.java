@@ -7,6 +7,8 @@ public class Controladora {
     private Map<String, Integer> indicesCiudades = new HashMap<>();
     private FloydWarshall floydWarshall;
 
+    private ArrayList<String> logistica = new ArrayList<>();
+
     public Controladora() {
         leerArchivo();
         crearFloydWarshall();
@@ -16,7 +18,20 @@ public class Controladora {
         return floydWarshall;
     }
 
-    public void modificarArchivo(){
+    public void modificarArchivo(String linea){
+        File archivo = new File(".\\src\\logistica.txt");
+        //escribir en el archivo
+        try {
+            FileWriter miEscritor = new FileWriter(archivo);
+            for (int i = 0; i < logistica.size(); i++) {
+                miEscritor.write(logistica.get(i) + "\n");
+            }
+            miEscritor.write(linea);
+            miEscritor.close();
+        } catch (IOException e) {
+            // Ocurrió un error en la escritura
+            e.printStackTrace();
+        }
 
     }
 
@@ -26,6 +41,7 @@ public class Controladora {
 
             String linea;
             while ((linea = reader.readLine()) != null) {
+                logistica.add(linea);
                 String[] datos = linea.split(" ");
 
                 // Verificamos si los datos son correctos y completos

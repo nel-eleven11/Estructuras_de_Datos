@@ -24,11 +24,11 @@ public class main {
                     //se calcula la ruta mas corta entre dos ciudades
                     String ciudad_origen = JOptionPane.showInputDialog("Ingrese la ciudad de origen");
                     String ciudad_destino = JOptionPane.showInputDialog("Ingrese la ciudad de destino");
-                    System.out.println(Micontroladora.getRutaMasCorta("Ruta: " + ciudad_origen, ciudad_destino).toString());
+                    JOptionPane.showMessageDialog(null,"" + Micontroladora.getRutaMasCorta("Ruta: " + ciudad_origen, ciudad_destino).toString());
                     break;
                 case 2:
                     //se calcula la ciudad en el centro del grafo
-                    System.out.println("Centro del grafo: " + Micontroladora.getCentroDelGrafo());
+                    JOptionPane.showMessageDialog(null,"Centro del grafo: " + Micontroladora.getCentroDelGrafo());
                     break;
                 case 3:
                     //se modifica el grafo de las ciudades

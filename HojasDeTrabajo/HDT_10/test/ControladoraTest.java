@@ -47,4 +47,44 @@ class ControladoraTest {
 
         assertEquals("Lima", centroDelGrafo);
     }
+
+    @Test
+    void modificaciones(){
+        Controladora controladora = new Controladora();
+        String linea = "";
+        boolean existe = false;
+
+        linea = "Quito SaoPaulo 10 20 30 40";
+        existe = false;
+        controladora.modificarArchivo(2, linea, "");
+        for(int i = 0; i < controladora.logistica.size(); i++){
+            if(controladora.logistica.get(i).contains(linea)){
+                existe = true;
+            }
+        }
+        assertEquals(true, existe);
+
+        linea = "Quito SaoPaulo";
+        existe = false;
+        controladora.modificarArchivo(3, linea, "2");
+        for(int i = 0; i < controladora.logistica.size(); i++){
+            if(controladora.logistica.get(i).contains(linea)){
+                String [] datos = controladora.logistica.get(i).split(" ");
+                if(datos[2].equals(datos[3])){
+                    existe = true;
+                }
+            }
+        }
+        assertEquals(true, existe);
+
+        linea = "Quito SaoPaulo";
+        controladora.modificarArchivo(1, linea, "");
+        existe = false;
+        for(int i = 0; i < controladora.logistica.size(); i++){
+            if(controladora.logistica.get(i).contains(linea)){
+                existe = true;
+            }
+        }
+        assertEquals(false, existe);
+    }
 }

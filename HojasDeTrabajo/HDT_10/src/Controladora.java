@@ -8,7 +8,7 @@ public class Controladora {
     private Map<String, Integer> indicesCiudades = new HashMap<>();
     private FloydWarshall floydWarshall;
 
-    private ArrayList<String> logistica = new ArrayList<>();
+    ArrayList<String> logistica = new ArrayList<>();
 
     public Controladora() {
         leerArchivo();

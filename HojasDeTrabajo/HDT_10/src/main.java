@@ -5,6 +5,7 @@
  *
  */
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
@@ -24,7 +25,12 @@ public class main {
                     //se calcula la ruta mas corta entre dos ciudades
                     String ciudad_origen = JOptionPane.showInputDialog("Ingrese la ciudad de origen");
                     String ciudad_destino = JOptionPane.showInputDialog("Ingrese la ciudad de destino");
-                    JOptionPane.showMessageDialog(null,"" + Micontroladora.getRutaMasCorta("Ruta: " + ciudad_origen, ciudad_destino).toString());
+                    String message = "";
+                    ArrayList<String> rutaMasCorta = Micontroladora.getRutaMasCorta(ciudad_origen, ciudad_destino);
+                    for (int i = 0; i < rutaMasCorta.size(); i++) {
+                        message += (i+1) + " " + rutaMasCorta.get(i) + "\n";
+                    }
+                    JOptionPane.showMessageDialog(null,message);
                     break;
                 case 2:
                     //se calcula la ciudad en el centro del grafo

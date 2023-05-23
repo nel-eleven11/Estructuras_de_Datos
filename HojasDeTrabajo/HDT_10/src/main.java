@@ -13,12 +13,12 @@ public class main {
     public static void main (String [] args){
 
         JOptionPane.showMessageDialog(null, "Bienvenido al programa de rutas de ciudades");
-        Controladora Micontroladora = new Controladora();
+
 
         int menu = 0;
         while(menu != 4){
             menu = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de la opcion que desea realizar: \n 1. Encontrar la ruta mas corta entre dos ciudades \n 2. Ciudad en el centro del grafo \n 3. Modificar grafo \n 4. Salir"));
-
+            Controladora Micontroladora = new Controladora();
             switch (menu){
                 case 1:
                     //se calcula la ruta mas corta entre dos ciudades
@@ -37,11 +37,14 @@ public class main {
                         String ciudad2 = "";
                         int tiempos [] = new int [4];
                         String clima = "";
+                        String linea = "";
                         switch (opcion){
                             case 1:
                                 //se interrumpe una conexion entre dos ciudades
                                 ciudad1 = JOptionPane.showInputDialog("Ingrese la ciudad de origen");
                                 ciudad2 = JOptionPane.showInputDialog("Ingrese la ciudad de destino");
+                                linea = ciudad1 + " "+ ciudad2;
+                                Micontroladora.modificarArchivo(opcion,linea, "");
                                 break;
                             case 2:
                                 //se agrega una conexion entre dos ciudades
@@ -52,17 +55,17 @@ public class main {
                                 tiempos[1] = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tiempo de viaje en lluvia"));
                                 tiempos[2] = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tiempo de viaje en nieve"));
                                 tiempos[3] = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tiempo de viaje en tormenta"));
-                                String linea = ciudad1 + " "+ ciudad2 + " " + tiempos[0] + " " + tiempos[1] + " " + tiempos[2] + " " + tiempos[3];
-                                System.out.println(linea);
-                                Micontroladora.modificarArchivo(linea);
-
-
+                                linea = ciudad1 + " "+ ciudad2 + " " + tiempos[0] + " " + tiempos[1] + " " + tiempos[2] + " " + tiempos[3];
+                                Micontroladora.modificarArchivo(opcion ,linea, "");
                                 break;
                             case 3:
                                 //se cambia el clima de una ciudad
                                 ciudad1 = JOptionPane.showInputDialog("Ingrese la ciudad que desea cambiar el clima");
+                                ciudad2 = JOptionPane.showInputDialog("Ingrese la ciudad que desea cambiar el clima");
+                                linea = ciudad1 + " "+ ciudad2;
                                 //se pide el nuevo clima tiempoNormal tiempoLluvia tiempoNieve tiempoTormenta
                                 clima = JOptionPane.showInputDialog("Eliga el nuevo clima de la ciudad: \n 1. Normal \n 2. Lluvia \n 3. Nieve \n 4. Tormenta");
+                                Micontroladora.modificarArchivo(opcion ,linea, clima);
                                 break;
                             case 4:
                                 //se sale del menu de modificación

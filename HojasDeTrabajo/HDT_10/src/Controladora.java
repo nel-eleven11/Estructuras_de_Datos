@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 public class Controladora {
     private Map<String, Node> ciudades = new HashMap<>();
@@ -18,7 +19,47 @@ public class Controladora {
         return floydWarshall;
     }
 
-    public void modificarArchivo(String linea){
+    public void modificarArchivo(int opcion , String linea, String clima){
+
+        if(opcion == 1){
+            //se interrumpe una conexion entre dos ciudades
+            for(int i = 0; i < logistica.size(); i++){
+                if(logistica.get(i).contains(linea)){
+                    logistica.remove(i);
+                }
+            }
+        }
+        if(opcion == 2){
+            //se agrega una conexion entre dos ciudades
+            logistica.add(linea);
+        }
+        if(opcion == 3){
+            //se cambia el clima de una ciudad
+            for(int i = 0; i < logistica.size(); i++){
+                if(logistica.get(i).contains(linea)){
+                    String [] datos = logistica.get(i).split(" ");
+                    switch (clima){
+                        case "1":
+                            datos[2] = datos[2];
+                            break;
+                        case "2":
+                            datos[2] = datos[3];
+                            break;
+                        case "3":
+                            datos[2] = datos[4];
+                            break;
+                        case "4":
+                            datos[2] = datos[5];
+                            break;
+                        default:
+                            JOptionPane.showMessageDialog(null, "El clima ingresado no es valido");
+                            break;
+                    }
+                    logistica.set(i, datos[0] + " " + datos[1] + " " + datos[2] + " " + datos[3] + " " + datos[4] + " " + datos[5]);
+                }
+            }
+
+        }
         File archivo = new File(".\\src\\logistica.txt");
         //escribir en el archivo
         try {
@@ -26,13 +67,11 @@ public class Controladora {
             for (int i = 0; i < logistica.size(); i++) {
                 miEscritor.write(logistica.get(i) + "\n");
             }
-            miEscritor.write(linea);
             miEscritor.close();
         } catch (IOException e) {
             // Ocurrió un error en la escritura
             e.printStackTrace();
         }
-
     }
 
     public void leerArchivo() {

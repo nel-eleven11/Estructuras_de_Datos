@@ -2,23 +2,44 @@ import java.io.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 
+/**
+ * The type Controladora.
+ */
 public class Controladora {
     private Map<String, Node> ciudades = new HashMap<>();
     private String[] nombresCiudades;
     private Map<String, Integer> indicesCiudades = new HashMap<>();
     private FloydWarshall floydWarshall;
 
+    /**
+     * The Logistica.
+     */
     ArrayList<String> logistica = new ArrayList<>();
 
+    /**
+     * Instantiates a new Controladora.
+     */
     public Controladora() {
         leerArchivo();
         crearFloydWarshall();
     }
 
+    /**
+     * Gets floyd warshall.
+     *
+     * @return the floyd warshall
+     */
     public FloydWarshall getFloydWarshall() {
         return floydWarshall;
     }
 
+    /**
+     * Modificar archivo.
+     *
+     * @param opcion the opcion
+     * @param linea  the linea
+     * @param clima  the clima
+     */
     public void modificarArchivo(int opcion , String linea, String clima){
 
         if(opcion == 1){
@@ -74,6 +95,9 @@ public class Controladora {
         }
     }
 
+    /**
+     * Leer archivo.
+     */
     public void leerArchivo() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(".\\src\\logistica.txt"));
@@ -161,6 +185,12 @@ public class Controladora {
 
     }
 
+    /**
+     * Gets indice ciudad por nombre.
+     *
+     * @param nombre the nombre
+     * @return the indice ciudad por nombre
+     */
     public Integer getIndiceCiudadPorNombre(String nombre) {
         Integer indice = indicesCiudades.get(nombre);
         if (indice == null) {
@@ -171,10 +201,23 @@ public class Controladora {
         }
     }
 
+    /**
+     * Gets nombre ciudad por indice.
+     *
+     * @param indice the indice
+     * @return the nombre ciudad por indice
+     */
     public String getNombreCiudadPorIndice(int indice) {
         return nombresCiudades[indice];
     }
 
+    /**
+     * Gets ruta mas corta.
+     *
+     * @param ciudadSalida  the ciudad salida
+     * @param ciudadDestino the ciudad destino
+     * @return the ruta mas corta
+     */
     public ArrayList<String> getRutaMasCorta(String ciudadSalida, String ciudadDestino) {
         int indiceOrigen = getIndiceCiudadPorNombre(ciudadSalida);
         int indiceDestino = getIndiceCiudadPorNombre(ciudadDestino);
@@ -201,6 +244,11 @@ public class Controladora {
         return ruta;
     }
 
+    /**
+     * Gets centro del grafo.
+     *
+     * @return the centro del grafo
+     */
     public String getCentroDelGrafo() {
         int[][] distancias = floydWarshall.getDistancias();
 

@@ -4,7 +4,13 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * The type Node test.
+ */
 class NodeTest {
+    /**
+     * Test ciudad.
+     */
     @Test
     void testCiudad() {
         Node ciudad = new Node("BuenosAires");

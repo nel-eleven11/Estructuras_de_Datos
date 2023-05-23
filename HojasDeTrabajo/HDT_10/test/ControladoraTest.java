@@ -14,13 +14,22 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * The type Controladora test.
+ */
 class ControladoraTest {
+    /**
+     * Test get ruta mas corta.
+     */
     @Test
     public void testGetRutaMasCorta() {
         // Creamos la instancia de la controladora.
         Controladora controladora = new Controladora();
     }
 
+    /**
+     * Gets ruta mas corta.
+     */
     @Test
     void getRutaMasCorta() {
         Controladora controladora = new Controladora();
@@ -39,6 +48,9 @@ class ControladoraTest {
         assertEquals("Quito", rutaMasCorta.get(2));
     }
 
+    /**
+     * Get centro del grafo.
+     */
     @Test
     void getCentroDelGrafo(){
         Controladora controladora = new Controladora();
@@ -48,6 +60,9 @@ class ControladoraTest {
         assertEquals("Lima", centroDelGrafo);
     }
 
+    /**
+     * Modificaciones.
+     */
     @Test
     void modificaciones(){
         Controladora controladora = new Controladora();

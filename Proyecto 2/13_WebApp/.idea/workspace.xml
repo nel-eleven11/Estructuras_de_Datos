@@ -10,11 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4367eef-5ad6-4442-9739-1bda5dbe694b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/13_WebApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/13_WebApp.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HojasDeTrabajo/HDT_10/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../HojasDeTrabajo/HDT_10/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Seccion10Grupo15.war" beforeDir="false" afterPath="$PROJECT_DIR$/../Seccion10Grupo15.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/sb-admin-2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/sb-admin-2.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +45,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/japue/OneDrive/Documents/Workspaces/Estructuras_de_Datos/HojasDeTrabajo/HDT_10",
+    "last_opened_file_path": "E:/Nelson E/UVG/Algoritmos y Estrutura de datos/Repo_EstrDatos/Estructuras_de_datos/Proyecto 2/13_WebApp",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -72,6 +72,7 @@
       <workItem from="1684726808545" duration="46000" />
       <workItem from="1684780449735" duration="259000" />
       <workItem from="1684815421108" duration="183000" />
+      <workItem from="1684855968914" duration="2226000" />
     </task>
     <servers />
   </component>

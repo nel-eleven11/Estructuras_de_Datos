@@ -97,21 +97,22 @@
 		
 		
 	});
-	
+
 	
 	//Evento del botón que creara una nueva pelicula
-	$("#userInputSendButton").click(function(){
+
+	$("#user-send-button").click(function(){
 		//alert("Resultado: " + '/Seccion10Grupo15/SaveMovieServlet?title=' + $('#txt-movie-title').val() + '&release_year=' + $('#txt-movie-release_year').val() + '&tagline=' + $('#txt-movie-tagline').val());
 
-    console.log("Recibido")
-		$.ajax( {
+        alert("Recibido");
+		/*$.ajax( {
 			type: "GET",
 			url: '/Seccion10Grupo15/AddUserServlet?name=' + $('#userInputName').val() + '&lastName=' + $('#userInputLastname').val() + '&city=' + $('#userInputLocation').val() + '&age=' + $('#userInputAge').val() + '&sex=' + $('#userInputSex').val() + '&relationshipType=' + $('#userInputRelationshipType').val(),
 			success: function(data) {
 			    alert("Resultado: " + data.resultado);
 			}
 		} );
-		
+		*/
 		
 	});
 

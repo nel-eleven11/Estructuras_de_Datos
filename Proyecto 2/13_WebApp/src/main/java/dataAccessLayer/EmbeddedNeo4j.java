@@ -24,7 +24,7 @@ import java.util.List;
 public class EmbeddedNeo4j implements AutoCloseable{
 
     private final Driver driver;
-    
+
 
     public EmbeddedNeo4j( String uri, String user, String password )
     {
@@ -36,7 +36,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
     {
         driver.close();
     }
-
+    // recibe la string message y la guarda en la base de datos
     public void printGreeting( final String message )
     {
         try ( Session session = driver.session() )
@@ -56,13 +56,13 @@ public class EmbeddedNeo4j implements AutoCloseable{
             System.out.println( greeting );
         }
     }
-    
+    // crea una linkedlist con los nombres de los actores
     public LinkedList<String> getActors()
     {
     	 try ( Session session = driver.session() )
          {
-    		 
-    		 
+
+
     		 LinkedList<String> actors = session.readTransaction( new TransactionWork<LinkedList<String>>()
              {
                  @Override
@@ -75,21 +75,21 @@ public class EmbeddedNeo4j implements AutoCloseable{
                     	 //myactors.add(registros.get(i).toString());
                     	 myactors.add(registros.get(i).get("people.name").asString());
                      }
-                     
+
                      return myactors;
                  }
              } );
-             
+
              return actors;
          }
     }
-    
+    // crea una linkedlist con los nombres de las peliculas por actor
     public LinkedList<String> getMoviesByActor(String actor)
     {
    	 try ( Session session = driver.session() )
         {
-   		 
-   		 
+
+
    		 LinkedList<String> actors = session.readTransaction( new TransactionWork<LinkedList<String>>()
             {
                 @Override
@@ -102,15 +102,15 @@ public class EmbeddedNeo4j implements AutoCloseable{
                    	 //myactors.add(registros.get(i).toString());
                    	 myactors.add(registros.get(i).get("actorMovies.title").asString());
                     }
-                    
+
                     return myactors;
                 }
             } );
-            
+
             return actors;
         }
    }
-
+    // crea un usuario con los parametros recibidos
     public String createUser(String Name, String lastName, String age) {
         try (Session session = driver.session()) {
             String result = session.writeTransaction(new TransactionWork<String>() {
@@ -129,7 +129,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
         }
     }
 
-
+    //linkea un usuarion con la ciudad en la que vive
     public String linkUserToCity(String userId, String cityName) {
         try (Session session = driver.session()) {
             String result = session.writeTransaction(new TransactionWork<String>() {
@@ -147,7 +147,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
         }
     }
 
-
+    //linkea un usuarion con sus intereses
     public String linkUserToInterests(String userId, List<String> interests) {
         try (Session session = driver.session()) {
             String result = session.writeTransaction(new TransactionWork<String>() {
@@ -167,7 +167,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
         }
     }
 
-
+    // linkea un usuarion con el tipo de relacion que quiera
     public String linkUserToRelationshipType(String userId, String relationshipType) {
         try (Session session = driver.session()) {
             String result = session.writeTransaction(new TransactionWork<String>() {
@@ -184,7 +184,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
             return e.getMessage();
         }
     }
-
+    // linkea un usuarion con sexo que tenga
     public String linkUserToSex(String userId, String sex) {
         try (Session session = driver.session()) {
             String result = session.writeTransaction(new TransactionWork<String>() {

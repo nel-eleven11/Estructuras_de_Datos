@@ -33,27 +33,27 @@ public class AddUserServlet extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         JSONObject myResponse = new JSONObject();
-        JSONArray userInterests = new JSONArray();
         String userId = request.getParameter("userId");
+        String age = request.getParameter("age");
+        String name = request.getParameter("name");
+        String lastName = request.getParameter("lastName");
+        String sex = request.getParameter("sex");
+        String city = request.getParameter("city");
+        String relationshipType = request.getParameter("relationshipType");
+        String interests = request.getParameter("interests");
         try ( EmbeddedNeo4j db = new EmbeddedNeo4j( "neo4j+s://b5cf9803.databases.neo4j.io", "neo4j", "Re6HAL1dSCcb58sXzH0KfLzvaWox0j8dCNisrY0t4_8" ) ) {
-            String username = request.getParameter("username");
-            String age = request.getParameter("age");
-            String name = request.getParameter("name");
-            String lastName = request.getParameter("lastName");
-            String sex = request.getParameter("sex");
-            String city = request.getParameter("city");
-            String relationshipType = request.getParameter("relationshipType");
-            String interests = Arrays.toString(request.getParameterValues("interests"));
             db.createUser(userId, Integer.parseInt(age), name, lastName);
-            db.linkUserToCity(userId, city);
-            db.linkUserToRelationshipType(userId, relationshipType);
-            List<String> interestsList = new LinkedList<String>(Arrays.asList(interests.substring(1, interests.length()-1).split(", ")));
-            db.linkUserToInterests(userId, interestsList);
         } catch (Exception e) {
             e.printStackTrace();
         }
         myResponse.put("userId", userId);
-        myResponse.put("interests", userInterests);
+        myResponse.put("age", age);
+        myResponse.put("name", name);
+        myResponse.put("lastName", lastName);
+        myResponse.put("sex", sex);
+        myResponse.put("city", city);
+        myResponse.put("relationshipType", relationshipType);
+        myResponse.put("interests", interests);
         out.println(myResponse);
         out.flush();
     }

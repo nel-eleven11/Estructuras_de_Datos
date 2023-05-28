@@ -137,18 +137,27 @@ public class EmbeddedNeo4j implements AutoCloseable{
         }
     }
 
-    public void createUser(String userId, int age, String name, String lastName) {
-        String query = "MERGE (u:User {userId: $userId}) " +
-                "ON CREATE SET u.name = $name, u.lastName = $lastName u.age = $age";
-
-        Map<String, Object> parameters = new HashMap<String, Object>();
-        parameters.put("userId", userId);
-        parameters.put("name", name);
-        parameters.put("lastName", lastName);
-        parameters.put("age", age);
-
+    public String createUser(String userId, int age, String name, String lastName) {
+        
         try (Session session = driver.session()) {
-            session.run(query, parameters);
+            
+            String result = session.writeTransaction( new TransactionWork<String>()
+      		 
+            {
+                @Override
+                public String execute( Transaction tx )
+                {
+                    tx.run("MERGE (u:User {userId:'"+userId+"', name: '"+name+"', lastName: '"+lastName+"', age: "+age+"})");
+                    
+                    return "OK";
+                }
+            }
+   		 
+   		 );
+            
+            return result;
+        } catch (Exception e) {
+        	return e.getMessage();
         }
     }
 

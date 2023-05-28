@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1d331445-7fb9-4959-add7-9b93f53996dc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HojasDeTrabajo/HDT_10/out/production/HDT_10/Controladora.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HojasDeTrabajo/HDT_10/out/production/HDT_10/FloydWarshall.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HojasDeTrabajo/HDT_10/out/production/HDT_10/Node.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HojasDeTrabajo/HDT_10/out/production/HDT_10/logistica.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HojasDeTrabajo/HDT_10/out/production/HDT_10/main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../13_WebApp/.idea/13_WebApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../13_WebApp/.idea/13_WebApp.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../13_WebApp/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../13_WebApp/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../13_WebApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../13_WebApp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../13_WebApp/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../13_WebApp/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../13_WebApp/.settings/org.eclipse.wst.common.component" beforeDir="false" afterPath="$PROJECT_DIR$/../13_WebApp/.settings/org.eclipse.wst.common.component" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../13_WebApp/src/main/java/AddUserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../13_WebApp/src/main/java/AddUserServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../13_WebApp/src/main/java/HelloServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../13_WebApp/src/main/java/HelloServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../13_WebApp/src/main/java/dataAccessLayer/EmbeddedNeo4j.java" beforeDir="false" afterPath="$PROJECT_DIR$/../13_WebApp/src/main/java/dataAccessLayer/EmbeddedNeo4j.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../13_WebApp/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../13_WebApp/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../13_WebApp/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../13_WebApp/src/main/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../13_WebApp/src/main/webapp/js/sb-admin-2.js" beforeDir="false" afterPath="$PROJECT_DIR$/../13_WebApp/src/main/webapp/js/sb-admin-2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AddUserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AddUserServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dataAccessLayer/EmbeddedNeo4j.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dataAccessLayer/EmbeddedNeo4j.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/beans.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/sb-admin-2..js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Seccion10Grupo15.war" beforeDir="false" afterPath="$PROJECT_DIR$/../Seccion10Grupo15.war" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2QE2aiV6VIi7Lk0J8jFBty3NFyb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/japue/OneDrive/Documents/Workspaces/Estructuras_de_Datos/Proyecto 2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.41034484",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1d331445-7fb9-4959-add7-9b93f53996dc" name="Changes" comment="" />
+      <created>1684904485902</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1684904485902</updated>
+      <workItem from="1684904486907" duration="1110000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

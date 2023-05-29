@@ -68,6 +68,16 @@ form label {
     color: black;
 }
 
+select{
+	padding: 10px;
+	border: none;
+    border-radius: 5px;
+    width: 520px;
+    color: black;
+    margin-bottom: 10px;
+    
+}
+
 
 form input {
     padding: 10px;

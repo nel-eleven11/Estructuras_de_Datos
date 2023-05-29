@@ -24,10 +24,19 @@
         <input type="number" name="age" placeholder="Age" id="userInputAge"><br>
 
         <label for="userInputSex">Género</label><br>
-        <input type="text" name="Gender" placeholder="Gender" id="userInputSex"><br>
+        <select name="Gender" id="userInputSex">
+		    <option value="masculino">Masculino</option>
+		    <option value="femenino">Femenino</option>
+		    <option value="otro">Otro</option>
+	  	</select>
+        
 
         <label for="userInputRelationshipType">Tipo de relacion</label><br>
-        <input type="text" name="relationshipType" placeholder="Relationship type" id="userInputRelationshipType"><br>
+        <select name="relationshipType" id="userInputRelationshipType">
+		    <option value="formal">Formal</option>
+		    <option value="casual">Casual</option>
+		    <option value="amistad">Amistad</option>
+	  	</select>
 
         <label>Intereses (Separados por comas)</label><br>
         <textarea rows="5" cols="40" name="interests" spellcheck="true" placeholder="Interests" id="userInputInterests">

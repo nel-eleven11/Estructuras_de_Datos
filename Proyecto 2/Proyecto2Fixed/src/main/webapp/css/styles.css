@@ -48,6 +48,10 @@ form {
     font-size: large;
 }
 
+option{
+	color: black;
+}
+
 
 #boton {
     background-color: #006ee6;

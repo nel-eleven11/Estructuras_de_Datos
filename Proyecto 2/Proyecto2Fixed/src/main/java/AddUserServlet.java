@@ -43,6 +43,15 @@ public class AddUserServlet extends HttpServlet {
         String interests = request.getParameter("interests");
         try ( EmbeddedNeo4j db = new EmbeddedNeo4j( "neo4j+s://b5cf9803.databases.neo4j.io", "neo4j", "Re6HAL1dSCcb58sXzH0KfLzvaWox0j8dCNisrY0t4_8" ) ) {
             db.createUser(userId, Integer.parseInt(age), name, lastName);
+            String[] interestsList = interests.split(",");
+            for (int i = 0; i < interests.length(); i++) {
+            	db.createInterest(interestsList[i]);
+            	db.linkUserToInterests(userId, interests);
+            }
+            db.createCity(city);
+            db.linkUserToCity(userId, city);
+            db.linkUserToRelationshipType(userId, relationshipType);
+            db.linkUserToSex(userId, sex);
         } catch (Exception e) {
             e.printStackTrace();
         }

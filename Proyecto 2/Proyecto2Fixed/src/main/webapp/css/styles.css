@@ -52,6 +52,24 @@ option{
 	color: black;
 }
 
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -.75rem;
+    margin-left: -.75rem
+}
+
+.col,.col-lg-4 {
+    position: relative;
+    width: 100%;
+    padding-right: .75rem;
+    padding-left: .75rem
+}
+
+.col-lg-4 {
+     flex: 0 0 33.33333%;
+     max-width: 33.33333%
+ }
 
 #boton {
     background-color: #006ee6;

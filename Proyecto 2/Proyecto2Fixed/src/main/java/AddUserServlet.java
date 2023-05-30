@@ -1,6 +1,7 @@
 
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -17,6 +18,9 @@ import dataAccessLayer.EmbeddedNeo4j;
 
 import org.json.simple.JSONArray;
 
+import java.text.Normalizer;
+import java.util.regex.Pattern;
+
 
 
 @WebServlet("/AddUserServlet")
@@ -26,6 +30,12 @@ public class AddUserServlet extends HttpServlet {
 
     public AddUserServlet() {
         super();
+    }
+    
+    private static String removeAccents(String text) {
+        String nfdNormalizedString = Normalizer.normalize(text, Normalizer.Form.NFD); 
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(nfdNormalizedString).replaceAll("");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,14 +54,17 @@ public class AddUserServlet extends HttpServlet {
         try ( EmbeddedNeo4j db = new EmbeddedNeo4j( "neo4j+s://b5cf9803.databases.neo4j.io", "neo4j", "Re6HAL1dSCcb58sXzH0KfLzvaWox0j8dCNisrY0t4_8" ) ) {
             db.createUser(userId, Integer.parseInt(age), name, lastName);
             String[] interestsList = interests.split(",");
-            for (int i = 0; i < interests.length(); i++) {
-            	db.createInterest(interestsList[i]);
-            	db.linkUserToInterests(userId, interests);
-            }
             db.createCity(city);
             db.linkUserToCity(userId, city);
             db.linkUserToRelationshipType(userId, relationshipType);
             db.linkUserToSex(userId, sex);
+            for (int i = 0; i < interests.length(); i++) {
+            	String interes = interestsList[i].trim();
+            	interes = interes.toLowerCase();
+            	interes = removeAccents(interes);
+            	db.createInterest(interes);
+            	db.linkUserToInterests(userId, interes);
+            }   
         } catch (Exception e) {
             e.printStackTrace();
         }

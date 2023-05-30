@@ -60,7 +60,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
             String result = session.writeTransaction( new TransactionWork<String>(){
                 @Override
                 public String execute( Transaction tx ){
-                    tx.run("MERGE (n:Location {name:'"+cityName+"'})");
+                    tx.run("MERGE (l:Location {name: '"+cityName+"'})");
                     return "OK";
                 }
             }
@@ -72,12 +72,12 @@ public class EmbeddedNeo4j implements AutoCloseable{
     }
 
 
-    public String linkUserToCity(String userId, String cityName) {
+    public String linkUserToCity(String userId, String location) {
     	try (Session session = driver.session()) {
             String result = session.writeTransaction( new TransactionWork<String>(){
                 @Override
                 public String execute( Transaction tx ){
-                    tx.run("MATCH (u:User {userId: '"+ userId +"'}), (n:Location {name: '" + cityName +"'}) MERGE (u)-[:LIVES_IN]->(l)");
+                    tx.run("MATCH (u:User {userId: '"+userId+"'}), (l:Location {name: '"+location+"'}) MERGE (u)-[:LIVES_IN]->(l)");
                     return "OK";
                 }
             }
@@ -93,7 +93,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
             String result = session.writeTransaction( new TransactionWork<String>(){
                 @Override
                 public String execute( Transaction tx ){
-                    tx.run("MERGE (n:Interest {name:'"+interest+"'})");
+                    tx.run("MERGE (i:Interest {name:'"+interest+"'})");
                     return "OK";
                 }
             }
@@ -127,7 +127,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
             String result = session.writeTransaction( new TransactionWork<String>(){
                 @Override
                 public String execute( Transaction tx ){
-                    tx.run("MATCH (u:User {userId: '"+userId+"'}), (r:RelationshipType {name: '"+relationshipType+"'}) MERGE (u)-[:INTERESTED_IN]->(r)");
+                    tx.run("MATCH (u:User {userId: '"+userId+"'}), (r:RelationshipType {name: '"+relationshipType+"'}) MERGE (u)-[:WANTS_RELATIONSHIP]->(r)");
                     return "OK";
                 }
             }
@@ -143,7 +143,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
             String result = session.writeTransaction( new TransactionWork<String>(){
                 @Override
                 public String execute( Transaction tx ){
-                    tx.run("MATCH (u:User {userId: '"+userId+"'}), (s:Sex {name: '"+sex+"'}) MERGE (u)-[:IS_A]->(s)");
+                    tx.run("MATCH (u:User {userId: '"+userId+"'}), (s:Sex {name: '"+sex+"'}) MERGE (u)-[:HAS_SEX]->(s)");
                     return "OK";
                 }
             }

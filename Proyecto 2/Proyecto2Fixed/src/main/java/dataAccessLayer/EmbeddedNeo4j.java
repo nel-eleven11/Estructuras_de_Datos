@@ -153,4 +153,38 @@ public class EmbeddedNeo4j implements AutoCloseable{
         	return e.getMessage();
         }
     }
+
+    public List<Map<String, Object>> findMatches(String userId) {
+        try (Session session = driver.session()) {
+            List<Map<String, Object>> matches = session.readTransaction(new TransactionWork<List<Map<String, Object>>>() {
+                @Override
+                public List<Map<String, Object>> execute(Transaction tx) {
+                    Result result = tx.run("MATCH (u:User {userId: $userId})-[:LIVES_IN]->(l:Location)<-[:LIVES_IN]-(m:User),"
+                            + "(u)-[:WANTS_RELATIONSHIP]->(r:RelationshipType)<-[:WANTS_RELATIONSHIP]-(m),"
+                            + "(u)-[:HAS_SEX]->(s:Sex), (m)-[:HAS_SEX]->(oppositeSex:Sex),"
+                            + "(u)-[:INTERESTED_IN]->(i:Interest)<-[:INTERESTED_IN]-(m)"
+                            + "WHERE NOT s = oppositeSex "
+                            + "WITH u, m, collect(i) AS sharedInterests "
+                            + "RETURN m AS matchedUser, sharedInterests, size(sharedInterests) AS commonInterestCount "
+                            + "ORDER BY commonInterestCount DESC", parameters("userId", userId));
+                    
+                    List<Map<String, Object>> matches = new LinkedList<>();
+                    while (result.hasNext()) {
+                        Record record = result.next();
+                        Map<String, Object> match = new HashMap<>();
+                        match.put("matchedUser", record.get("matchedUser").asNode().asMap());
+                        match.put("sharedInterests", record.get("sharedInterests").asList());
+                        match.put("commonInterestCount", record.get("commonInterestCount").asInt());
+                        matches.add(match);
+                    }
+                    return matches;
+                }
+            });
+            return matches;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
 }

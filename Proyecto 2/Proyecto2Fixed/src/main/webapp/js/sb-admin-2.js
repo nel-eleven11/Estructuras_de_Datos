@@ -12,19 +12,22 @@
 		} );
 	});
 	
-	$("#matches-retrieve-button").click(function(){
+	$("#userIdsendbutton").click(function(){
         $.ajax({
             type: "GET",
-            url: '/Seccion10Grupo15/SearchSoulmate?userId=' + $('#userInputId').val(),
+            url: '/Seccion10Grupo15/SearchSoulmateV2?userId=' + $('#userInputUserId').val(),
             success: function(data) {
+                console.log("Success");
                 console.log("Matches: " + JSON.stringify(data));
                 
-                // Loop through each match and display it
-                $.each(data, function(index, match){
-                    console.log('Matched User: ' + match.matchedUser.userId);
-                    console.log('Common Interests: ' + match.sharedInterests.toString());
-                    console.log('Count of Common Interests: ' + match.commonInterestCount);
-                });			    
+                
+                var htmlMovieList = '<ul>';
+				$.each(data, function(i,item){
+					  htmlMovieList += '<li>' + item.matchedUser.name + " " + item.matchedUser.lastName + "(" + item.matchedUser.age + ") - Intereses en común: " + item.commonInterestCount + '</li>';
+				});
+				htmlMovieList += '</ul>';
+				$('#appendResults').html("");
+				$('#appendResults').append(htmlMovieList);
             }
         });
     });

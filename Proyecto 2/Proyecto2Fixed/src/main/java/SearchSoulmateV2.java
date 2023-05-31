@@ -43,7 +43,7 @@ public class SearchSoulmateV2 extends HttpServlet {
             for (Map<String, Object> match : matches) {
                 JSONObject matchJson = new JSONObject();
                 matchJson.put("matchedUser", match.get("matchedUser"));
-                matchJson.put("sharedInterests", match.get("sharedInterests"));
+                //matchJson.put("sharedInterests", match.get("sharedInterests"));
                 matchJson.put("commonInterestCount", match.get("commonInterestCount"));
                 matchesJson.add(matchJson);
             }

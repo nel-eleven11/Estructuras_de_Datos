@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="">
 <head>
     <meta charset="utf-8">
     <script ></script>
@@ -9,40 +9,63 @@
 </head>
 <body>
 <h1>My College Soulmate</h1>
-<div>
-    <form class="user">
-        <label for="userInputName">Nombre</label><br>
-        <input type="text" name="name" placeholder="Name" id="userInputName"><br>
+<div id="container">
 
-        <label for="userInputLastname">Apellido</label><br>
-        <input type="text" name="lastname" placeholder="Lastname" id="userInputLastname"><br>
+    <div class="contained">
+        <form class="user">
+            <label for="userInputName">Nombre</label><br>
+            <input type="text" name="name" placeholder="Name" id="userInputName"><br>
+    
+            <label for="userInputLastname">Apellido</label><br>
+            <input type="text" name="lastname" placeholder="Lastname" id="userInputLastname"><br>
+    
+            <label for="userInputLocation">Ciudad</label><br>
+            <input type="text" name="location" placeholder="Location" id="userInputLocation"><br>
+    
+            <label for="userInputAge">Edad</label><br>
+            <input type="number" name="age" placeholder="Age" id="userInputAge"><br>
+    
+            <label for="userInputSex">Género</label><br>
+            <select name="Gender" id="userInputSex">
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+              </select>
+            
+    
+            <label for="userInputRelationshipType">Tipo de relacion</label><br>
+            <select name="relationshipType" id="userInputRelationshipType">
+                <option value="Formal">Formal</option>
+                <option value="Casual">Casual</option>
+                <option value="Amistad">Amistad</option>
+              </select>
+    
+            <label>Intereses (Separados por comas)</label><br>
+            <textarea rows="5" cols="40" name="interests" spellcheck="true" placeholder="Interests" id="userInputInterests"></textarea><br>
+    
+            <input type="button" id="user-send-button" value="Enviar" class="btn btn-primary form-control"><br>
+        </form>
+    </div>
 
-        <label for="userInputLocation">Ciudad</label><br>
-        <input type="text" name="location" placeholder="Location" id="userInputLocation"><br>
-
-        <label for="userInputAge">Edad</label><br>
-        <input type="number" name="age" placeholder="Age" id="userInputAge"><br>
-
-        <label for="userInputSex">Género</label><br>
-        <select name="Gender" id="userInputSex">
-		    <option value="Masculino">Masculino</option>
-		    <option value="Femenino">Femenino</option>
-	  	</select>
-        
-
-        <label for="userInputRelationshipType">Tipo de relacion</label><br>
-        <select name="relationshipType" id="userInputRelationshipType">
-		    <option value="Formal">Formal</option>
-		    <option value="Casual">Casual</option>
-		    <option value="Amistad">Amistad</option>
-	  	</select>
-
-        <label>Intereses (Separados por comas)</label><br>
-        <textarea rows="5" cols="40" name="interests" spellcheck="true" placeholder="Interests" id="userInputInterests"></textarea><br>
-
-        <input type="button" id="user-send-button" value="Enviar" class="btn btn-primary form-control"><br>
-    </form>
+    <div class="contained">
+        <div>
+            <form class="user">
+                    <label for="userInputId">Id del usuario</label><br>
+                    <input type="text" name="userId" placeholder="User Id" id="userInputUserId"><br>
+                    
+                    <input type="button" id="userIdsendbutton" value="Buscar" class="btn btn-primary form-control"><br>
+            </form>
+        </div>
+        <div>
+            <div id="Resultados">
+                <h3>Resultados</h3>
+                <div id="appendResults">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.js"></script>
